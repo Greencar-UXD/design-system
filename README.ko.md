@@ -31,6 +31,7 @@
 - **테마.** 라이트가 `:root` 기본, 다크는 `[data-theme="dark"]`에서 시맨틱 토큰을 덮어씁니다. 컴포넌트는 시맨틱 토큰(`--text-primary`, `--surface-card`, `--border`, `--accent`)을 읽기 때문에 자동으로 전환돼요 — 컴포넌트별 다크 CSS 불필요.
 - **타입.** 전부 Pretendard(디스플레이 → 캡션), 데이터는 Geist Mono. 디스플레이/제목은 자간을 좁게(`--ls-tight`/`--ls-tighter`), 본문은 중립. 굵기: 400/500/600/700. 위계는 색이 아니라 크기 + 굵기로.
 - **스페이싱 & 레이아웃.** 엄격한 **4px 기준 그리드**(`--space-*`: 4·8·12·16·20·24·28·32·40·48·64·80·96). Radius도 4px 그리드 위에 있습니다(`--radius-*`: 4·8·12·16·20·28). 모든 컴포넌트의 padding/gap/margin은 그리드에 스냅됩니다. 의도적으로 그리드를 벗어나는 값은 헤어라인 보더(1px), 포커스/센터링 오프셋(2px), 아이콘 글리프 크기, 44px 터치 타깃뿐입니다. 여백은 넉넉하게, 웹 콘텐츠 최대 폭은 1100~1240px 정도. 마진 체인 대신 flex/grid + `gap`을 쓰세요.
+- **브레이크포인트 & 반응형.** **모바일 우선** — 기본 스타일은 작은 화면을 향하고, `min-width` 미디어쿼리로 큰 레이아웃을 얹습니다. 브레이크포인트 4개(`--bp-sm 480` · `md 768` · `lg 1024` · `xl 1280`)는 전부 4px 그리드 위. **컴포넌트 자체는 뷰포트 무관**(fluid `width:100%` + `max-width` 상한, 하드코딩 브레이크포인트 없음)하며, 반응형 *레이아웃*은 소비하는 앱의 몫 — `.ds-container`와 `.ds-grid--auto|2|3|4` 유틸이 돕습니다. 같은 의도라도 플랫폼마다 다른 그릇을 씁니다(BottomSheet ↔ Drawer, BottomNav ↔ 사이드바). **Responsive & breakpoints** 파운데이션 참고. _(커스텀 속성은 `@media` 조건에 못 들어가므로 `--bp-*`는 기준값이고 미디어쿼리엔 같은 리터럴을 미러링합니다.)_
 - **모서리 둥글기.** 컨테이너는 부드럽되 과하지 않게: 입력/버튼 `--radius-md`(12px), 카드 `--radius-xl`(20px). 완전한 pill(`--radius-pill`)은 배지·태그·스위치·아바타에만.
 - **보더.** 헤어라인 `--border`(1px, `--gray-200`)가 기본 구분선. 입력·강조에는 `--border-strong`. 구조는 보더가 잡고, 그림자는 은은하게 유지.
 - **그림자 / 엘리베이션.** 부드럽고 쿨하며 퍼짐이 적게(`--shadow-xs … --shadow-xl`). 카드는 평소 `--shadow-sm`, hover 시 `--shadow-lg`로 띄움. 딱딱하거나 컬러가 들어간 그림자는 금지.
@@ -74,8 +75,8 @@ npx serve .        # 또는:  python3 -m http.server
 
 루트 파일:
 - **`styles.css`** — 소비자가 링크하는 단일 진입점. 아래 토큰·컴포넌트 CSS를 `@import`.
-- **`tokens/`** — `fonts.css`(Pretendard + Geist Mono `@font-face`), `colors.css`(뉴트럴 + 코발트 램프, 라이트/다크 시맨틱), `typography.css`(패밀리·스케일·굵기·행간·자간), `spacing.css`(스페이싱 그리드·radius·그림자·모션).
-- **`css/components.css`** — 클래스 기반, 토큰 구동 컴포넌트 스타일(`.ds-*`), 다크 자동 대응.
+- **`tokens/`** — `fonts.css`(Pretendard + Geist Mono `@font-face`), `colors.css`(뉴트럴 + 코발트 램프, 라이트/다크 시맨틱), `typography.css`(패밀리·스케일·굵기·행간·자간), `spacing.css`(스페이싱 그리드·radius·그림자·모션), `layout.css`(브레이크포인트·컨테이너 폭·거터).
+- **`css/components.css`** — 클래스 기반, 토큰 구동 컴포넌트 스타일(`.ds-*`), 다크 자동 대응. **`css/layout.css`** — 컨테이너·반응형 그리드 유틸(`.ds-container`, `.ds-grid--*`).
 - **`package.json`** — 패키지 메타데이터 + `exports` 맵(소스를 그대로 배포; 빌드 단계 없음). **`.gitignore`**.
 - **`README.md`** / **`README.ko.md`** — 가이드(영문 / 한글). **`SKILL.md`** — Agent Skill 매니페스트.
 - **`index.html`** + **`gallery/`** — 쇼케이스(위 참고).
@@ -84,7 +85,7 @@ npx serve .        # 또는:  python3 -m http.server
 - Type: `type-scale`, `type-display`, `type-weights`, `type-mono`
 - Colors: `colors-neutral`, `colors-cobalt`, `colors-semantic-light`, `colors-dark`, `colors-status`, `chart-palette`
 - Spacing: `spacing-scale`, `radius-scale`, `shadow-scale`
-- Motion: `motion` · Layout: `grid-layout`
+- Motion: `motion` · Layout: `grid-layout`, `responsive`
 - Guidelines: `accessibility`, `do-dont`, `voice`
 - Brand: `iconography`, `assets/wordmark`
 

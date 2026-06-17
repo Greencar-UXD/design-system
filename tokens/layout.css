@@ -1,0 +1,31 @@
+/* ============================================================
+   Layout — breakpoints, containers, gutters
+   All values stay on the 4px grid (480·768·1024·1280 …).
+
+   NOTE: CSS custom properties cannot be read inside an @media
+   condition (e.g. `@media (min-width: var(--bp-md))` is invalid).
+   So these --bp-* tokens are the single source of truth for
+   reference / JS / container logic, and the SAME literals are
+   mirrored in the @media queries of css/layout.css. If you change
+   a breakpoint here, update the matching literal there.
+   ============================================================ */
+
+:root {
+  /* ---- Breakpoints (min-width) ---- */
+  --bp-sm:  480px;   /* large phone            */
+  --bp-md:  768px;   /* tablet / split view    */
+  --bp-lg:  1024px;  /* small laptop           */
+  --bp-xl:  1280px;  /* desktop                */
+
+  /* ---- Container max-widths ---- */
+  --container-sm:  640px;
+  --container-md:  768px;
+  --container-lg:  1024px;
+  --container-xl:  1200px;
+  --container-max: 1200px;  /* default page container (web ≈ 1100–1240) */
+
+  /* ---- Page side gutters (fluid by breakpoint) ---- */
+  --gutter:    16px;   /* base / mobile */
+  --gutter-md: 24px;   /* ≥ 768px       */
+  --gutter-lg: 32px;   /* ≥ 1024px      */
+}

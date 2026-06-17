@@ -31,6 +31,7 @@ The look: **monochrome surfaces, ink text, one cobalt accent used sparingly.** Q
 - **Themes.** Light is the base on `:root`; dark overrides semantic tokens under `[data-theme="dark"]`. Components read semantic tokens (`--text-primary`, `--surface-card`, `--border`, `--accent`) so they flip automatically — no per-component dark CSS.
 - **Type.** Pretendard for everything (display → caption), Geist Mono for data. Tight tracking on display/headings (`--ls-tight`/`--ls-tighter`), neutral on body. Weights: 400/500/600/700. Hierarchy comes from size + weight, not color.
 - **Spacing & layout.** Strict **4px base grid** (`--space-*`: 4·8·12·16·20·24·28·32·40·48·64·80·96). Radius is also on the 4px grid (`--radius-*`: 4·8·12·16·20·28). All component padding/gap/margin snap to the grid; the only deliberate off-grid values are hairline borders (1px), focus/centering offsets (2px), icon glyph sizing, and the 44px touch target. Generous whitespace; content max-widths around 1100–1240px on web. Use flex/grid with `gap` — never margin chains.
+- **Breakpoints & responsive.** **Mobile-first**: base styles target small screens; `min-width` media queries layer on the larger layouts. Four breakpoints — `--bp-sm 480` · `md 768` · `lg 1024` · `xl 1280` — all on the 4px grid. The **components themselves are viewport-agnostic** (fluid `width:100%` + `max-width` caps, no hardcoded breakpoints); responsive *layout* is the consuming app's job, helped by the `.ds-container` and `.ds-grid--auto|2|3|4` utilities. The same intent gets a different shell per platform (BottomSheet ↔ Drawer, BottomNav ↔ sidebar). See the **Responsive & breakpoints** foundation. _(Custom properties can't be read inside an `@media` condition, so `--bp-*` are the reference values and the media queries mirror the same literals.)_
 - **Corner radii.** Soft but not pill-y for containers: inputs/buttons `--radius-md` (10px), cards `--radius-xl` (20px). Pills (`--radius-pill`) only for badges, tags, switches, and avatars.
 - **Borders.** Hairline `--border` (1px, `--gray-200`) is the default separator. `--border-strong` for inputs and emphasis. Borders do the structural work; shadows stay subtle.
 - **Shadows / elevation.** Soft, cool, low-spread (`--shadow-xs … --shadow-xl`). Cards rest on `--shadow-sm`; raise to `--shadow-lg` on hover. No hard or colored drop shadows.
@@ -74,8 +75,8 @@ npx serve .        # or:  python3 -m http.server
 
 Root files:
 - **`styles.css`** — the single entry point consumers link. `@import`s the token + component CSS below.
-- **`tokens/`** — `fonts.css` (Pretendard + Geist Mono `@font-face`), `colors.css` (neutral + cobalt ramps, light/dark semantic), `typography.css` (families, scale, weights, leading, tracking), `spacing.css` (space grid, radius, shadow, motion).
-- **`css/components.css`** — class-based, token-driven component styles (`.ds-*`), auto-adapting to dark.
+- **`tokens/`** — `fonts.css` (Pretendard + Geist Mono `@font-face`), `colors.css` (neutral + cobalt ramps, light/dark semantic), `typography.css` (families, scale, weights, leading, tracking), `spacing.css` (space grid, radius, shadow, motion), `layout.css` (breakpoints, container widths, gutters).
+- **`css/components.css`** — class-based, token-driven component styles (`.ds-*`), auto-adapting to dark. **`css/layout.css`** — container & responsive-grid utilities (`.ds-container`, `.ds-grid--*`).
 - **`package.json`** — package metadata + `exports` map (ships source; no build step). **`.gitignore`**.
 - **`README.md`** / **`README.ko.md`** — this guide (EN / KO). **`SKILL.md`** — Agent Skill manifest.
 - **`index.html`** + **`gallery/`** — the showcase (above).
@@ -84,7 +85,7 @@ Foundations specimen cards — **`foundations/`** (also rendered in `gallery/fou
 - Type: `type-scale`, `type-display`, `type-weights`, `type-mono`
 - Colors: `colors-neutral`, `colors-cobalt`, `colors-semantic-light`, `colors-dark`, `colors-status`, `chart-palette`
 - Spacing: `spacing-scale`, `radius-scale`, `shadow-scale`
-- Motion: `motion` · Layout: `grid-layout`
+- Motion: `motion` · Layout: `grid-layout`, `responsive`
 - Guidelines: `accessibility`, `do-dont`, `voice`
 - Brand: `iconography`, `assets/wordmark`
 
