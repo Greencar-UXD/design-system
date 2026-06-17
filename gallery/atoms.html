@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atoms · Cobalt — Mono Design System</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-text);-webkit-font-smoothing:antialiased;}
+  .gx-top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 24px;background:color-mix(in srgb,var(--surface-page) 84%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+  .gx-brand{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:var(--fw-bold);font-size:18px;letter-spacing:var(--ls-tight);color:var(--text-primary);text-decoration:none;}
+  .gx-brand .gx-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);}
+  .gx-nav{display:flex;gap:2px;align-items:center;flex-wrap:wrap;}
+  .gx-nav a{font:var(--text-label);color:var(--text-secondary);text-decoration:none;padding:8px 12px;border-radius:var(--radius-sm);}
+  .gx-nav a:hover{background:var(--surface-sunken);color:var(--text-primary);}
+  .gx-nav a[aria-current]{color:var(--accent);background:var(--surface-accent-subtle);}
+  .gx-nav .gx-sep{width:1px;height:20px;background:var(--border);margin:0 6px;}
+  .gx-wrap{max-width:1120px;margin:0 auto;padding:40px 24px 120px;}
+  .gx-h1{font:var(--text-h1);letter-spacing:var(--ls-tighter);margin:0 0 10px;}
+  .gx-lead{font:var(--text-body-lg);color:var(--text-secondary);margin:0 0 8px;max-width:64ch;}
+  .gx-count{font:var(--text-mono);color:var(--text-tertiary);}
+  .gx-sec{margin:56px 0 0;scroll-margin-top:84px;}
+  .gx-sec__h{font:var(--text-h3);letter-spacing:var(--ls-tight);margin:0 0 4px;}
+  .gx-sec__sub{font:var(--text-body-sm);color:var(--text-tertiary);margin:0 0 18px;}
+  .gx-demo{background:var(--surface-card);border:1px solid var(--border);border-radius:var(--radius-xl);box-shadow:var(--shadow-sm);padding:26px 28px;}
+  .gx-demo + .gx-demo{margin-top:12px;}
+  .gx-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+  .gx-row + .gx-label{margin-top:22px;}
+  .gx-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;}
+  .gx-label{display:block;font:var(--text-caption);font-weight:var(--fw-semibold);letter-spacing:var(--ls-caps);text-transform:uppercase;color:var(--text-tertiary);margin:0 0 12px;}
+  .gx-stack{display:flex;flex-direction:column;gap:14px;}
+  .gx-ondark{background:var(--surface-inverse);} /* optional helper if you need a contrast tile */
+  .gx-mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums;}
+  .gx-note{font:var(--text-caption);color:var(--text-tertiary);margin:14px 0 0;}
+</style>
+</head>
+<body>
+<header class="gx-top">
+  <a class="gx-brand" href="../index.html">Cobalt<span class="gx-dot"></span></a>
+  <nav class="gx-nav">
+    <a href="../index.html">Overview</a>
+    <a href="./foundations.html">Foundations</a>
+    <span class="gx-sep"></span>
+    <a href="./atoms.html" aria-current="page">Atoms</a>
+    <a href="./molecules.html">Molecules</a>
+    <a href="./organisms.html">Organisms</a>
+    <span class="gx-sep"></span>
+    <button id="gxTheme" class="ds-btn ds-btn--secondary ds-btn--sm" type="button">Dark</button>
+  </nav>
+</header>
+<main class="gx-wrap">
+  <h1 class="gx-h1">Atoms</h1>
+  <p class="gx-lead">가장 작은 단위의 UI 프리미티브 — 더 이상 쪼갤 수 없는 컨트롤과 표시 요소. 모두 시맨틱 토큰을 읽어 라이트/다크에 자동 대응합니다.</p>
+  <p class="gx-count">16 components</p>
+
+  <!-- ============================================================ Avatar ============================================================ -->
+  <section class="gx-sec" id="avatar">
+    <h2 class="gx-sec__h">Avatar</h2>
+    <p class="gx-sec__sub">사용자 이미지 — 이미지가 없으면 이니셜로 대체, 온라인 상태 점은 선택입니다.</p>
+    <div class="gx-demo">
+      <span class="gx-label">Sizes · 이니셜 폴백 (xs / sm / md / lg)</span>
+      <div class="gx-row">
+        <span class="ds-avatar ds-avatar--xs" title="홍길동"><span>홍</span></span>
+        <span class="ds-avatar ds-avatar--sm" title="김디자인"><span>김디</span></span>
+        <span class="ds-avatar ds-avatar--md" title="이준호"><span>이준</span></span>
+        <span class="ds-avatar ds-avatar--lg" title="Anna Bell"><span>AB</span></span>
+      </div>
+
+      <span class="gx-label">Image · 이미지 소스</span>
+      <div class="gx-row">
+        <span class="ds-avatar ds-avatar--sm" title="박서연"><img src="https://i.pravatar.cc/96?img=5" alt="박서연"></span>
+        <span class="ds-avatar ds-avatar--md" title="최민수"><img src="https://i.pravatar.cc/96?img=12" alt="최민수"></span>
+        <span class="ds-avatar ds-avatar--lg" title="정해린"><img src="https://i.pravatar.cc/112?img=32" alt="정해린"></span>
+      </div>
+
+      <span class="gx-label">Square · 사각 마스크</span>
+      <div class="gx-row">
+        <span class="ds-avatar ds-avatar--sm ds-avatar--square" title="팀 워크스페이스"><span>WS</span></span>
+        <span class="ds-avatar ds-avatar--md ds-avatar--square" title="브랜드"><span>코</span></span>
+        <span class="ds-avatar ds-avatar--lg ds-avatar--square" title="Org"><img src="https://i.pravatar.cc/112?img=15" alt="Org"></span>
+      </div>
+
+      <span class="gx-label">Status · 온라인 점</span>
+      <div class="gx-row">
+        <span class="ds-avatar ds-avatar--sm" title="홍길동"><span>홍</span><span class="ds-avatar__status" aria-hidden="true"></span></span>
+        <span class="ds-avatar ds-avatar--md" title="김디자인"><span>김디</span><span class="ds-avatar__status" aria-hidden="true"></span></span>
+        <span class="ds-avatar ds-avatar--lg" title="박서연"><img src="https://i.pravatar.cc/112?img=5" alt="박서연"><span class="ds-avatar__status" aria-hidden="true"></span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ Badge ============================================================ -->
+  <section class="gx-sec" id="badge">
+    <h2 class="gx-sec__h">Badge</h2>
+    <p class="gx-sec__sub">상태·메타데이터용 작은 알약. 실시간 표시는 dot을 사용합니다.</p>
+    <div class="gx-demo">
+      <span class="gx-label">Variants</span>
+      <div class="gx-row">
+        <span class="ds-badge ds-badge--neutral">기본</span>
+        <span class="ds-badge ds-badge--accent">New</span>
+        <span class="ds-badge ds-badge--success">완료</span>
+        <span class="ds-badge ds-badge--warning">대기</span>
+        <span class="ds-badge ds-badge--danger">오류</span>
+        <span class="ds-badge ds-badge--outline">v2.0</span>
+        <span class="ds-badge ds-badge--solid">PRO</span>
+      </div>
+
+      <span class="gx-label">With dot · 상태 표시</span>
+      <div class="gx-row">
+        <span class="ds-badge ds-badge--success"><span class="ds-badge__dot" aria-hidden="true"></span>운영중</span>
+        <span class="ds-badge ds-badge--warning"><span class="ds-badge__dot" aria-hidden="true"></span>점검 예정</span>
+        <span class="ds-badge ds-badge--danger"><span class="ds-badge__dot" aria-hidden="true"></span>중단됨</span>
+        <span class="ds-badge ds-badge--neutral"><span class="ds-badge__dot" aria-hidden="true"></span>오프라인</span>
+        <span class="ds-badge ds-badge--accent"><span class="ds-badge__dot" aria-hidden="true"></span>LIVE</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ Button ============================================================ -->
+  <section class="gx-sec" id="button">
+    <h2 class="gx-sec__h">Button</h2>
+    <p class="gx-sec__sub">기본 액션 컨트롤 — 잉크 우선, 단 하나의 핵심 CTA에만 코발트 accent를 사용합니다.</p>
+    <div class="gx-demo">
+      <span class="gx-label">Variants · md</span>
+      <div class="gx-row">
+        <button type="button" class="ds-btn ds-btn--primary ds-btn--md"><span>저장하기</span></button>
+        <button type="button" class="ds-btn ds-btn--accent ds-btn--md"><span>시작하기</span></button>
+        <button type="button" class="ds-btn ds-btn--secondary ds-btn--md"><span>더 보기</span></button>
+        <button type="button" class="ds-btn ds-btn--ghost ds-btn--md"><span>취소</span></button>
+        <button type="button" class="ds-btn ds-btn--danger ds-btn--md"><span>삭제</span></button>
+      </div>
+
+      <span class="gx-label">Sizes · sm / md / lg</span>
+      <div class="gx-row">
+        <button type="button" class="ds-btn ds-btn--primary ds-btn--sm"><span>Save</span></button>
+        <button type="button" class="ds-btn ds-btn--primary ds-btn--md"><span>Save</span></button>
+        <button type="button" class="ds-btn ds-btn--primary ds-btn--lg"><span>Save</span></button>
+      </div>
+
+      <span class="gx-label">With left icon</span>
+      <div class="gx-row">
+        <button type="button" class="ds-btn ds-btn--primary ds-btn--md">
+          <span class="ds-btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
+          <span>추가</span>
+        </button>
+        <button type="button" class="ds-btn ds-btn--secondary ds-btn--md">
+          <span class="ds-btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+          <span>검색</span>
+        </button>
+        <button type="button" class="ds-btn ds-btn--accent ds-btn--md">
+          <span class="ds-btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <span>확인</span>
+        </button>
+      </div>
+
+      <span class="gx-label">With right icon</span>
+      <div class="gx-row">
+        <button type="button" class="ds-btn ds-btn--primary ds-btn--md">
+          <span>다음</span>
+          <span class="ds-btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </button>
+        <button type="button" class="ds-btn ds-btn--ghost ds-btn--md">
+          <span>더 보기</span>
+          <span class="ds-btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+        </button>
+      </div>
+
+      <span class="gx-label">Disabled</span>
+      <div class="gx-row">
+        <button type="button" class="ds-btn ds-btn--primary ds-btn--md" disabled><span>저장하기</span></button>
+        <button type="button" class="ds-btn ds-btn--accent ds-btn--md" disabled><span>시작하기</span></button>
+        <button type="button" class="ds-btn ds-btn--secondary ds-btn--md" disabled><span>더 보기</span></button>
+        <button type="button" class="ds-btn ds-btn--danger ds-btn--md" disabled><span>삭제</span></button>
+      </div>
+
+      <span class="gx-label">Full width · ds-btn--block</span>
+      <div class="gx-stack">
+        <button type="button" class="ds-btn ds-btn--primary ds-btn--md ds-btn--block"><span>계속하기</span></button>
+        <button type="button" class="ds-btn ds-btn--accent ds-btn--lg ds-btn--block">
+          <span>지금 시작하기</span>
+          <span class="ds-btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ Checkbox ============================================================ -->
+  <section class="gx-sec" id="checkbox">
+    <h2 class="gx-sec__h">Checkbox</h2>
+    <p class="gx-sec__sub">라벨이 있는 체크박스 — 선택 시 코발트 accent로 채워집니다.</p>
+    <div class="gx-demo">
+      <span class="gx-label">States</span>
+      <div class="gx-stack">
+        <label class="ds-check">
+          <input type="checkbox">
+          <span class="ds-check__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="ds-check__label">마케팅 정보 수신에 동의합니다</span>
+        </label>
+        <label class="ds-check">
+          <input type="checkbox" checked>
+          <span class="ds-check__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="ds-check__label">이용약관에 동의합니다 (필수)</span>
+        </label>
+        <label class="ds-check">
+          <input type="checkbox" disabled>
+          <span class="ds-check__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="ds-check__label">비활성 (선택 불가)</span>
+        </label>
+        <label class="ds-check">
+          <input type="checkbox" checked disabled>
+          <span class="ds-check__box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="ds-check__label">비활성 · 선택됨</span>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ Divider ============================================================ -->
+  <section class="gx-sec" id="divider">
+    <h2 class="gx-sec__h">Divider</h2>
+    <p class="gx-sec__sub">헤어라인 구분선 — 가로 / 세로 / 라벨 포함.</p>
+    <div class="gx-demo">
+      <span class="gx-label">Horizontal</span>
+      <hr class="ds-divider ds-divider--h">
+
+      <span class="gx-label">Vertical · 인라인</span>
+      <div class="gx-row" style="height:28px;">
+        <span style="font:var(--text-body-sm);color:var(--text-secondary);">개요</span>
+        <hr class="ds-divider ds-divider--v">
+        <span style="font:var(--text-body-sm);color:var(--text-secondary);">설정</span>
+        <hr class="ds-divider ds-divider--v">
+        <span style="font:var(--text-body-sm);color:var(--text-secondary);">멤버</span>
+      </div>
+
+      <span class="gx-label">With label</span>
+      <div class="ds-divider--label" role="separator">또는</div>
+      <div style="height:12px;"></div>
+      <div class="ds-divider--label" role="separator">2024년 12월</div>
+    </div>
+  </section>
+
+  <!-- ============================================================ IconButton ============================================================ -->
+  <section class="gx-sec" id="iconbutton">
+    <h2 class="gx-sec__h">IconButton</h2>
+    <p class="gx-sec__sub">아이콘 전용 정사각 컨트롤 — 툴바·카드·고밀도 UI용. 항상 라벨을 전달합니다.</p>
+    <div class="gx-demo">
+      <span class="gx-label">Variants · ghost / outline / solid</span>
+      <div class="gx-row">
+        <button type="button" class="ds-iconbtn ds-iconbtn--ghost ds-iconbtn--md" aria-label="설정" title="설정"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+        <button type="button" class="ds-iconbtn ds-iconbtn--outline ds-iconbtn--md" aria-label="알림" title="알림"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></button>
+        <button type="button" class="ds-iconbtn ds-iconbtn--solid ds-iconbtn--md" aria-label="다음" title="다음"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+      </div>
+
+      <span class="gx-label">Sizes · sm / md / lg</span>
+      <div class="gx-row">
+        <button type="button" class="ds-iconbtn ds-iconbtn--outline ds-iconbtn--sm" aria-label="검색" title="검색"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+        <button type="button" class="ds-iconbtn ds-iconbtn--outline ds-iconbtn--md" aria-label="검색" title="검색"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+        <button type="button" class="ds-iconbtn ds-iconbtn--outline ds-iconbtn--lg" aria-label="검색" title="검색"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+      </div>
+
+      <span class="gx-label">Disabled</span>
+      <div class="gx-row">
+        <button type="button" class="ds-iconbtn ds-iconbtn--ghost ds-iconbtn--md" aria-label="설정" title="설정" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+        <button type="button" class="ds-iconbtn ds-iconbtn--solid ds-iconbtn--md" aria-label="다음" title="다음" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ Input ============================================================ -->
+  <section class="gx-sec" id="input">
+    <h2 class="gx-sec__h">Input</h2>
+    <p class="gx-sec__sub">라벨·선행 아이콘·힌트·에러를 갖춘 텍스트 필드. 포커스 링은 코발트 accent.</p>
+    <div class="gx-demo">
+      <div class="gx-grid">
+        <div class="ds-field">
+          <label class="ds-field__label" for="in-email">이메일</label>
+          <div class="ds-inputwrap">
+            <input id="in-email" class="ds-input" type="email" placeholder="you@example.com" aria-invalid="false">
+          </div>
+          <span class="ds-field__hint">로그인에 사용됩니다.</span>
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-field__label" for="in-search">검색</label>
+          <div class="ds-inputwrap ds-inputwrap--hasicon">
+            <span class="ds-inputwrap__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+            <input id="in-search" class="ds-input" type="text" placeholder="검색어 입력" aria-invalid="false">
+          </div>
+          <span class="ds-field__hint">이름, 이메일 또는 팀으로 검색</span>
+        </div>
+
+        <div class="ds-field ds-field--error">
+          <label class="ds-field__label" for="in-pw">비밀번호<span class="ds-req">*</span></label>
+          <div class="ds-inputwrap">
+            <input id="in-pw" class="ds-input" type="password" value="abc" aria-invalid="true">
+          </div>
+          <span class="ds-field__error">8자 이상 입력하세요</span>
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-field__label" for="in-disabled">조직 ID</label>
+          <div class="ds-inputwrap">
+            <input id="in-disabled" class="ds-input" type="text" value="cobalt-team" disabled aria-invalid="false">
+          </div>
+          <span class="ds-field__hint">변경할 수 없습니다.</span>
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-field__label" for="in-filled">표시 이름</label>
+          <div class="ds-inputwrap">
+            <input id="in-filled" class="ds-input" type="text" value="박서연" aria-invalid="false">
+          </div>
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-field__label" for="in-url">웹사이트</label>
+          <div class="ds-inputwrap ds-inputwrap--hasicon">
+            <span class="ds-inputwrap__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+            <input id="in-url" class="ds-input" type="url" placeholder="https://" aria-invalid="false">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ Progress ============================================================ -->
+  <section class="gx-sec" id="progress">
+    <h2 class="gx-sec__h">Progress</h2>
+    <p class="gx-sec__sub">코발트 채움의 선형 바 — value(0–100) 또는 indeterminate.</p>
+    <div class="gx-demo">
+      <span class="gx-label">Determinate</span>
+      <div class="gx-stack">
+        <div class="ds-progress" role="progressbar" aria-valuenow="24" aria-valuemin="0" aria-valuemax="100"><div class="ds-progress__bar" style="width:24%"></div></div>
+        <div class="ds-progress" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100"><div class="ds-progress__bar" style="width:62%"></div></div>
+        <div class="ds-progress" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><div class="ds-progress__bar" style="width:100%"></div></div>
+      </div>
+      <p class="gx-note">업로드 <span class="gx-mono">62%</span> · 41.3MB / 66.7MB</p>
+
+      <span class="gx-label">Indeterminate</span>
+      <div class="ds-progress ds-progress--indeterminate" role="progressbar" aria-valuemin="0" aria-valuemax="100"><div class="ds-progress__bar"></div></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ Radio ============================================================ -->
+  <section class="gx-sec" id="radio">
+    <h2 class="gx-sec__h">Radio</h2>
+    <p class="gx-sec__sub">라벨이 있는 라디오 — 같은 name을 공유해 그룹으로 묶습니다.</p>
+    <div class="gx-demo">
+      <span class="gx-label">Plan · 단일 선택</span>
+      <div class="gx-stack">
+        <label class="ds-check ds-check--radio">
+          <input type="radio" name="plan" checked>
+          <span class="ds-check__box" aria-hidden="true"><span class="ds-check__dot"></span></span>
+          <span class="ds-check__label">무료 — 개인 프로젝트</span>
+        </label>
+        <label class="ds-check ds-check--radio">
+          <input type="radio" name="plan">
+          <span class="ds-check__box" aria-hidden="true"><span class="ds-check__dot"></span></span>
+          <span class="ds-check__label">프로 — ₩12,000 / 월</span>
+        </label>
+        <label class="ds-check ds-check--radio">
+          <input type="radio" name="plan">
+          <span class="ds-check__box" aria-hidden="true"><span class="ds-check__dot"></span></span>
+          <span class="ds-check__label">팀 — 사용량 기반</span>
+        </label>
+        <label class="ds-check ds-check--radio">
+          <input type="radio" name="plan" disabled>
+          <span class="ds-check__box" aria-hidden="true"><span class="ds-check__dot"></span></span>
+          <span class="ds-check__label">엔터프라이즈 (문의 필요)</span>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ Select ============================================================ -->
+  <section class="gx-sec" id="select">
+    <h2 class="gx-sec__h">Select</h2>
+    <p class="gx-sec__sub">커스텀 셰브론을 가진 네이티브 드롭다운 — Input과 동일한 라벨/힌트/에러 계약.</p>
+    <div class="gx-demo">
+      <div class="gx-grid">
+        <div class="ds-field">
+          <label class="ds-field__label" for="sel-country">국가</label>
+          <select id="sel-country" class="ds-select" aria-invalid="false">
+            <option value="kr">대한민국</option>
+            <option value="jp">일본</option>
+            <option value="us">미국</option>
+          </select>
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-field__label" for="sel-ph">언어</label>
+          <select id="sel-ph" class="ds-select" aria-invalid="false">
+            <option value="" disabled selected>선택하세요</option>
+            <option value="ko">한국어</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+          </select>
+          <span class="ds-field__hint">인터페이스 표시 언어</span>
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-field__label" for="sel-sort">정렬</label>
+          <select id="sel-sort" class="ds-select" aria-invalid="false">
+            <option value="new">최신순</option>
+            <option value="pop">인기순</option>
+            <option value="name">이름순</option>
+          </select>
+        </div>
+
+        <div class="ds-field ds-field--error">
+          <label class="ds-field__label" for="sel-err">팀<span class="ds-req">*</span></label>
+          <select id="sel-err" class="ds-select" aria-invalid="true">
+            <option value="" disabled selected>선택하세요</option>
+            <option value="design">디자인</option>
+            <option value="eng">엔지니어링</option>
+          </select>
+          <span class="ds-field__error">팀을 선택하세요</span>
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-field__label" for="sel-disabled">요금제</label>
+          <select id="sel-disabled" class="ds-select" disabled aria-invalid="false">
+            <option>프로 (고정됨)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ Skeleton ============================================================ -->
+  <section class="gx-sec" id="skeleton">
+    <h2 class="gx-sec__h">Skeleton</h2>
+    <p class="gx-sec__sub">은은한 쉬머가 있는 로딩 플레이스홀더 — block / text / circle. (reduced-motion에서 정지)</p>
+    <div class="gx-demo">
+      <span class="gx-label">Variants</span>
+      <div class="gx-row" style="align-items:flex-start;">
+        <div class="ds-skeleton ds-skeleton--circle" style="width:40px;height:40px;" aria-hidden="true"></div>
+        <div style="flex:1;min-width:200px;display:flex;flex-direction:column;gap:10px;">
+          <div class="ds-skeleton ds-skeleton--text" style="width:60%;" aria-hidden="true"></div>
+          <div class="ds-skeleton ds-skeleton--text" style="width:90%;" aria-hidden="true"></div>
+          <div class="ds-skeleton ds-skeleton--text" style="width:75%;" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <span class="gx-label">Block · 카드 미디어</span>
+      <div class="ds-skeleton" style="width:100%;height:120px;" aria-hidden="true"></div>
+
+      <span class="gx-label">List item · 합성 예시</span>
+      <div class="gx-stack">
+        <div class="gx-row" style="align-items:center;">
+          <div class="ds-skeleton ds-skeleton--circle" style="width:32px;height:32px;" aria-hidden="true"></div>
+          <div class="ds-skeleton ds-skeleton--text" style="width:140px;" aria-hidden="true"></div>
+          <div class="ds-skeleton ds-skeleton--text" style="width:80px;margin-left:auto;" aria-hidden="true"></div>
+        </div>
+        <div class="gx-row" style="align-items:center;">
+          <div class="ds-skeleton ds-skeleton--circle" style="width:32px;height:32px;" aria-hidden="true"></div>
+          <div class="ds-skeleton ds-skeleton--text" style="width:180px;" aria-hidden="true"></div>
+          <div class="ds-skeleton ds-skeleton--text" style="width:64px;margin-left:auto;" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ Slider ============================================================ -->
+  <section class="gx-sec" id="slider">
+    <h2 class="gx-sec__h">Slider</h2>
+    <p class="gx-sec__sub">코발트 채움의 범위 입력. value+onChange(제어) 또는 defaultValue(비제어).</p>
+    <div class="gx-demo">
+      <span class="gx-label">With label & value</span>
+      <div class="ds-field">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;">
+          <label class="ds-field__label">투명도</label>
+          <span class="gx-mono" style="font-size:12px;color:var(--text-secondary);">40</span>
+        </div>
+        <input type="range" class="ds-slider" min="0" max="100" step="1" value="40" style="background:linear-gradient(90deg, var(--accent) 40%, var(--surface-sunken) 40%);">
+      </div>
+
+      <span class="gx-label">Default range · min 0 / max 200 / step 10</span>
+      <div class="ds-field">
+        <input type="range" class="ds-slider" min="0" max="200" step="10" value="120" style="background:linear-gradient(90deg, var(--accent) 60%, var(--surface-sunken) 60%);">
+      </div>
+
+      <span class="gx-label">Levels · 0 / 75 / 100</span>
+      <div class="gx-stack">
+        <input type="range" class="ds-slider" min="0" max="100" value="0" style="background:linear-gradient(90deg, var(--accent) 0%, var(--surface-sunken) 0%);">
+        <input type="range" class="ds-slider" min="0" max="100" value="75" style="background:linear-gradient(90deg, var(--accent) 75%, var(--surface-sunken) 75%);">
+        <input type="range" class="ds-slider" min="0" max="100" value="100" style="background:linear-gradient(90deg, var(--accent) 100%, var(--surface-sunken) 100%);">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ Spinner ============================================================ -->
+  <section class="gx-sec" id="spinner">
+    <h2 class="gx-sec__h">Spinner</h2>
+    <p class="gx-sec__sub">코발트 호를 가진 원형 로딩 인디케이터 — 항상 aria 라벨을 가집니다.</p>
+    <div class="gx-demo">
+      <span class="gx-label">Sizes · sm / md / lg</span>
+      <div class="gx-row">
+        <span class="ds-spinner ds-spinner--sm" role="status" aria-label="로딩 중"></span>
+        <span class="ds-spinner ds-spinner--md" role="status" aria-label="로딩 중"></span>
+        <span class="ds-spinner ds-spinner--lg" role="status" aria-label="로딩 중"></span>
+      </div>
+
+      <span class="gx-label">In context · 버튼 내부</span>
+      <div class="gx-row">
+        <button type="button" class="ds-btn ds-btn--primary ds-btn--md" disabled>
+          <span class="ds-btn__icon" aria-hidden="true"><span class="ds-spinner ds-spinner--sm"></span></span>
+          <span>저장 중…</span>
+        </button>
+        <span class="gx-row" style="gap:8px;font:var(--text-body-sm);color:var(--text-secondary);">
+          <span class="ds-spinner ds-spinner--sm" role="status" aria-label="불러오는 중"></span>
+          데이터 불러오는 중…
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ Switch ============================================================ -->
+  <section class="gx-sec" id="switch">
+    <h2 class="gx-sec__h">Switch</h2>
+    <p class="gx-sec__sub">즉시 적용되는 설정용 on/off 토글 — 활성 트랙은 코발트 accent.</p>
+    <div class="gx-demo">
+      <span class="gx-label">States</span>
+      <div class="gx-stack">
+        <label class="ds-switch">
+          <input type="checkbox" role="switch" checked>
+          <span class="ds-switch__track" aria-hidden="true"><span class="ds-switch__thumb"></span></span>
+          <span class="ds-switch__label">알림 받기</span>
+        </label>
+        <label class="ds-switch">
+          <input type="checkbox" role="switch">
+          <span class="ds-switch__track" aria-hidden="true"><span class="ds-switch__thumb"></span></span>
+          <span class="ds-switch__label">다크 모드 자동 전환</span>
+        </label>
+        <label class="ds-switch">
+          <input type="checkbox" role="switch" checked disabled>
+          <span class="ds-switch__track" aria-hidden="true"><span class="ds-switch__thumb"></span></span>
+          <span class="ds-switch__label">2단계 인증 (관리자 강제)</span>
+        </label>
+        <label class="ds-switch">
+          <input type="checkbox" role="switch" disabled>
+          <span class="ds-switch__track" aria-hidden="true"><span class="ds-switch__thumb"></span></span>
+          <span class="ds-switch__label">베타 기능 (비활성)</span>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ Tag ============================================================ -->
+  <section class="gx-sec" id="tag">
+    <h2 class="gx-sec__h">Tag</h2>
+    <p class="gx-sec__sub">칩·라벨 — 필터, 선택된 키워드, 멀티셀렉트 토큰용. onRemove로 × 버튼 표시.</p>
+    <div class="gx-demo">
+      <span class="gx-label">Static</span>
+      <div class="gx-row">
+        <span class="ds-tag">디자인</span>
+        <span class="ds-tag">프론트엔드</span>
+        <span class="ds-tag">접근성</span>
+        <span class="ds-tag">Design System</span>
+      </div>
+
+      <span class="gx-label">Removable · onRemove</span>
+      <div class="gx-row">
+        <span class="ds-tag">React<span class="ds-tag__close" role="button" aria-label="제거" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span></span>
+        <span class="ds-tag">TypeScript<span class="ds-tag__close" role="button" aria-label="제거" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span></span>
+        <span class="ds-tag">코발트<span class="ds-tag__close" role="button" aria-label="제거" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span></span>
+        <span class="ds-tag">서울<span class="ds-tag__close" role="button" aria-label="제거" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ Textarea ============================================================ -->
+  <section class="gx-sec" id="textarea">
+    <h2 class="gx-sec__h">Textarea</h2>
+    <p class="gx-sec__sub">세로로 크기 조절 가능한 멀티라인 필드 — Input과 동일한 라벨/힌트/에러 계약.</p>
+    <div class="gx-demo">
+      <div class="gx-grid">
+        <div class="ds-field">
+          <label class="ds-field__label" for="ta-bio">소개</label>
+          <textarea id="ta-bio" class="ds-textarea" rows="4" placeholder="자기소개를 입력하세요" aria-invalid="false"></textarea>
+          <span class="ds-field__hint">최대 280자까지 입력할 수 있습니다.</span>
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-field__label" for="ta-filled">메모</label>
+          <textarea id="ta-filled" class="ds-textarea" rows="4" aria-invalid="false">디자인 시스템 리뷰 — 라이트/다크 토큰 점검 후 atoms 갤러리 배포 예정.</textarea>
+        </div>
+
+        <div class="ds-field ds-field--error">
+          <label class="ds-field__label" for="ta-err">피드백<span class="ds-req">*</span></label>
+          <textarea id="ta-err" class="ds-textarea" rows="4" aria-invalid="true"></textarea>
+          <span class="ds-field__error">필수 항목입니다</span>
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-field__label" for="ta-disabled">변경 이력</label>
+          <textarea id="ta-disabled" class="ds-textarea" rows="4" disabled aria-invalid="false">v2.0.1 — 토큰 정리
+v2.0.0 — 다크 모드 추가</textarea>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<script>
+  var root=document.documentElement,btn=document.getElementById('gxTheme');
+  function setT(t){root.setAttribute('data-theme',t);btn.textContent=t==='dark'?'Light':'Dark';try{localStorage.setItem('ds-theme',t);}catch(e){}}
+  var saved='light';try{saved=localStorage.getItem('ds-theme')||'light';}catch(e){}
+  setT(saved);
+  btn.addEventListener('click',function(){setT(root.getAttribute('data-theme')==='dark'?'light':'dark');});
+</script>
+</body>
+</html>

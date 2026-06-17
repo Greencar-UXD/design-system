@@ -1,6 +1,6 @@
 # Cobalt — Mono Design System
 
-**🌐 Language / 언어: [English](./readme.md) · 한국어 (현재 파일)**
+**🌐 Language / 언어: [English](./README.md) · 한국어 (현재 파일)**
 
 무채색(모노톤)을 기본으로 하고, 단 하나의 시그니처 포인트 컬러(**Cobalt `#2D5BFF`**)를 쓰는 디자인 시스템입니다. 개인 포트폴리오/웹사이트와 모바일 서비스 화면 프로토타이핑을 위해 만들었습니다. 라이트 모드가 기본이며, 다크 모드도 완전히 지원합니다. 한글과 영문이 모두 1급 시민이에요 — 전체 타입 시스템이 한 패밀리로 두 문자를 모두 커버하는 **Pretendard** 위에서 돌아갑니다.
 
@@ -54,15 +54,33 @@
 
 ---
 
+## 쇼케이스 (Showcase)
+
+루트의 **`index.html`**을 열면 라이브 쇼케이스가 뜹니다 — 빌드 단계 없음. 아래 4개 페이지를 연결하며, 각 페이지에 라이트/다크 토글이 있습니다:
+
+- **`index.html`** — 개요: 히어로, 토큰 미리보기, 사용법.
+- **`gallery/foundations.html`** — 모든 파운데이션 스페시먼(타입·컬러·스페이싱·모션·레이아웃·가이드·브랜드).
+- **`gallery/atoms.html`** · **`gallery/molecules.html`** · **`gallery/organisms.html`** — 각 컴포넌트의 핵심 상태를 실제 `.ds-*` 클래스로 렌더.
+
+파운데이션 페이지는 스페시먼을 `<iframe>`으로 임베드하므로, 로컬에서 정확히 보려면 정적 서버로 여세요:
+
+```bash
+npx serve .        # 또는:  python3 -m http.server
+```
+
+---
+
 ## 인덱스 / 매니페스트 (Index)
 
 루트 파일:
 - **`styles.css`** — 소비자가 링크하는 단일 진입점. 아래 토큰·컴포넌트 CSS를 `@import`.
 - **`tokens/`** — `fonts.css`(Pretendard + Geist Mono `@font-face`), `colors.css`(뉴트럴 + 코발트 램프, 라이트/다크 시맨틱), `typography.css`(패밀리·스케일·굵기·행간·자간), `spacing.css`(스페이싱 그리드·radius·그림자·모션).
 - **`css/components.css`** — 클래스 기반, 토큰 구동 컴포넌트 스타일(`.ds-*`), 다크 자동 대응.
-- **`readme.md`** — 영문 가이드. **`readme.ko.md`** — 이 한글 가이드. **`SKILL.md`** — Agent Skill 매니페스트.
+- **`package.json`** — 패키지 메타데이터 + `exports` 맵(소스를 그대로 배포; 빌드 단계 없음). **`.gitignore`**.
+- **`README.md`** / **`README.ko.md`** — 가이드(영문 / 한글). **`SKILL.md`** — Agent Skill 매니페스트.
+- **`index.html`** + **`gallery/`** — 쇼케이스(위 참고).
 
-파운데이션 스페시먼 카드 — **`foundations/`** (디자인 시스템 탭):
+파운데이션 스페시먼 카드 — **`foundations/`** (`gallery/foundations.html`에서도 렌더):
 - Type: `type-scale`, `type-display`, `type-weights`, `type-mono`
 - Colors: `colors-neutral`, `colors-cobalt`, `colors-semantic-light`, `colors-dark`, `colors-status`, `chart-palette`
 - Spacing: `spacing-scale`, `radius-scale`, `shadow-scale`
@@ -70,28 +88,36 @@
 - Guidelines: `accessibility`, `do-dont`, `voice`
 - Brand: `iconography`, `assets/wordmark`
 
-컴포넌트 — **`components/`**, **아토믹 디자인** 레벨로 구성(각 디렉터리에 `*.card.html` 썸네일) — 총 37개. 런타임 네임스페이스는 폴더와 무관하게 평평합니다(`window.DesignSystem_d67542.<Name>`).
+컴포넌트 — **`components/`**, **아토믹 디자인** 레벨로 구성 — 총 37개. 각 레벨에 배럴 `index.js`가 있고, 루트 `components/index.js`가 전체를 다시 export 합니다.
 
 - **`atoms/`** (16) — 더 쪼갤 수 없는 프리미티브: **Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Badge, Tag, Avatar, Divider, Skeleton, Spinner, Progress**
 - **`molecules/`** (16) — 원자들의 작은 조합: **Card, Stat, Accordion, EmptyState, Alert, Toast, Tabs, SegmentedControl, Breadcrumb, Pagination, Stepper, Menu, Tooltip, AppBar, BottomNav, ListRow**
 - **`organisms/`** (5) — 복합·조합된 큰 단위: **Dialog, Drawer, Popover, BottomSheet, Table**
 
-디자인 시스템 탭은 이 계층을 반영해 카드를 **Atoms / Molecules / Organisms**로 묶습니다.
-
-각 컴포넌트는 `<Name>.jsx` + `<Name>.d.ts`(props) + `<Name>.prompt.md`(사용법)로 구성됩니다. HTML에서는 `_ds_bundle.js`를 로드한 뒤 `const { Button } = window.DesignSystem_d67542`로 컴파일된 컴포넌트를 가져오세요.
+각 컴포넌트는 `<Name>.jsx` + `<Name>.d.ts`(props) + `<Name>.prompt.md`(사용법)로 구성됩니다.
 
 _UI 킷(실제 제품 화면 전체 재현)은 의도적으로 아직 만들지 않았습니다 — 지금은 시스템 자체(토큰 + 컴포넌트 + 문서)에 집중._
 
 ---
 
-### 참고: 네임스페이스 & 사용법
+### 참고: 사용법
 
-```html
-<link rel="stylesheet" href="styles.css">
-<script src="_ds_bundle.js"></script>
-<script type="text/babel">
-  const { Button, Card, Input, Badge } = window.DesignSystem_d67542;
-</script>
+이 시스템은 **소스를 그대로** 배포합니다 — 컴파일러나 런타임 번들이 없습니다. CSS는 한 번 링크하고, 컴포넌트는 소스에서 바로 import 하세요(JSX는 앱의 번들러 — Vite, Next 등 — 가 처리합니다):
+
+```jsx
+// 1) 스타일 — 앱 루트에서 한 번만
+import "cobalt-mono-design-system/styles.css";
+//   순수 HTML 대안:  <link rel="stylesheet" href="styles.css">
+
+// 2) 컴포넌트 — 배럴에서, 또는 개별 파일에서
+import { Button, Card, Dialog } from "./components";
+import { Switch } from "./components/atoms/Switch.jsx";
+
+function Example() {
+  return <Button variant="primary">저장하기</Button>;
+}
 ```
 
-다크 모드는 `<html>`(또는 임의의 상위 요소)에 `data-theme="dark"`를 설정하세요.
+다크 모드는 `<html>`(또는 임의의 상위 요소)에 `data-theme="dark"`를 설정하세요 — 컴포넌트가 시맨틱 토큰을 통해 자동 전환됩니다.
+
+> **Claude Design 익스포트에서 마이그레이션하나요?** 기존 `_ds_bundle.js` / `window.DesignSystem_d67542` 런타임은 사라졌습니다(Claude Design 컴파일러가 생성하던 것). 위의 직접 import를 쓰세요 — 컴포넌트 소스는 표준 React이며 변경되지 않았습니다.

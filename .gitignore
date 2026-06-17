@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build / bundler output (this system ships source — no build step)
+dist/
+build/
+.cache/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Claude Design compiler artifacts (regenerated, never source)
+_ds_bundle.js
+_ds_manifest.json
+_adherence.oxlintrc.json
+.thumbnail

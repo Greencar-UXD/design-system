@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cobalt — Mono Design System</title>
+<meta name="description" content="Monochrome surfaces with a single cobalt accent. Pretendard type (Korean + English), light & dark. 37 React components + token-driven CSS.">
+<link rel="stylesheet" href="./styles.css">
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-text);-webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+  /* header */
+  .gx-top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 24px;background:color-mix(in srgb,var(--surface-page) 84%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+  .gx-brand{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:var(--fw-bold);font-size:18px;letter-spacing:var(--ls-tight);color:var(--text-primary);text-decoration:none;}
+  .gx-brand .gx-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);}
+  .gx-nav{display:flex;gap:2px;align-items:center;flex-wrap:wrap;}
+  .gx-nav a{font:var(--text-label);color:var(--text-secondary);text-decoration:none;padding:8px 12px;border-radius:var(--radius-sm);}
+  .gx-nav a:hover{background:var(--surface-sunken);color:var(--text-primary);}
+  .gx-nav .gx-sep{width:1px;height:20px;background:var(--border);margin:0 6px;}
+  /* layout */
+  .gx-wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .gx-section{padding:72px 0;border-top:1px solid var(--border);}
+  .gx-section:first-of-type{border-top:0;}
+  .gx-kicker{font:var(--text-caption);font-weight:var(--fw-semibold);letter-spacing:var(--ls-caps);text-transform:uppercase;color:var(--text-tertiary);margin:0 0 16px;}
+  .gx-h2{font:var(--text-h2);letter-spacing:var(--ls-tight);margin:0 0 12px;}
+  .gx-sub{font:var(--text-body);color:var(--text-secondary);margin:0;max-width:60ch;}
+  /* hero */
+  .gx-hero{padding:88px 0 64px;}
+  .gx-badge{display:inline-flex;align-items:center;gap:8px;font:var(--text-caption);font-weight:var(--fw-semibold);color:var(--text-secondary);background:var(--surface-card);border:1px solid var(--border);padding:6px 12px;border-radius:var(--radius-pill);margin-bottom:24px;}
+  .gx-badge .gx-live{width:8px;height:8px;border-radius:50%;background:var(--accent);}
+  .gx-hero h1{font-family:var(--font-display);font-weight:var(--fw-bold);font-size:var(--fs-display);line-height:var(--lh-tight);letter-spacing:var(--ls-tighter);margin:0 0 20px;max-width:18ch;}
+  .gx-hero h1 .gx-accent{color:var(--accent);}
+  .gx-hero p{font:var(--text-body-lg);color:var(--text-secondary);margin:0 0 32px;max-width:54ch;}
+  .gx-cta{display:flex;gap:12px;flex-wrap:wrap;}
+  /* stats */
+  .gx-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-top:56px;}
+  .gx-stat{background:var(--surface-card);padding:24px;}
+  .gx-stat__n{font-family:var(--font-mono);font-weight:var(--fw-semibold);font-size:32px;letter-spacing:var(--ls-tight);color:var(--text-primary);}
+  .gx-stat__l{font:var(--text-body-sm);color:var(--text-tertiary);margin-top:4px;}
+  /* explore cards */
+  .gx-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:32px;}
+  .gx-card{display:flex;flex-direction:column;gap:8px;background:var(--surface-card);border:1px solid var(--border);border-radius:var(--radius-xl);box-shadow:var(--shadow-sm);padding:24px;text-decoration:none;transition:transform var(--dur-fast) var(--ease-out),box-shadow var(--dur-base) var(--ease-out),border-color var(--dur-fast);}
+  .gx-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);border-color:var(--border-strong);}
+  .gx-card__top{display:flex;align-items:center;justify-content:space-between;}
+  .gx-card__name{font:var(--text-h4);letter-spacing:var(--ls-tight);}
+  .gx-card__count{font:var(--text-mono);color:var(--text-tertiary);}
+  .gx-card__desc{font:var(--text-body-sm);color:var(--text-secondary);}
+  .gx-card__go{margin-top:auto;font:var(--text-label);color:var(--accent);}
+  /* swatches */
+  .gx-ramp{display:flex;border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--border);margin-top:8px;}
+  .gx-ramp span{flex:1;height:56px;}
+  .gx-swatchrow{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px;}
+  .gx-swlabel{font:var(--text-caption);color:var(--text-tertiary);margin:10px 0 0;display:flex;justify-content:space-between;}
+  /* type taster */
+  .gx-type{background:var(--surface-card);border:1px solid var(--border);border-radius:var(--radius-xl);box-shadow:var(--shadow-sm);padding:32px;margin-top:24px;display:flex;flex-direction:column;gap:14px;}
+  .gx-type .ln{display:flex;align-items:baseline;gap:16px;border-bottom:1px dashed var(--border);padding-bottom:14px;}
+  .gx-type .ln:last-child{border-bottom:0;padding-bottom:0;}
+  .gx-type .tag{font-family:var(--font-mono);font-size:12px;color:var(--text-tertiary);width:84px;flex:none;}
+  /* code */
+  .gx-code{background:var(--surface-sunken);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;overflow:auto;margin:0 0 16px;}
+  .gx-code pre{margin:0;font-family:var(--font-mono);font-size:13px;line-height:1.7;color:var(--text-primary);white-space:pre;}
+  .gx-code .c{color:var(--text-tertiary);}
+  .gx-code .k{color:var(--accent);}
+  .gx-usagegrid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px;}
+  .gx-usagegrid h3{font:var(--text-label);margin:0 0 10px;}
+  /* footer */
+  .gx-foot{border-top:1px solid var(--border);padding:40px 0 64px;color:var(--text-tertiary);font:var(--text-body-sm);}
+  .gx-foot strong{color:var(--text-secondary);}
+  .gx-foot ul{margin:12px 0 0;padding-left:18px;}
+  .gx-foot li{margin:4px 0;}
+  @media(max-width:720px){
+    .gx-stats{grid-template-columns:repeat(2,1fr);}
+    .gx-swatchrow,.gx-usagegrid{grid-template-columns:1fr;}
+    .gx-hero h1{font-size:var(--fs-h1);}
+  }
+</style>
+</head>
+<body>
+<header class="gx-top">
+  <a class="gx-brand" href="./index.html">Cobalt<span class="gx-dot"></span></a>
+  <nav class="gx-nav">
+    <a href="./gallery/foundations.html">Foundations</a>
+    <a href="./gallery/atoms.html">Atoms</a>
+    <a href="./gallery/molecules.html">Molecules</a>
+    <a href="./gallery/organisms.html">Organisms</a>
+    <span class="gx-sep"></span>
+    <a href="https://github.com/Greencar-UXD/design-system" target="_blank" rel="noopener">GitHub</a>
+    <button id="gxTheme" class="ds-btn ds-btn--secondary ds-btn--sm" type="button">Dark</button>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="gx-wrap gx-hero">
+    <span class="gx-badge"><span class="gx-live"></span>v0.1.0 · Light &amp; Dark</span>
+    <h1>명료하게 만든 <span class="gx-accent">모노</span> 디자인 시스템</h1>
+    <p>모노톤 표면 위에 단 하나의 코발트 포인트. Pretendard 한 패밀리로 한글과 영문을 함께 담고, 라이트와 다크를 모두 지원합니다. 37개의 React 컴포넌트와 토큰 기반 CSS로 구성됩니다.</p>
+    <div class="gx-cta">
+      <a class="ds-btn ds-btn--primary ds-btn--lg" href="./gallery/atoms.html">컴포넌트 둘러보기 →</a>
+      <a class="ds-btn ds-btn--secondary ds-btn--lg" href="./gallery/foundations.html">Foundations</a>
+    </div>
+
+    <div class="gx-stats">
+      <div class="gx-stat"><div class="gx-stat__n">37</div><div class="gx-stat__l">Components</div></div>
+      <div class="gx-stat"><div class="gx-stat__n">158</div><div class="gx-stat__l">Design tokens</div></div>
+      <div class="gx-stat"><div class="gx-stat__n">2</div><div class="gx-stat__l">Themes · light/dark</div></div>
+      <div class="gx-stat"><div class="gx-stat__n">4px</div><div class="gx-stat__l">Base grid</div></div>
+    </div>
+  </section>
+
+  <!-- EXPLORE -->
+  <section class="gx-wrap gx-section" id="explore">
+    <p class="gx-kicker">Explore</p>
+    <h2 class="gx-h2">시스템 둘러보기</h2>
+    <p class="gx-sub">기반 토큰부터 원자·분자·유기체 컴포넌트까지, 아토믹 디자인 구조로 정리되어 있습니다.</p>
+    <div class="gx-cards">
+      <a class="gx-card" href="./gallery/foundations.html">
+        <div class="gx-card__top"><span class="gx-card__name">Foundations</span><span class="gx-card__count">19</span></div>
+        <span class="gx-card__desc">타입 · 컬러 · 스페이싱 · 모션 · 레이아웃 · 가이드</span>
+        <span class="gx-card__go">specimen 보기 →</span>
+      </a>
+      <a class="gx-card" href="./gallery/atoms.html">
+        <div class="gx-card__top"><span class="gx-card__name">Atoms</span><span class="gx-card__count">16</span></div>
+        <span class="gx-card__desc">Button · Input · Badge · Avatar · Slider 등 최소 단위 프리미티브</span>
+        <span class="gx-card__go">갤러리 보기 →</span>
+      </a>
+      <a class="gx-card" href="./gallery/molecules.html">
+        <div class="gx-card__top"><span class="gx-card__name">Molecules</span><span class="gx-card__count">16</span></div>
+        <span class="gx-card__desc">Card · Alert · Tabs · Menu · 모바일 셸 등 조합 패턴</span>
+        <span class="gx-card__go">갤러리 보기 →</span>
+      </a>
+      <a class="gx-card" href="./gallery/organisms.html">
+        <div class="gx-card__top"><span class="gx-card__name">Organisms</span><span class="gx-card__count">5</span></div>
+        <span class="gx-card__desc">Dialog · Drawer · Popover · BottomSheet · Table</span>
+        <span class="gx-card__go">갤러리 보기 →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- COLOR + TYPE TASTER -->
+  <section class="gx-wrap gx-section" id="tokens">
+    <p class="gx-kicker">Foundations at a glance</p>
+    <h2 class="gx-h2">모노톤 + 코발트, 그리고 Pretendard</h2>
+    <p class="gx-sub">잉크(거의 검정)가 주요 텍스트와 기본 버튼을, 코발트는 링크·포커스·선택 상태와 화면당 가장 중요한 CTA 하나에만 절제해서 쓰입니다.</p>
+
+    <div class="gx-swatchrow">
+      <div>
+        <div class="gx-ramp">
+          <span style="background:var(--gray-50)"></span>
+          <span style="background:var(--gray-100)"></span>
+          <span style="background:var(--gray-200)"></span>
+          <span style="background:var(--gray-300)"></span>
+          <span style="background:var(--gray-400)"></span>
+          <span style="background:var(--gray-500)"></span>
+          <span style="background:var(--gray-600)"></span>
+          <span style="background:var(--gray-700)"></span>
+          <span style="background:var(--gray-800)"></span>
+          <span style="background:var(--gray-900)"></span>
+          <span style="background:var(--gray-950)"></span>
+        </div>
+        <p class="gx-swlabel"><span>Neutral ramp</span><span>gray-50 → 950</span></p>
+      </div>
+      <div>
+        <div class="gx-ramp">
+          <span style="background:var(--cobalt-100)"></span>
+          <span style="background:var(--cobalt-200)"></span>
+          <span style="background:var(--cobalt-300)"></span>
+          <span style="background:var(--cobalt-400)"></span>
+          <span style="background:var(--cobalt-500)"></span>
+          <span style="background:var(--cobalt-600)"></span>
+          <span style="background:var(--cobalt-700)"></span>
+          <span style="background:var(--cobalt-800)"></span>
+          <span style="background:var(--cobalt-900)"></span>
+        </div>
+        <p class="gx-swlabel"><span>Cobalt accent</span><span>#2D5BFF</span></p>
+      </div>
+    </div>
+
+    <div class="gx-type">
+      <div class="ln"><span class="tag">display</span><span style="font:var(--text-display);letter-spacing:var(--ls-tighter)">명료하게 Display</span></div>
+      <div class="ln"><span class="tag">h2</span><span style="font:var(--text-h2);letter-spacing:var(--ls-tight)">섹션 제목 Heading</span></div>
+      <div class="ln"><span class="tag">h4</span><span style="font:var(--text-h4)">카드 타이틀 Subhead</span></div>
+      <div class="ln"><span class="tag">body</span><span style="font:var(--text-body)">본문 텍스트입니다. Pretendard는 한글과 영문을 한 패밀리로 자연스럽게 담아냅니다.</span></div>
+      <div class="ln"><span class="tag">mono</span><span style="font:var(--text-mono);color:var(--text-secondary)">123,456 · 98.6% · v0.1.0 — Geist Mono</span></div>
+    </div>
+  </section>
+
+  <!-- USAGE -->
+  <section class="gx-wrap gx-section" id="usage">
+    <p class="gx-kicker">Get started</p>
+    <h2 class="gx-h2">사용하기</h2>
+    <p class="gx-sub">빌드 도구는 필요 없습니다. 스타일은 <code>styles.css</code> 한 줄로 연결하고, React 컴포넌트는 소스에서 바로 import 하세요.</p>
+
+    <div class="gx-usagegrid">
+      <div>
+        <h3>1 · 스타일 연결</h3>
+        <div class="gx-code"><pre><span class="c">&lt;!-- 토큰 + 컴포넌트 CSS 전부 포함 --&gt;</span>
+&lt;link rel=<span class="k">"stylesheet"</span> href=<span class="k">"styles.css"</span>&gt;</pre></div>
+        <h3>3 · 다크 모드</h3>
+        <div class="gx-code"><pre><span class="c">// html(또는 임의의 조상)에 설정</span>
+document.documentElement
+  .setAttribute(<span class="k">"data-theme"</span>, <span class="k">"dark"</span>);</pre></div>
+      </div>
+      <div>
+        <h3>2 · 컴포넌트 import (React)</h3>
+        <div class="gx-code"><pre><span class="c">// 배럴에서</span>
+<span class="k">import</span> { Button, Card } <span class="k">from</span> <span class="k">"./components"</span>;
+
+<span class="c">// 또는 개별 파일에서</span>
+<span class="k">import</span> { Button } <span class="k">from</span>
+  <span class="k">"./components/atoms/Button.jsx"</span>;
+
+<span class="k">&lt;Button</span> variant=<span class="k">"primary"</span>&gt;저장하기<span class="k">&lt;/Button&gt;</span></pre></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="gx-wrap gx-foot">
+    <strong>Cobalt — Mono Design System</strong> · v0.1.0 · 아토믹 구조(atoms / molecules / organisms) · 4px 그리드
+    <ul>
+      <li><strong>폰트</strong>: Pretendard + Geist Mono를 CDN으로 로드합니다. 오프라인/프로덕션에서는 파일을 받아 <code>tokens/fonts.css</code>의 <code>src</code>를 교체하세요.</li>
+      <li><strong>아이콘</strong>: Lucide(monoline, stroke 2). 갤러리에는 인라인 SVG로 표기했습니다.</li>
+      <li><strong>로고</strong>: 현재 워드마크는 플레이스홀더입니다 — 실제 로고로 교체 가능.</li>
+      <li><strong>문서</strong>: <a href="./README.md">README.md</a> · <a href="./README.ko.md">README.ko.md</a> · <a href="./SKILL.md">SKILL.md</a></li>
+    </ul>
+  </footer>
+</main>
+
+<script>
+  var root=document.documentElement,btn=document.getElementById('gxTheme');
+  function setT(t){root.setAttribute('data-theme',t);btn.textContent=t==='dark'?'Light':'Dark';try{localStorage.setItem('ds-theme',t);}catch(e){}}
+  var saved='light';try{saved=localStorage.getItem('ds-theme')||'light';}catch(e){}
+  setT(saved);
+  btn.addEventListener('click',function(){setT(root.getAttribute('data-theme')==='dark'?'light':'dark');});
+</script>
+</body>
+</html>

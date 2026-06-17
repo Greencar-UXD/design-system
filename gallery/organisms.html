@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Organisms · Cobalt — Mono Design System</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-text);-webkit-font-smoothing:antialiased;}
+  .gx-top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 24px;background:color-mix(in srgb,var(--surface-page) 84%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+  .gx-brand{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:var(--fw-bold);font-size:18px;letter-spacing:var(--ls-tight);color:var(--text-primary);text-decoration:none;}
+  .gx-brand .gx-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);}
+  .gx-nav{display:flex;gap:2px;align-items:center;flex-wrap:wrap;}
+  .gx-nav a{font:var(--text-label);color:var(--text-secondary);text-decoration:none;padding:8px 12px;border-radius:var(--radius-sm);}
+  .gx-nav a:hover{background:var(--surface-sunken);color:var(--text-primary);}
+  .gx-nav a[aria-current]{color:var(--accent);background:var(--surface-accent-subtle);}
+  .gx-nav .gx-sep{width:1px;height:20px;background:var(--border);margin:0 6px;}
+  .gx-wrap{max-width:1120px;margin:0 auto;padding:40px 24px 120px;}
+  .gx-h1{font:var(--text-h1);letter-spacing:var(--ls-tighter);margin:0 0 10px;}
+  .gx-lead{font:var(--text-body-lg);color:var(--text-secondary);margin:0 0 8px;max-width:64ch;}
+  .gx-count{font:var(--text-mono);color:var(--text-tertiary);}
+  .gx-sec{margin:56px 0 0;scroll-margin-top:84px;}
+  .gx-sec__h{font:var(--text-h3);letter-spacing:var(--ls-tight);margin:0 0 4px;}
+  .gx-sec__sub{font:var(--text-body-sm);color:var(--text-tertiary);margin:0 0 18px;}
+  .gx-demo{background:var(--surface-card);border:1px solid var(--border);border-radius:var(--radius-xl);box-shadow:var(--shadow-sm);padding:26px 28px;}
+  .gx-demo + .gx-demo{margin-top:12px;}
+  .gx-label{display:block;font:var(--text-caption);font-weight:var(--fw-semibold);letter-spacing:var(--ls-caps);text-transform:uppercase;color:var(--text-tertiary);margin:0 0 12px;}
+  /* Stage: hosts a normally-fixed overlay inline so it can be previewed. */
+  .gx-stage{position:relative;overflow:hidden;border-radius:var(--radius-lg);background:var(--surface-sunken);min-height:300px;display:flex;align-items:center;justify-content:center;padding:24px;}
+  .gx-stage--backdrop{background:rgba(8,10,14,.45);}
+  .gx-stage .gx-anchor{position:relative;}
+</style>
+</head>
+<body>
+<header class="gx-top">
+  <a class="gx-brand" href="../index.html">Cobalt<span class="gx-dot"></span></a>
+  <nav class="gx-nav">
+    <a href="../index.html">Overview</a>
+    <a href="./foundations.html">Foundations</a>
+    <span class="gx-sep"></span>
+    <a href="./atoms.html">Atoms</a>
+    <a href="./molecules.html">Molecules</a>
+    <a href="./organisms.html" aria-current="page">Organisms</a>
+    <span class="gx-sep"></span>
+    <button id="gxTheme" class="ds-btn ds-btn--secondary ds-btn--sm" type="button">Dark</button>
+  </nav>
+</header>
+<main class="gx-wrap">
+  <h1 class="gx-h1">Organisms</h1>
+  <p class="gx-lead">여러 요소가 결합된 복합 컴포넌트 — 다이얼로그, 드로어, 팝오버, 바텀시트, 테이블. 오버레이와 데이터 밀도가 높은 표면을 다룹니다.</p>
+  <p class="gx-count">5 components</p>
+
+  <!-- ========================================================= -->
+  <!-- Dialog                                                     -->
+  <!-- ========================================================= -->
+  <section class="gx-sec" id="dialog">
+    <h2 class="gx-sec__h">Dialog</h2>
+    <p class="gx-sec__sub">모달 오버레이 · 백드롭/Esc/× 로 닫힘 · 크기 sm · md · lg · 푸터 액션은 우측 정렬</p>
+
+    <!-- md — destructive confirm -->
+    <div class="gx-demo">
+      <span class="gx-label">md · 확인 다이얼로그</span>
+      <div class="gx-stage gx-stage--backdrop">
+        <div class="ds-dialog-overlay" style="position:static">
+          <div class="ds-dialog ds-dialog--md" role="dialog" aria-modal="true" aria-label="프로젝트를 삭제할까요?">
+            <div class="ds-dialog__head">
+              <h2 class="ds-dialog__title">프로젝트를 삭제할까요?</h2>
+              <button class="ds-alert__close" aria-label="닫기" style="width:20px;height:20px">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+              </button>
+            </div>
+            <div class="ds-dialog__body">
+              <strong>코발트 디자인 시스템</strong> 프로젝트와 연결된 <span style="font-family:var(--font-mono)">128</span>개의 파일이 영구히 삭제됩니다. 이 작업은 되돌릴 수 없습니다.
+            </div>
+            <div class="ds-dialog__foot">
+              <button type="button" class="ds-btn ds-btn--ghost ds-btn--md">취소</button>
+              <button type="button" class="ds-btn ds-btn--danger ds-btn--md">
+                <span class="ds-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></span>
+                삭제
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- sm — compact -->
+    <div class="gx-demo">
+      <span class="gx-label">sm · 간단 확인</span>
+      <div class="gx-stage gx-stage--backdrop">
+        <div class="ds-dialog-overlay" style="position:static">
+          <div class="ds-dialog ds-dialog--sm" role="dialog" aria-modal="true" aria-label="변경 사항을 저장할까요?">
+            <div class="ds-dialog__head">
+              <h2 class="ds-dialog__title">변경 사항을 저장할까요?</h2>
+              <button class="ds-alert__close" aria-label="닫기" style="width:20px;height:20px">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+              </button>
+            </div>
+            <div class="ds-dialog__body">저장하지 않은 변경 사항이 있습니다. Unsaved changes will be lost.</div>
+            <div class="ds-dialog__foot">
+              <button type="button" class="ds-btn ds-btn--ghost ds-btn--md">취소</button>
+              <button type="button" class="ds-btn ds-btn--primary ds-btn--md">저장</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- lg — form content -->
+    <div class="gx-demo">
+      <span class="gx-label">lg · 폼 다이얼로그</span>
+      <div class="gx-stage gx-stage--backdrop">
+        <div class="ds-dialog-overlay" style="position:static">
+          <div class="ds-dialog ds-dialog--lg" role="dialog" aria-modal="true" aria-label="멤버 초대">
+            <div class="ds-dialog__head">
+              <h2 class="ds-dialog__title">멤버 초대 · Invite member</h2>
+              <button class="ds-alert__close" aria-label="닫기" style="width:20px;height:20px">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+              </button>
+            </div>
+            <div class="ds-dialog__body">
+              <div style="display:flex;flex-direction:column;gap:16px">
+                <div class="ds-field">
+                  <label class="ds-field__label" for="dlg-email">이메일<span class="ds-req">*</span></label>
+                  <div class="ds-inputwrap">
+                    <input id="dlg-email" class="ds-input" type="email" placeholder="name@cobalt.kr" value="jiwoo@cobalt.kr">
+                  </div>
+                  <span class="ds-field__hint">초대 링크가 이메일로 전송됩니다.</span>
+                </div>
+                <div class="ds-field">
+                  <label class="ds-field__label" for="dlg-role">역할 · Role</label>
+                  <select id="dlg-role" class="ds-select">
+                    <option>관리자 · Admin</option>
+                    <option selected>편집자 · Editor</option>
+                    <option>뷰어 · Viewer</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="ds-dialog__foot">
+              <button type="button" class="ds-btn ds-btn--ghost ds-btn--md">취소</button>
+              <button type="button" class="ds-btn ds-btn--accent ds-btn--md">초대 보내기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- Drawer                                                     -->
+  <!-- ========================================================= -->
+  <section class="gx-sec" id="drawer">
+    <h2 class="gx-sec__h">Drawer</h2>
+    <p class="gx-sec__sub">측면 시트 · 필터·상세·보조 플로우 · side right (기본) · left · 모바일에서는 BottomSheet 권장</p>
+
+    <!-- right — filter form -->
+    <div class="gx-demo">
+      <span class="gx-label">right · 필터 드로어</span>
+      <div class="gx-stage gx-stage--backdrop" style="justify-content:flex-end;padding:0;min-height:420px">
+        <div class="ds-drawer-overlay" style="position:static;display:flex;justify-content:flex-end">
+          <div class="ds-drawer ds-drawer--right" role="dialog" aria-modal="true" aria-label="필터" style="position:static;height:auto;align-self:stretch">
+            <div class="ds-drawer__head">
+              <h2 class="ds-drawer__title">필터 · Filters</h2>
+              <button class="ds-alert__close" style="width:20px;height:20px" aria-label="닫기">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+              </button>
+            </div>
+            <div class="ds-drawer__body">
+              <div style="display:flex;flex-direction:column;gap:20px">
+                <div class="ds-field">
+                  <label class="ds-field__label" for="drw-q">검색어</label>
+                  <div class="ds-inputwrap ds-inputwrap--hasicon">
+                    <span class="ds-inputwrap__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+                    <input id="drw-q" class="ds-input" type="text" placeholder="이름, 이메일 검색">
+                  </div>
+                </div>
+                <div class="ds-field">
+                  <span class="ds-field__label">상태 · Status</span>
+                  <label class="ds-check">
+                    <input type="checkbox" checked>
+                    <span class="ds-check__box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                    활성 · Active
+                  </label>
+                  <label class="ds-check">
+                    <input type="checkbox">
+                    <span class="ds-check__box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                    대기 · Pending
+                  </label>
+                  <label class="ds-check">
+                    <input type="checkbox" checked>
+                    <span class="ds-check__box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                    보관됨 · Archived
+                  </label>
+                </div>
+                <div class="ds-field">
+                  <label class="ds-switch">
+                    <input type="checkbox" checked>
+                    <span class="ds-switch__track"><span class="ds-switch__thumb"></span></span>
+                    내 항목만 보기
+                  </label>
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap">
+                  <span class="ds-tag">디자인<span class="ds-tag__close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span></span>
+                  <span class="ds-tag">2026 Q2<span class="ds-tag__close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span></span>
+                </div>
+              </div>
+            </div>
+            <div class="ds-drawer__foot">
+              <button type="button" class="ds-btn ds-btn--ghost ds-btn--md">초기화</button>
+              <button type="button" class="ds-btn ds-btn--accent ds-btn--md">적용 · Apply</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- left — navigation -->
+    <div class="gx-demo">
+      <span class="gx-label">left · 내비게이션 드로어</span>
+      <div class="gx-stage gx-stage--backdrop" style="justify-content:flex-start;padding:0;min-height:360px">
+        <div class="ds-drawer-overlay" style="position:static;display:flex;justify-content:flex-start">
+          <div class="ds-drawer ds-drawer--left" role="dialog" aria-modal="true" aria-label="메뉴" style="position:static;height:auto;align-self:stretch">
+            <div class="ds-drawer__head">
+              <h2 class="ds-drawer__title">메뉴 · Menu</h2>
+              <button class="ds-alert__close" style="width:20px;height:20px" aria-label="닫기">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+              </button>
+            </div>
+            <div class="ds-drawer__body" style="padding:8px 0">
+              <button class="ds-listrow" type="button">
+                <span class="ds-listrow__lead"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span>
+                <span class="ds-listrow__body"><p class="ds-listrow__title">대시보드</p><p class="ds-listrow__sub">Dashboard</p></span>
+              </button>
+              <button class="ds-listrow" type="button">
+                <span class="ds-listrow__lead"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>
+                <span class="ds-listrow__body"><p class="ds-listrow__title">프로젝트</p><p class="ds-listrow__sub">Projects</p></span>
+                <span class="ds-listrow__trail"><span class="ds-badge ds-badge--accent">12</span></span>
+              </button>
+              <button class="ds-listrow" type="button">
+                <span class="ds-listrow__lead"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+                <span class="ds-listrow__body"><p class="ds-listrow__title">설정</p><p class="ds-listrow__sub">Settings</p></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- Popover                                                    -->
+  <!-- ========================================================= -->
+  <section class="gx-sec" id="popover">
+    <h2 class="gx-sec__h">Popover</h2>
+    <p class="gx-sec__sub">클릭 트리거 부동 패널 · 필터·미니폼·상세 · align left · right · 단순 액션 목록은 Menu 권장</p>
+
+    <!-- left aligned — mini form -->
+    <div class="gx-demo">
+      <span class="gx-label">align left · 미니 폼</span>
+      <div class="gx-stage" style="align-items:flex-start;min-height:360px">
+        <div class="ds-popover">
+          <span style="display:inline-flex">
+            <button type="button" class="ds-btn ds-btn--secondary ds-btn--md">
+              <span class="ds-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+              표시 설정
+              <span class="ds-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </button>
+          </span>
+          <div class="ds-popover__panel ds-popover__panel--left" role="dialog">
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <p style="margin:0;font:var(--text-label);color:var(--text-primary)">표시 설정 · Display</p>
+              <label class="ds-switch">
+                <input type="checkbox" checked>
+                <span class="ds-switch__track"><span class="ds-switch__thumb"></span></span>
+                밀집 모드 · Compact
+              </label>
+              <label class="ds-switch">
+                <input type="checkbox">
+                <span class="ds-switch__track"><span class="ds-switch__thumb"></span></span>
+                그리드선 표시
+              </label>
+              <div class="ds-field">
+                <label class="ds-field__label" for="pop-rows">페이지당 행</label>
+                <select id="pop-rows" class="ds-select">
+                  <option>10</option>
+                  <option selected>25</option>
+                  <option>50</option>
+                </select>
+              </div>
+              <button type="button" class="ds-btn ds-btn--accent ds-btn--sm ds-btn--block">저장</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- right aligned — info panel -->
+    <div class="gx-demo">
+      <span class="gx-label">align right · 상세 패널</span>
+      <div class="gx-stage" style="align-items:flex-start;justify-content:flex-end;min-height:320px">
+        <div class="ds-popover">
+          <span style="display:inline-flex">
+            <button type="button" class="ds-iconbtn ds-iconbtn--md ds-iconbtn--outline" aria-label="더 보기">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+            </button>
+          </span>
+          <div class="ds-popover__panel ds-popover__panel--right" role="dialog">
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;align-items:center;gap:12px">
+                <span class="ds-avatar ds-avatar--md">박</span>
+                <div>
+                  <p style="margin:0;font:var(--text-label);color:var(--text-primary)">박지우</p>
+                  <p style="margin:2px 0 0;font:var(--text-caption);color:var(--text-tertiary)">jiwoo@cobalt.kr</p>
+                </div>
+              </div>
+              <hr class="ds-divider ds-divider--h">
+              <div style="display:flex;justify-content:space-between;font:var(--text-body-sm)">
+                <span style="color:var(--text-secondary)">소속</span>
+                <span style="color:var(--text-primary)">디자인팀 · Design</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font:var(--text-body-sm)">
+                <span style="color:var(--text-secondary)">마지막 활동</span>
+                <span style="font-family:var(--font-mono);color:var(--text-primary)">2026-06-17</span>
+              </div>
+              <button type="button" class="ds-btn ds-btn--secondary ds-btn--sm ds-btn--block">프로필 보기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- BottomSheet                                                -->
+  <!-- ========================================================= -->
+  <section class="gx-sec" id="bottomsheet">
+    <h2 class="gx-sec__h">BottomSheet</h2>
+    <p class="gx-sec__sub">모바일 하단 모달 · 액션·피커·짧은 폼 · 그래버 핸들 · 데스크톱 대응은 Drawer</p>
+
+    <!-- action list -->
+    <div class="gx-demo">
+      <span class="gx-label">액션 시트 · ListRow</span>
+      <div class="gx-stage gx-stage--backdrop" style="align-items:flex-end;padding:0;min-height:400px">
+        <div class="ds-sheet-overlay" style="position:static;display:flex;align-items:flex-end">
+          <div class="ds-sheet" role="dialog" aria-modal="true" aria-label="옵션" style="position:static;max-width:420px;margin:0 auto;width:100%">
+            <div class="ds-sheet__grip" aria-hidden="true"></div>
+            <h2 class="ds-sheet__title">옵션 · Options</h2>
+            <button class="ds-listrow" type="button">
+              <span class="ds-listrow__lead"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="m16 6-4-4-4 4"/><path d="M12 2v13"/></svg></span>
+              <span class="ds-listrow__body"><p class="ds-listrow__title">공유</p><p class="ds-listrow__sub">Share</p></span>
+            </button>
+            <button class="ds-listrow" type="button">
+              <span class="ds-listrow__lead"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>
+              <span class="ds-listrow__body"><p class="ds-listrow__title">복제</p><p class="ds-listrow__sub">Duplicate</p></span>
+            </button>
+            <button class="ds-listrow" type="button">
+              <span class="ds-listrow__lead"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+              <span class="ds-listrow__body"><p class="ds-listrow__title">이름 변경</p><p class="ds-listrow__sub">Rename</p></span>
+            </button>
+            <button class="ds-listrow" type="button" style="color:var(--danger-500)">
+              <span class="ds-listrow__lead" style="color:var(--danger-500)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></span>
+              <span class="ds-listrow__body"><p class="ds-listrow__title" style="color:var(--danger-500)">삭제</p><p class="ds-listrow__sub">Delete</p></span>
+            </button>
+            <div style="display:flex;gap:8px;margin-top:16px">
+              <button type="button" class="ds-btn ds-btn--secondary ds-btn--lg ds-btn--block">취소</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- short form -->
+    <div class="gx-demo">
+      <span class="gx-label">짧은 폼 · 금액 입력</span>
+      <div class="gx-stage gx-stage--backdrop" style="align-items:flex-end;padding:0;min-height:360px">
+        <div class="ds-sheet-overlay" style="position:static;display:flex;align-items:flex-end">
+          <div class="ds-sheet" role="dialog" aria-modal="true" aria-label="금액 입력" style="position:static;max-width:420px;margin:0 auto;width:100%">
+            <div class="ds-sheet__grip" aria-hidden="true"></div>
+            <h2 class="ds-sheet__title">금액 입력 · Amount</h2>
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <div class="ds-field">
+                <label class="ds-field__label" for="sheet-amt">결제 금액</label>
+                <div class="ds-inputwrap">
+                  <input id="sheet-amt" class="ds-input" type="text" inputmode="numeric" style="font-family:var(--font-mono)" value="1,200,000">
+                </div>
+                <span class="ds-field__hint">원(KRW) 단위로 입력하세요.</span>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <span class="ds-badge ds-badge--neutral" style="font-family:var(--font-mono)">+10,000</span>
+                <span class="ds-badge ds-badge--neutral" style="font-family:var(--font-mono)">+50,000</span>
+                <span class="ds-badge ds-badge--neutral" style="font-family:var(--font-mono)">+100,000</span>
+              </div>
+              <button type="button" class="ds-btn ds-btn--accent ds-btn--lg ds-btn--block">확인</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- Table                                                      -->
+  <!-- ========================================================= -->
+  <section class="gx-sec" id="table">
+    <h2 class="gx-sec__h">Table</h2>
+    <p class="gx-sec__sub">컬럼 구성 + 셀 렌더러 데이터 테이블 · 헤더 대문자 · 숫자 컬럼 우측 정렬·mono · hover/선택 행</p>
+
+    <div class="gx-demo">
+      <span class="gx-label">멤버 정산 · 5 rows · 선택된 행 1</span>
+      <div class="ds-table-wrap">
+        <table class="ds-table">
+          <thead>
+            <tr>
+              <th style="width:44px" class="is-center">
+                <label class="ds-check" style="gap:0">
+                  <input type="checkbox">
+                  <span class="ds-check__box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                </label>
+              </th>
+              <th>이름 · Name</th>
+              <th>역할 · Role</th>
+              <th class="is-center">상태 · Status</th>
+              <th class="is-right">
+                <span style="display:inline-flex;align-items:center;gap:4px">금액 · Amount
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><path d="m21 16-4 4-4-4M17 20V4M3 8l4-4 4 4M7 4v16"/></svg>
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="is-center">
+                <label class="ds-check" style="gap:0">
+                  <input type="checkbox">
+                  <span class="ds-check__box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                </label>
+              </td>
+              <td>
+                <span style="display:inline-flex;align-items:center;gap:8px">
+                  <span class="ds-avatar ds-avatar--sm">박</span>
+                  박지우 · Jiwoo Park
+                </span>
+              </td>
+              <td>디자이너 · Designer</td>
+              <td class="is-center"><span class="ds-badge ds-badge--success"><span class="ds-badge__dot"></span>활성</span></td>
+              <td class="is-right" style="font-family:var(--font-mono)">₩1,200,000</td>
+            </tr>
+            <tr style="background:var(--surface-accent-subtle)">
+              <td class="is-center">
+                <label class="ds-check" style="gap:0">
+                  <input type="checkbox" checked>
+                  <span class="ds-check__box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                </label>
+              </td>
+              <td>
+                <span style="display:inline-flex;align-items:center;gap:8px">
+                  <span class="ds-avatar ds-avatar--sm">김</span>
+                  김코발 · Cobal Kim
+                </span>
+              </td>
+              <td>개발자 · Engineer</td>
+              <td class="is-center"><span class="ds-badge ds-badge--warning"><span class="ds-badge__dot"></span>대기</span></td>
+              <td class="is-right" style="font-family:var(--font-mono)">₩980,000</td>
+            </tr>
+            <tr>
+              <td class="is-center">
+                <label class="ds-check" style="gap:0">
+                  <input type="checkbox">
+                  <span class="ds-check__box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                </label>
+              </td>
+              <td>
+                <span style="display:inline-flex;align-items:center;gap:8px">
+                  <span class="ds-avatar ds-avatar--sm">이</span>
+                  이서연 · Seoyeon Lee
+                </span>
+              </td>
+              <td>기획자 · PM</td>
+              <td class="is-center"><span class="ds-badge ds-badge--success"><span class="ds-badge__dot"></span>활성</span></td>
+              <td class="is-right" style="font-family:var(--font-mono)">₩1,540,000</td>
+            </tr>
+            <tr>
+              <td class="is-center">
+                <label class="ds-check" style="gap:0">
+                  <input type="checkbox">
+                  <span class="ds-check__box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                </label>
+              </td>
+              <td>
+                <span style="display:inline-flex;align-items:center;gap:8px">
+                  <span class="ds-avatar ds-avatar--sm">최</span>
+                  최도윤 · Doyun Choi
+                </span>
+              </td>
+              <td>마케터 · Marketer</td>
+              <td class="is-center"><span class="ds-badge ds-badge--neutral"><span class="ds-badge__dot"></span>보관됨</span></td>
+              <td class="is-right" style="font-family:var(--font-mono)">₩760,000</td>
+            </tr>
+            <tr>
+              <td class="is-center">
+                <label class="ds-check" style="gap:0">
+                  <input type="checkbox">
+                  <span class="ds-check__box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                </label>
+              </td>
+              <td>
+                <span style="display:inline-flex;align-items:center;gap:8px">
+                  <span class="ds-avatar ds-avatar--sm">정</span>
+                  정하준 · Hajun Jung
+                </span>
+              </td>
+              <td>데이터 · Data</td>
+              <td class="is-center"><span class="ds-badge ds-badge--danger"><span class="ds-badge__dot"></span>정지</span></td>
+              <td class="is-right" style="font-family:var(--font-mono)">₩2,310,000</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4" style="font-weight:var(--fw-semibold);color:var(--text-secondary)">합계 · Total</td>
+              <td class="is-right" style="font-family:var(--font-mono);font-weight:var(--fw-semibold);color:var(--text-primary)">₩6,790,000</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+<script>
+  var root=document.documentElement,btn=document.getElementById('gxTheme');
+  function setT(t){root.setAttribute('data-theme',t);btn.textContent=t==='dark'?'Light':'Dark';try{localStorage.setItem('ds-theme',t);}catch(e){}}
+  var saved='light';try{saved=localStorage.getItem('ds-theme')||'light';}catch(e){}
+  setT(saved);
+  btn.addEventListener('click',function(){setT(root.getAttribute('data-theme')==='dark'?'light':'dark');});
+</script>
+</body>
+</html>

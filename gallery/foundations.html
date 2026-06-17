@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Foundations · Cobalt — Mono Design System</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-text);-webkit-font-smoothing:antialiased;}
+  .gx-top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 24px;background:color-mix(in srgb,var(--surface-page) 84%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+  .gx-brand{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:var(--fw-bold);font-size:18px;letter-spacing:var(--ls-tight);color:var(--text-primary);text-decoration:none;}
+  .gx-brand .gx-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);}
+  .gx-nav{display:flex;gap:2px;align-items:center;flex-wrap:wrap;}
+  .gx-nav a{font:var(--text-label);color:var(--text-secondary);text-decoration:none;padding:8px 12px;border-radius:var(--radius-sm);}
+  .gx-nav a:hover{background:var(--surface-sunken);color:var(--text-primary);}
+  .gx-nav a[aria-current]{color:var(--accent);background:var(--surface-accent-subtle);}
+  .gx-nav .gx-sep{width:1px;height:20px;background:var(--border);margin:0 6px;}
+  .gx-wrap{max-width:1120px;margin:0 auto;padding:40px 24px 120px;}
+  .gx-h1{font:var(--text-h1);letter-spacing:var(--ls-tighter);margin:0 0 10px;}
+  .gx-lead{font:var(--text-body-lg);color:var(--text-secondary);margin:0 0 8px;max-width:64ch;}
+  .gx-note{font:var(--text-body-sm);color:var(--text-tertiary);margin:0 0 8px;max-width:64ch;}
+  .gx-sec{margin:56px 0 0;scroll-margin-top:84px;}
+  .gx-sec__h{font:var(--text-h3);letter-spacing:var(--ls-tight);margin:0 0 18px;display:flex;align-items:baseline;gap:12px;}
+  .gx-sec__h .gx-eyebrow{font:var(--text-caption);font-weight:var(--fw-semibold);letter-spacing:var(--ls-caps);text-transform:uppercase;color:var(--text-tertiary);}
+  .gx-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;}
+  .gx-card{background:var(--surface-card);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);overflow:hidden;display:flex;flex-direction:column;}
+  .gx-card__head{padding:14px 16px 10px;border-bottom:1px solid var(--border);}
+  .gx-card__name{font:var(--text-label);color:var(--text-primary);}
+  .gx-card__sub{font:var(--text-caption);color:var(--text-tertiary);margin-top:2px;}
+  .gx-card__frame{display:block;width:100%;border:0;background:#fff;}
+  .gx-card--wide{grid-column:1 / -1;}
+</style>
+</head>
+<body>
+<header class="gx-top">
+  <a class="gx-brand" href="../index.html">Cobalt<span class="gx-dot"></span></a>
+  <nav class="gx-nav">
+    <a href="../index.html">Overview</a>
+    <a href="./foundations.html" aria-current="page">Foundations</a>
+    <span class="gx-sep"></span>
+    <a href="./atoms.html">Atoms</a>
+    <a href="./molecules.html">Molecules</a>
+    <a href="./organisms.html">Organisms</a>
+    <span class="gx-sep"></span>
+    <button id="gxTheme" class="ds-btn ds-btn--secondary ds-btn--sm" type="button">Dark</button>
+  </nav>
+</header>
+<main class="gx-wrap">
+  <h1 class="gx-h1">Foundations</h1>
+  <p class="gx-lead">시스템의 시각적 기반 — 타입, 컬러, 스페이싱, 모션, 레이아웃, 그리고 보이스·접근성 가이드. 각 specimen은 실제 토큰(<code>styles.css</code>)을 그대로 읽어 렌더링됩니다.</p>
+  <p class="gx-note">아래 specimen은 개별 HTML 파일을 <code>&lt;iframe&gt;</code>으로 임베드합니다. 로컬에서 정확히 보려면 정적 서버로 여는 걸 권장합니다 — 예: <code>npx serve .</code> 또는 <code>python3 -m http.server</code>.</p>
+
+  <section class="gx-sec" id="type">
+    <h2 class="gx-sec__h">Type <span class="gx-eyebrow">Pretendard · Geist Mono</span></h2>
+    <div class="gx-cards">
+      <div class="gx-card gx-card--wide">
+        <div class="gx-card__head"><div class="gx-card__name">Type Scale</div><div class="gx-card__sub">40 → 10px, Pretendard</div></div>
+        <iframe class="gx-card__frame" src="../foundations/type-scale.html" height="420" loading="lazy" title="Type scale"></iframe>
+      </div>
+      <div class="gx-card">
+        <div class="gx-card__head"><div class="gx-card__name">Display Specimen</div><div class="gx-card__sub">Pretendard Bold, tight tracking</div></div>
+        <iframe class="gx-card__frame" src="../foundations/type-display.html" height="300" loading="lazy" title="Display specimen"></iframe>
+      </div>
+      <div class="gx-card">
+        <div class="gx-card__head"><div class="gx-card__name">Weights</div><div class="gx-card__sub">400 · 500 · 600 · 700</div></div>
+        <iframe class="gx-card__frame" src="../foundations/type-weights.html" height="260" loading="lazy" title="Weights"></iframe>
+      </div>
+      <div class="gx-card">
+        <div class="gx-card__head"><div class="gx-card__name">Monospace · Data</div><div class="gx-card__sub">Geist Mono — numerics, code, tabular</div></div>
+        <iframe class="gx-card__frame" src="../foundations/type-mono.html" height="230" loading="lazy" title="Monospace"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="gx-sec" id="colors">
+    <h2 class="gx-sec__h">Colors <span class="gx-eyebrow">Monochrome + Cobalt</span></h2>
+    <div class="gx-cards">
+      <div class="gx-card">
+        <div class="gx-card__head"><div class="gx-card__name">Neutral Ramp</div><div class="gx-card__sub">Gray 0 → 950, cool-leaning</div></div>
+        <iframe class="gx-card__frame" src="../foundations/colors-neutral.html" height="180" loading="lazy" title="Neutral ramp"></iframe>
+      </div>
+      <div class="gx-card">
+        <div class="gx-card__head"><div class="gx-card__name">Cobalt Accent</div><div class="gx-card__sub">Signature accent · 50 → 900</div></div>
+        <iframe class="gx-card__frame" src="../foundations/colors-cobalt.html" height="180" loading="lazy" title="Cobalt accent"></iframe>
+      </div>
+      <div class="gx-card">
+        <div class="gx-card__head"><div class="gx-card__name">Semantic · Light</div><div class="gx-card__sub">Text, surface, border, accent roles</div></div>
+        <iframe class="gx-card__frame" src="../foundations/colors-semantic-light.html" height="230" loading="lazy" title="Semantic light"></iframe>
+      </div>
+      <div class="gx-card">
+        <div class="gx-card__head"><div class="gx-card__name">Semantic · Dark</div><div class="gx-card__sub">Dark theme surfaces, text, accent</div></div>
+        <iframe class="gx-card__frame" src="../foundations/colors-dark.html" height="230" loading="lazy" title="Semantic dark"></iframe>
+      </div>
+      <div class="gx-card">
+        <div class="gx-card__head"><div class="gx-card__name">Status</div><div class="gx-card__sub">Success · Warning · Danger · Info</div></div>
+        <iframe class="gx-card__frame" src="../foundations/colors-status.html" height="150" loading="lazy" title="Status colors"></iframe>
+      </div>
+      <div class="gx-card">
+        <div class="gx-card__head"><div class="gx-card__name">Data-viz palette</div><div class="gx-card__sub">Categorical · cobalt-led, on monochrome</div></div>
+        <iframe class="gx-card__frame" src="../foundations/chart-palette.html" height="220" loading="lazy" title="Chart palette"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="gx-sec" id="spacing">
+    <h2 class="gx-sec__h">Spacing <span class="gx-eyebrow">4px grid · radius · elevation</span></h2>
+    <div class="gx-cards">
+      <div class="gx-card">
+        <div class="gx-card__head"><div class="gx-card__name">Spacing Scale</div><div class="gx-card__sub">4px base grid · 0 → 96</div></div>
+        <iframe class="gx-card__frame" src="../foundations/spacing-scale.html" height="200" loading="lazy" title="Spacing scale"></iframe>
+      </div>
+      <div class="gx-card">
+        <div class="gx-card__head"><div class="gx-card__name">Radius</div><div class="gx-card__sub">xs → 2xl · pill</div></div>
+        <iframe class="gx-card__frame" src="../foundations/radius-scale.html" height="170" loading="lazy" title="Radius scale"></iframe>
+      </div>
+      <div class="gx-card">
+        <div class="gx-card__head"><div class="gx-card__name">Elevation</div><div class="gx-card__sub">Soft cool shadows · xs → xl</div></div>
+        <iframe class="gx-card__frame" src="../foundations/shadow-scale.html" height="200" loading="lazy" title="Elevation"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="gx-sec" id="motion-layout">
+    <h2 class="gx-sec__h">Motion &amp; Layout <span class="gx-eyebrow">Easing · grid</span></h2>
+    <div class="gx-cards">
+      <div class="gx-card">
+        <div class="gx-card__head"><div class="gx-card__name">Easing &amp; Duration</div><div class="gx-card__sub">Quick, understated motion — no bounce</div></div>
+        <iframe class="gx-card__frame" src="../foundations/motion.html" height="230" loading="lazy" title="Motion"></iframe>
+      </div>
+      <div class="gx-card">
+        <div class="gx-card__head"><div class="gx-card__name">Grid &amp; Layout</div><div class="gx-card__sub">12-col · 1120 max · 32 gutter · 20 gap</div></div>
+        <iframe class="gx-card__frame" src="../foundations/grid-layout.html" height="230" loading="lazy" title="Grid and layout"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="gx-sec" id="guidelines">
+    <h2 class="gx-sec__h">Guidelines <span class="gx-eyebrow">Voice · accessibility · do/don't</span></h2>
+    <div class="gx-cards">
+      <div class="gx-card">
+        <div class="gx-card__head"><div class="gx-card__name">Voice &amp; Writing</div><div class="gx-card__sub">Clear · calm · Korean-led · no emoji</div></div>
+        <iframe class="gx-card__frame" src="../foundations/voice.html" height="300" loading="lazy" title="Voice and writing"></iframe>
+      </div>
+      <div class="gx-card">
+        <div class="gx-card__head"><div class="gx-card__name">Accessibility</div><div class="gx-card__sub">Contrast · focus · hit targets · motion</div></div>
+        <iframe class="gx-card__frame" src="../foundations/accessibility.html" height="260" loading="lazy" title="Accessibility"></iframe>
+      </div>
+      <div class="gx-card">
+        <div class="gx-card__head"><div class="gx-card__name">Do / Don't — accent</div><div class="gx-card__sub">Use cobalt sparingly</div></div>
+        <iframe class="gx-card__frame" src="../foundations/do-dont.html" height="280" loading="lazy" title="Do and don't"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="gx-sec" id="brand">
+    <h2 class="gx-sec__h">Brand <span class="gx-eyebrow">Wordmark · iconography</span></h2>
+    <div class="gx-cards">
+      <div class="gx-card">
+        <div class="gx-card__head"><div class="gx-card__name">Wordmark (placeholder)</div><div class="gx-card__sub">Typographic lockup — pending a real logo</div></div>
+        <iframe class="gx-card__frame" src="../assets/wordmark.card.html" height="200" loading="lazy" title="Wordmark"></iframe>
+      </div>
+      <div class="gx-card">
+        <div class="gx-card__head"><div class="gx-card__name">Iconography · Lucide</div><div class="gx-card__sub">Monoline · stroke 2 · currentColor</div></div>
+        <iframe class="gx-card__frame" src="../foundations/iconography.html" height="230" loading="lazy" title="Iconography"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+  var root=document.documentElement,btn=document.getElementById('gxTheme');
+  function setT(t){root.setAttribute('data-theme',t);btn.textContent=t==='dark'?'Light':'Dark';try{localStorage.setItem('ds-theme',t);}catch(e){}}
+  var saved='light';try{saved=localStorage.getItem('ds-theme')||'light';}catch(e){}
+  setT(saved);
+  btn.addEventListener('click',function(){setT(root.getAttribute('data-theme')==='dark'?'light':'dark');});
+</script>
+</body>
+</html>
