@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UX Writing · Cobalt — Mono Design System</title>
+<meta name="description" content="명료하고 차분한 한글 우선 UX 라이팅 가이드 — 보이스·톤, 문장 기본, 컴포넌트별 카피, 용어 표기, 접근성.">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-text);-webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+  /* header (shared chrome) */
+  .gx-top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 24px;background:color-mix(in srgb,var(--surface-page) 84%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+  .gx-brand{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:var(--fw-bold);font-size:18px;letter-spacing:var(--ls-tight);color:var(--text-primary);text-decoration:none;}
+  .gx-brand .gx-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);}
+  .gx-nav{display:flex;gap:2px;align-items:center;flex-wrap:wrap;}
+  .gx-nav a{font:var(--text-label);color:var(--text-secondary);text-decoration:none;padding:8px 12px;border-radius:var(--radius-sm);}
+  .gx-nav a:hover{background:var(--surface-sunken);color:var(--text-primary);}
+  .gx-nav a[aria-current]{color:var(--accent);background:var(--surface-accent-subtle);}
+  .gx-nav .gx-sep{width:1px;height:20px;background:var(--border);margin:0 8px;}
+  /* layout */
+  .gx-wrap{max-width:1120px;margin:0 auto;padding:40px 24px 120px;}
+  .gx-h1{font:var(--text-h1);letter-spacing:var(--ls-tighter);margin:0 0 12px;word-break:keep-all;text-wrap:balance;}
+  .gx-lead{font:var(--text-body-lg);color:var(--text-secondary);margin:0 0 8px;max-width:64ch;word-break:keep-all;}
+  .gx-count{font:var(--text-mono);color:var(--text-tertiary);}
+  /* TOC */
+  .gx-toc{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 0;}
+  .gx-toc a{font:var(--text-caption);font-weight:var(--fw-semibold);color:var(--text-secondary);background:var(--surface-card);border:1px solid var(--border);border-radius:var(--radius-pill);padding:8px 12px;text-decoration:none;}
+  .gx-toc a:hover{border-color:var(--border-strong);color:var(--text-primary);}
+  /* section */
+  .gx-sec{margin:56px 0 0;scroll-margin-top:84px;}
+  .gx-sec__h{font:var(--text-h3);letter-spacing:var(--ls-tight);margin:0 0 4px;display:flex;align-items:baseline;gap:12px;}
+  .gx-sec__h .gx-num{font-family:var(--font-mono);font-size:14px;color:var(--text-tertiary);font-weight:var(--fw-semibold);}
+  .gx-sec__sub{font:var(--text-body-sm);color:var(--text-tertiary);margin:0 0 20px;max-width:72ch;word-break:keep-all;}
+  /* card / demo surface */
+  .gx-card{background:var(--surface-card);border:1px solid var(--border);border-radius:var(--radius-xl);box-shadow:var(--shadow-sm);padding:24px 28px;}
+  .gx-card + .gx-card{margin-top:16px;}
+  .gx-card h3{font:var(--text-h4);letter-spacing:var(--ls-tight);margin:0 0 8px;}
+  .gx-card > p{font:var(--text-body-sm);color:var(--text-secondary);margin:0 0 16px;max-width:72ch;word-break:keep-all;}
+  .gx-card > p:last-child{margin-bottom:0;}
+  /* principles */
+  .gx-principles{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 8px;}
+  .gx-pill{font:var(--text-caption);font-weight:var(--fw-semibold);color:var(--text-secondary);background:var(--surface-sunken);border-radius:var(--radius-pill);padding:8px 12px;}
+  .gx-prin{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+  .gx-prin .item{border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;}
+  .gx-prin .item .k{font:var(--text-label);color:var(--text-primary);margin:0 0 4px;display:flex;align-items:center;gap:8px;}
+  .gx-prin .item .k .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none;}
+  .gx-prin .item p{font:var(--text-body-sm);color:var(--text-secondary);margin:0;word-break:keep-all;}
+  /* good / avoid examples */
+  .gx-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .ex{border:1px solid var(--border);border-radius:var(--radius-md);padding:16px 20px;background:var(--surface-page);}
+  .ex .tag{font:var(--text-caption);font-weight:var(--fw-semibold);letter-spacing:var(--ls-caps);text-transform:uppercase;margin:0 0 8px;display:inline-flex;align-items:center;gap:6px;}
+  .ex .tag::before{content:"";width:8px;height:8px;border-radius:50%;display:inline-block;}
+  .ex--good{border-color:color-mix(in srgb,var(--success-600) 36%,var(--border));}
+  .ex--bad{border-color:color-mix(in srgb,var(--danger-500) 30%,var(--border));}
+  .ex--good .tag{color:var(--success-600);} .ex--good .tag::before{background:var(--success-600);}
+  .ex--bad .tag{color:var(--danger-500);} .ex--bad .tag::before{background:var(--danger-500);}
+  .ex p{margin:0;font:var(--text-body-sm);color:var(--text-primary);word-break:keep-all;}
+  .ex p + p{margin-top:8px;}
+  .ex .why{font:var(--text-caption);color:var(--text-tertiary);margin-top:8px;}
+  .ex .mini-btn{display:inline-block;font:var(--text-label);background:var(--gray-900);color:var(--gray-0);border-radius:var(--radius-sm);padding:8px 12px;margin-top:8px;}
+  /* table */
+  .gx-table{width:100%;border-collapse:collapse;font:var(--text-body-sm);}
+  .gx-table th,.gx-table td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--border);vertical-align:top;word-break:keep-all;}
+  .gx-table thead th{font:var(--text-caption);font-weight:var(--fw-semibold);letter-spacing:var(--ls-caps);text-transform:uppercase;color:var(--text-tertiary);}
+  .gx-table tbody tr:last-child td{border-bottom:0;}
+  .gx-table .ok{color:var(--success-600);font-weight:var(--fw-semibold);}
+  .gx-table .no{color:var(--text-tertiary);}
+  .gx-table .mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums;}
+  /* checklist */
+  .gx-check{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;}
+  .gx-check li{display:flex;gap:12px;align-items:flex-start;font:var(--text-body-sm);color:var(--text-primary);word-break:keep-all;}
+  .gx-check li .mk{flex:none;width:20px;height:20px;border-radius:var(--radius-xs);background:var(--surface-accent-subtle);color:var(--accent);display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:var(--fw-bold);margin-top:2px;}
+  .gx-stack{display:flex;flex-direction:column;gap:16px;}
+  .gx-note{font:var(--text-caption);color:var(--text-tertiary);margin:16px 0 0;word-break:keep-all;}
+  code{font-family:var(--font-mono);font-size:.92em;background:var(--surface-sunken);padding:2px 6px;border-radius:var(--radius-xs);}
+  @media(max-width:720px){ .gx-pair{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<header class="gx-top">
+  <a class="gx-brand" href="../index.html">Cobalt<span class="gx-dot"></span></a>
+  <nav class="gx-nav">
+    <a href="../index.html">Overview</a>
+    <a href="./foundations.html">Foundations</a>
+    <a href="./ux-writing.html" aria-current="page">UX Writing</a>
+    <span class="gx-sep"></span>
+    <a href="./atoms.html">Atoms</a>
+    <a href="./molecules.html">Molecules</a>
+    <a href="./organisms.html">Organisms</a>
+    <span class="gx-sep"></span>
+    <button id="gxTheme" class="ds-btn ds-btn--secondary ds-btn--sm" type="button">Dark</button>
+  </nav>
+</header>
+<main class="gx-wrap">
+  <h1 class="gx-h1">UX 라이팅</h1>
+  <p class="gx-lead">제품의 모든 글자는 인터페이스의 일부입니다. 명료하고 차분하게, 한글을 우선으로 — 사용자가 다음에 무엇을 할지 한 번에 알게 쓰는 규칙을 정리했습니다.</p>
+  <p class="gx-count">13 sections · 한글 우선 · 라이트/다크</p>
+
+  <nav class="gx-toc" aria-label="목차">
+    <a href="#principles">원칙</a>
+    <a href="#voice-tone">보이스 &amp; 톤</a>
+    <a href="#mechanics">문장 기본</a>
+    <a href="#buttons">버튼 &amp; 액션</a>
+    <a href="#forms">폼</a>
+    <a href="#errors">오류 메시지</a>
+    <a href="#empty">빈 상태</a>
+    <a href="#confirm">확인 대화상자</a>
+    <a href="#toast">토스트 &amp; 알림</a>
+    <a href="#micro">툴팁 &amp; 마이크로카피</a>
+    <a href="#numbers">날짜 · 시간 · 숫자</a>
+    <a href="#terms">용어 표기</a>
+    <a href="#a11y">접근성</a>
+    <a href="#checklist">발행 전 체크리스트</a>
+  </nav>
+
+  <!-- 1. 원칙 -->
+  <section class="gx-sec" id="principles">
+    <h2 class="gx-sec__h"><span class="gx-num">01</span> 원칙</h2>
+    <p class="gx-sec__sub">모든 카피가 따르는 다섯 가지. 망설여질 때 이 순서로 판단하세요 — 먼저 명료한가, 그다음 차분한가.</p>
+    <div class="gx-card">
+      <div class="gx-principles" style="margin-bottom:20px;">
+        <span class="gx-pill">명료하게</span>
+        <span class="gx-pill">차분하게</span>
+        <span class="gx-pill">한글 우선 · 영문 보조</span>
+        <span class="gx-pill">동사 중심</span>
+        <span class="gx-pill">정직하게</span>
+      </div>
+      <div class="gx-prin">
+        <div class="item"><div class="k"><span class="dot"></span>명료하게</div><p>한 번에 이해되게 씁니다. 전문용어·중의성·돌려 말하기를 걷어내고, 한 문장에 하나의 뜻만 담습니다.</p></div>
+        <div class="item"><div class="k"><span class="dot"></span>차분하게</div><p>과장과 재촉, 느낌표를 쓰지 않습니다. 강조는 색·굵기·위계로, 말투는 담담하게.</p></div>
+        <div class="item"><div class="k"><span class="dot"></span>한글 우선</div><p>UI 기본은 한글입니다. 영문은 고유명사·기술 용어·보조 표시에만. 두 글자 모두 Pretendard로 맞물립니다.</p></div>
+        <div class="item"><div class="k"><span class="dot"></span>동사 중심</div><p>액션은 결과를 약속하는 동사로. "확인"보다 "저장하기", "예"보다 "삭제".</p></div>
+        <div class="item"><div class="k"><span class="dot"></span>정직하게</div><p>가짜 진행, 거짓 안심, 책임 회피를 쓰지 않습니다. 오류는 솔직하게 알리고 해결을 안내합니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 보이스 & 톤 -->
+  <section class="gx-sec" id="voice-tone">
+    <h2 class="gx-sec__h"><span class="gx-num">02</span> 보이스 &amp; 톤</h2>
+    <p class="gx-sec__sub"><strong>보이스</strong>는 항상 같습니다(명료·차분). <strong>톤</strong>은 상황에 따라 미세하게 조절합니다 — 성공은 담담하게, 오류는 침착하게, 파괴적 작업은 단호하게.</p>
+    <div class="gx-card">
+      <table class="gx-table">
+        <thead><tr><th style="width:18%">상황</th><th style="width:32%">톤</th><th>예시</th></tr></thead>
+        <tbody>
+          <tr><td>일반</td><td>중립적 · 간결</td><td>프로젝트를 저장했습니다</td></tr>
+          <tr><td>성공</td><td>담담한 확인 (자축 금지)</td><td>변경 사항을 저장했습니다</td></tr>
+          <tr><td>오류</td><td>침착 · 해결 지향 (비난 금지)</td><td>이메일 형식을 확인해 주세요</td></tr>
+          <tr><td>위험 · 파괴</td><td>명확 · 단호 · 영향 명시</td><td>이 작업은 되돌릴 수 없습니다</td></tr>
+          <tr><td>대기</td><td>짧게 · 안심</td><td>불러오는 중…</td></tr>
+          <tr><td>안내 · 빈 상태</td><td>도움 주는 · 다음 행동 제시</td><td>아직 항목이 없습니다 — 먼저 하나 추가해 보세요</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 3. 문장 기본 -->
+  <section class="gx-sec" id="mechanics">
+    <h2 class="gx-sec__h"><span class="gx-num">03</span> 문장 기본</h2>
+    <p class="gx-sec__sub">표기·문장부호·길이의 기본 규칙. 화면마다 흔들리지 않게 일관적으로 적용합니다.</p>
+    <div class="gx-stack">
+      <div class="gx-card">
+        <h3>길이 — 짧게, 한 번에</h3>
+        <p>제목은 6단어 이하(영문), 본문은 한 문단에 한 가지 생각. 버튼은 1–2단어.</p>
+        <div class="gx-pair">
+          <div class="ex ex--good"><span class="tag">권장</span><p>변경 사항을 저장했습니다.</p></div>
+          <div class="ex ex--bad"><span class="tag">지양</span><p>회원님의 변경 사항이 성공적으로 완벽하게 저장 완료되었습니다!</p></div>
+        </div>
+      </div>
+      <div class="gx-card">
+        <h3>영문은 Sentence case</h3>
+        <p>영문 제목·디스플레이는 첫 글자만 대문자. 전부 대문자는 와이드 트래킹의 작은 오버라인 레이블(<code>TYPOGRAPHY</code>)에만.</p>
+        <div class="gx-pair">
+          <div class="ex ex--good"><span class="tag">권장</span><p>Build with clarity</p></div>
+          <div class="ex ex--bad"><span class="tag">지양</span><p>Build With Clarity!!</p></div>
+        </div>
+      </div>
+      <div class="gx-card">
+        <h3>문장부호 · 이모지</h3>
+        <p>짧은 UI 문구의 한글은 종결 마침표를 생략할 수 있습니다(버튼·레이블·짧은 토스트). 완전한 안내 문장은 마침표를 씁니다. <strong>이모지는 쓰지 않습니다</strong> — 화살표(<code>→ ↗</code>)는 인라인 어포던스로 허용.</p>
+        <div class="gx-pair">
+          <div class="ex ex--good"><span class="tag">권장</span><p>저장하기</p><p>변경 사항을 저장했습니다.</p></div>
+          <div class="ex ex--bad"><span class="tag">지양</span><p>저장하기.</p><p>저장 완료! 🎉</p></div>
+        </div>
+      </div>
+      <div class="gx-card">
+        <h3>숫자 · 데이터</h3>
+        <p>숫자·금액·퍼센트·통계는 Geist Mono의 tabular 숫자로. 천 단위 쉼표, 단위는 맥락에 맞춰 붙이거나 띄웁니다(<code>1,250원</code>, <code>24%</code>, <code>3.2GB</code>).</p>
+        <div class="gx-pair">
+          <div class="ex ex--good"><span class="tag">권장</span><p><span class="mono" style="font-family:var(--font-mono)">₩1,250,000</span> · <span class="mono" style="font-family:var(--font-mono)">+12.4%</span></p></div>
+          <div class="ex ex--bad"><span class="tag">지양</span><p>1250000원 · 플러스 십이점사 퍼센트</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 버튼 & 액션 -->
+  <section class="gx-sec" id="buttons">
+    <h2 class="gx-sec__h"><span class="gx-num">04</span> 버튼 &amp; 액션</h2>
+    <p class="gx-sec__sub">버튼은 누르면 무슨 일이 일어나는지 그 자체로 말해야 합니다. 동사로 시작하고, 결과를 구체적으로.</p>
+    <div class="gx-stack">
+      <div class="gx-card">
+        <h3>동사 + 결과</h3>
+        <p>"확인 / 예 / 제출" 같은 막연한 말 대신 행동의 결과를 적습니다. 다이얼로그에서는 본문을 안 읽어도 버튼만으로 판단되게.</p>
+        <div class="gx-pair">
+          <div class="ex ex--good"><span class="tag">권장</span><p>결제하기</p><p class="why">무엇을 하는지 명확. 금액 맥락과 이어짐.</p></div>
+          <div class="ex ex--bad"><span class="tag">지양</span><p>확인</p><p class="why">무엇을 확인하는지 알 수 없음.</p></div>
+        </div>
+      </div>
+      <div class="gx-card">
+        <h3>파괴적 액션은 대상까지</h3>
+        <div class="gx-pair">
+          <div class="ex ex--good"><span class="tag">권장</span><p>항목 3개 삭제</p></div>
+          <div class="ex ex--bad"><span class="tag">지양</span><p>예</p></div>
+        </div>
+      </div>
+      <div class="gx-card">
+        <h3>'취소'와 '닫기'를 구분</h3>
+        <p><strong>취소</strong>는 진행 중인 작업을 되돌립니다. <strong>닫기</strong>는 정보를 보여주던 창을 닫을 뿐 변화가 없습니다. 둘을 섞지 마세요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 폼 -->
+  <section class="gx-sec" id="forms">
+    <h2 class="gx-sec__h"><span class="gx-num">05</span> 폼</h2>
+    <p class="gx-sec__sub">레이블·플레이스홀더·도움말은 역할이 다릅니다. 플레이스홀더로 레이블을 대신하지 마세요 — 입력하면 사라지니까요.</p>
+    <div class="gx-stack">
+      <div class="gx-card">
+        <h3>레이블은 명사로 짧게, 플레이스홀더는 예시</h3>
+        <div class="gx-pair">
+          <div class="ex ex--good"><span class="tag">권장</span><p>레이블: <strong>이메일</strong></p><p>플레이스홀더: <code>you@example.com</code></p></div>
+          <div class="ex ex--bad"><span class="tag">지양</span><p>레이블 없이 플레이스홀더만: <code>이메일을 입력하세요</code></p><p class="why">입력 시작과 동시에 안내가 사라짐.</p></div>
+        </div>
+      </div>
+      <div class="gx-card">
+        <h3>도움말은 입력 전에, 미리</h3>
+        <p>제약 조건은 오류로 뒤늦게 알리지 말고 필드 아래 도움말로 먼저 안내합니다.</p>
+        <div class="gx-pair">
+          <div class="ex ex--good"><span class="tag">권장</span><p>비밀번호</p><p class="why">8자 이상, 숫자 1개 포함</p></div>
+          <div class="ex ex--bad"><span class="tag">지양</span><p>비밀번호</p><p class="why">(안내 없음 → 제출 후 오류)</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 오류 메시지 -->
+  <section class="gx-sec" id="errors">
+    <h2 class="gx-sec__h"><span class="gx-num">06</span> 오류 메시지</h2>
+    <p class="gx-sec__sub">좋은 오류는 세 가지를 담습니다 — <strong>무엇이</strong> 잘못됐고, (필요하면) <strong>왜</strong>, 그리고 <strong>어떻게 고치는지</strong>. 사용자를 탓하지 않고, 코드·숫자만 던지지 않습니다.</p>
+    <div class="gx-stack">
+      <div class="gx-card">
+        <h3>구체적으로 + 해결 경로</h3>
+        <div class="gx-pair">
+          <div class="ex ex--good"><span class="tag">권장</span><p>비밀번호는 8자 이상이어야 합니다.</p></div>
+          <div class="ex ex--bad"><span class="tag">지양</span><p>잘못된 입력입니다.</p></div>
+        </div>
+      </div>
+      <div class="gx-card">
+        <h3>시스템 오류도 사람 말로</h3>
+        <div class="gx-pair">
+          <div class="ex ex--good"><span class="tag">권장</span><p>네트워크에 연결할 수 없습니다.</p><p>잠시 후 다시 시도해 주세요.</p></div>
+          <div class="ex ex--bad"><span class="tag">지양</span><p>Error 500: Internal Server Error</p></div>
+        </div>
+        <p class="gx-note">진단용 코드가 필요하면 본문이 아니라 접힘 영역·세부 정보에 보조로 둡니다.</p>
+      </div>
+      <div class="gx-card">
+        <h3>탓하지 않기</h3>
+        <div class="gx-pair">
+          <div class="ex ex--good"><span class="tag">권장</span><p>입력한 카드 번호를 다시 확인해 주세요.</p></div>
+          <div class="ex ex--bad"><span class="tag">지양</span><p>당신이 카드 번호를 잘못 입력했습니다.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. 빈 상태 -->
+  <section class="gx-sec" id="empty">
+    <h2 class="gx-sec__h"><span class="gx-num">07</span> 빈 상태</h2>
+    <p class="gx-sec__sub">빈 화면은 막다른 길이 아니라 출발점입니다. 무엇이 없는지 알리고, 바로 다음 행동을 권합니다.</p>
+    <div class="gx-card">
+      <div class="gx-pair">
+        <div class="ex ex--good"><span class="tag">권장</span><p>아직 프로젝트가 없습니다.</p><p>첫 프로젝트를 만들어 시작해 보세요.</p><span class="mini-btn">프로젝트 만들기</span></div>
+        <div class="ex ex--bad"><span class="tag">지양</span><p>데이터 없음</p><p class="why">다음에 뭘 해야 할지 알 수 없음.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. 확인 대화상자 -->
+  <section class="gx-sec" id="confirm">
+    <h2 class="gx-sec__h"><span class="gx-num">08</span> 확인 대화상자</h2>
+    <p class="gx-sec__sub">제목은 결과를 묻거나 알리고, 본문은 영향을 설명하며, 버튼은 동사로 답합니다. "정말요? 예/아니오"는 아무것도 알려주지 않습니다.</p>
+    <div class="gx-card">
+      <div class="gx-pair">
+        <div class="ex ex--good">
+          <span class="tag">권장</span>
+          <p><strong>이 파일을 삭제할까요?</strong></p>
+          <p>삭제하면 복구할 수 없습니다.</p>
+          <p style="margin-top:12px;"><span class="mini-btn" style="background:var(--danger-500)">삭제</span> <span class="mini-btn" style="background:transparent;color:var(--text-secondary);border:1px solid var(--border)">취소</span></p>
+        </div>
+        <div class="ex ex--bad">
+          <span class="tag">지양</span>
+          <p><strong>정말요?</strong></p>
+          <p>이 작업을 진행하시겠습니까?</p>
+          <p style="margin-top:12px;"><span class="mini-btn" style="background:var(--gray-300);color:var(--text-secondary)">예</span> <span class="mini-btn" style="background:transparent;color:var(--text-secondary);border:1px solid var(--border)">아니오</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. 토스트 & 알림 -->
+  <section class="gx-sec" id="toast">
+    <h2 class="gx-sec__h"><span class="gx-num">09</span> 토스트 &amp; 알림</h2>
+    <p class="gx-sec__sub">결과를 짧게 과거형으로 알립니다. 되돌릴 수 있는 작업이면 실행취소를 함께 제공하세요.</p>
+    <div class="gx-card">
+      <div class="gx-pair">
+        <div class="ex ex--good"><span class="tag">권장</span><p>링크를 복사했습니다</p></div>
+        <div class="ex ex--bad"><span class="tag">지양</span><p>작업이 정상적으로 처리되었습니다</p></div>
+      </div>
+      <div class="gx-pair" style="margin-top:16px;">
+        <div class="ex ex--good"><span class="tag">권장</span><p>항목을 삭제했습니다 · <span style="color:var(--accent);font-weight:var(--fw-semibold)">실행취소</span></p></div>
+        <div class="ex ex--bad"><span class="tag">지양</span><p>삭제됨!! 다시 되돌리려면 관리자에게 문의하세요</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. 툴팁 & 마이크로카피 -->
+  <section class="gx-sec" id="micro">
+    <h2 class="gx-sec__h"><span class="gx-num">10</span> 툴팁 &amp; 마이크로카피</h2>
+    <p class="gx-sec__sub">툴팁은 보조 정보만 담습니다. 작업에 꼭 필요한 정보를 툴팁에 숨기지 마세요 — 본문이나 도움말로 드러냅니다.</p>
+    <div class="gx-card">
+      <div class="gx-pair">
+        <div class="ex ex--good"><span class="tag">권장</span><p>아이콘 버튼 툴팁: <strong>보관함으로 이동</strong></p><p class="why">아이콘만으로 모호한 동작을 한마디로 보완.</p></div>
+        <div class="ex ex--bad"><span class="tag">지양</span><p>툴팁: <strong>클릭하세요</strong></p><p class="why">정보가 없음.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. 날짜 · 시간 · 숫자 -->
+  <section class="gx-sec" id="numbers">
+    <h2 class="gx-sec__h"><span class="gx-num">11</span> 날짜 · 시간 · 숫자</h2>
+    <p class="gx-sec__sub">최근은 상대 시간으로, 정확함이 필요하면 절대 시간으로. 숫자는 항상 mono 서체로 정렬합니다.</p>
+    <div class="gx-card">
+      <table class="gx-table">
+        <thead><tr><th style="width:34%">맥락</th><th>표기</th></tr></thead>
+        <tbody>
+          <tr><td>방금 / 최근</td><td><span class="mono">3분 전</span>, <span class="mono">어제</span></td></tr>
+          <tr><td>정확한 날짜</td><td><span class="mono">2026년 6월 17일</span></td></tr>
+          <tr><td>날짜 + 시각</td><td><span class="mono">2026. 6. 17. 오후 2:30</span></td></tr>
+          <tr><td>금액</td><td><span class="mono">₩1,250,000</span> (천 단위 쉼표, tabular)</td></tr>
+          <tr><td>범위</td><td><span class="mono">6월 1일 – 6월 17일</span> (en-dash)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 12. 용어 표기 -->
+  <section class="gx-sec" id="terms">
+    <h2 class="gx-sec__h"><span class="gx-num">12</span> 용어 표기</h2>
+    <p class="gx-sec__sub">같은 개념은 늘 같은 단어로. 한 화면에서 "삭제 / 지우기 / 제거"를 섞으면 신뢰가 떨어집니다. 아래 표를 기준으로 통일하세요.</p>
+    <div class="gx-card">
+      <table class="gx-table">
+        <thead><tr><th style="width:33%">개념</th><th style="width:33%" class="ok">권장</th><th class="no">지양</th></tr></thead>
+        <tbody>
+          <tr><td>인증 진입</td><td class="ok">로그인</td><td class="no">사인인 · 로그온</td></tr>
+          <tr><td>인증 해제</td><td class="ok">로그아웃</td><td class="no">사인아웃 · 나가기</td></tr>
+          <tr><td>저장</td><td class="ok">저장</td><td class="no">세이브 · 저장하기/보관 혼용</td></tr>
+          <tr><td>삭제</td><td class="ok">삭제</td><td class="no">지우기 · 제거 · 없애기</td></tr>
+          <tr><td>수정</td><td class="ok">편집</td><td class="no">수정 · 변경 혼용</td></tr>
+          <tr><td>불러오기 대기</td><td class="ok">불러오는 중…</td><td class="no">로딩중 · 로딩 중입니다…</td></tr>
+          <tr><td>재시도</td><td class="ok">다시 시도</td><td class="no">재시도 · 리트라이</td></tr>
+          <tr><td>설정 화면</td><td class="ok">설정</td><td class="no">세팅 · 환경설정 혼용</td></tr>
+          <tr><td>닫기 동작</td><td class="ok">닫기</td><td class="no">취소(닫기 의미일 때)</td></tr>
+        </tbody>
+      </table>
+      <p class="gx-note">표는 출발점입니다 — 제품 도메인에 맞춰 확정하고, 한 번 정한 용어는 끝까지 유지하세요.</p>
+    </div>
+  </section>
+
+  <!-- 13. 접근성 -->
+  <section class="gx-sec" id="a11y">
+    <h2 class="gx-sec__h"><span class="gx-num">13</span> 접근성 라이팅</h2>
+    <p class="gx-sec__sub">스크린 리더와 키보드 사용자도 글만으로 맥락을 파악할 수 있어야 합니다.</p>
+    <div class="gx-stack">
+      <div class="gx-card">
+        <h3>링크 텍스트는 목적을 설명</h3>
+        <p>링크만 따로 읽어도 어디로 가는지 알 수 있게. "여기 클릭", "더 보기"처럼 맥락 없는 문구는 피합니다.</p>
+        <div class="gx-pair">
+          <div class="ex ex--good"><span class="tag">권장</span><p>요금제 비교 보기 →</p></div>
+          <div class="ex ex--bad"><span class="tag">지양</span><p>자세한 내용은 여기를 클릭</p></div>
+        </div>
+      </div>
+      <div class="gx-card">
+        <h3>아이콘 버튼엔 레이블, 이미지엔 alt</h3>
+        <p>텍스트 없는 아이콘 버튼에는 <code>aria-label</code>을, 의미 있는 이미지에는 내용을 전달하는 <code>alt</code>를. 순수 장식 이미지는 <code>alt=""</code>로 비웁니다.</p>
+        <div class="gx-pair">
+          <div class="ex ex--good"><span class="tag">권장</span><p><code>aria-label="검색"</code></p><p><code>alt="매출 추이 꺾은선 그래프"</code></p></div>
+          <div class="ex ex--bad"><span class="tag">지양</span><p>레이블 없는 아이콘 버튼</p><p><code>alt="image1.png"</code></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 체크리스트 -->
+  <section class="gx-sec" id="checklist">
+    <h2 class="gx-sec__h"><span class="gx-num">✓</span> 발행 전 체크리스트</h2>
+    <p class="gx-sec__sub">화면에 글을 넣기 전 마지막 점검.</p>
+    <div class="gx-card">
+      <ul class="gx-check">
+        <li><span class="mk">✓</span>한 번 읽고 바로 이해되는가? 전문용어·중의성은 없는가?</li>
+        <li><span class="mk">✓</span>버튼·액션이 동사로 시작하고 결과를 말하는가?</li>
+        <li><span class="mk">✓</span>오류 메시지가 무엇이 잘못됐고 어떻게 고치는지 알려주는가?</li>
+        <li><span class="mk">✓</span>같은 개념을 같은 용어로 일관되게 썼는가?</li>
+        <li><span class="mk">✓</span>느낌표·이모지·과장 표현을 걷어냈는가?</li>
+        <li><span class="mk">✓</span>숫자·금액·시간을 mono 서체와 규칙대로 표기했는가?</li>
+        <li><span class="mk">✓</span>링크 텍스트만 읽어도 목적을 알 수 있는가?</li>
+        <li><span class="mk">✓</span>한글이 우선이고, 영문은 꼭 필요한 곳에만 있는가?</li>
+      </ul>
+    </div>
+    <p class="gx-note">관련 파운데이션: <a href="./foundations.html#guidelines" style="color:var(--accent)">Voice &amp; Writing 스페시멘 →</a></p>
+  </section>
+</main>
+<script>
+  var root=document.documentElement,btn=document.getElementById('gxTheme');
+  function setT(t){root.setAttribute('data-theme',t);btn.textContent=t==='dark'?'Light':'Dark';try{localStorage.setItem('ds-theme',t);}catch(e){}}
+  var saved='light';try{saved=localStorage.getItem('ds-theme')||'light';}catch(e){}
+  setT(saved);
+  btn.addEventListener('click',function(){setT(root.getAttribute('data-theme')==='dark'?'light':'dark');});
+</script>
+</body>
+</html>
