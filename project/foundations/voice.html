@@ -1,0 +1,43 @@
+<!-- @dsCard group="Guidelines" viewport="700x300" name="Voice & Writing" subtitle="Clear · calm · Korean-led · no emoji" -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html,body{margin:0;background:var(--surface-card);font-family:var(--font-text);-webkit-font-smoothing:antialiased;}
+  .wrap{padding:24px 28px;display:flex;flex-direction:column;gap:12px;}
+  .principles{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px;}
+  .pill{font:var(--text-caption);font-weight:var(--fw-semibold);color:var(--text-secondary);background:var(--surface-sunken);border-radius:var(--radius-pill);padding:6px 12px;}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .ex{border:1px solid var(--border);border-radius:var(--radius-md);padding:13px 15px;}
+  .ex .tag{font:var(--text-caption);font-weight:var(--fw-semibold);letter-spacing:var(--ls-caps);text-transform:uppercase;margin-bottom:7px;display:block;}
+  .good .tag{color:var(--success-600);} .bad .tag{color:var(--danger-500);}
+  .ex p{margin:0;font:var(--text-body-sm);color:var(--text-primary);}
+  .ex.bad p{color:var(--text-tertiary);text-decoration:line-through;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="principles">
+    <span class="pill">명료하고 차분하게</span>
+    <span class="pill">한글 우선 · 영문 보조</span>
+    <span class="pill">Sentence case</span>
+    <span class="pill">이모지 없음</span>
+    <span class="pill">동사 중심 · 간결</span>
+  </div>
+  <div class="row">
+    <div class="ex good"><span class="tag">Good</span><p>작업을 시작하세요</p></div>
+    <div class="ex bad"><span class="tag">Avoid</span><p>지금 바로 놀라운 경험을 시작! 🚀</p></div>
+  </div>
+  <div class="row">
+    <div class="ex good"><span class="tag">Good</span><p>Build with clarity</p></div>
+    <div class="ex bad"><span class="tag">Avoid</span><p>Build With Clarity!!</p></div>
+  </div>
+  <div class="row">
+    <div class="ex good"><span class="tag">Good</span><p>변경 사항이 저장되었습니다.</p></div>
+    <div class="ex bad"><span class="tag">Avoid</span><p>변경사항이 성공적으로 완벽하게 저장 완료되었습니다!</p></div>
+  </div>
+</div>
+</body>
+</html>

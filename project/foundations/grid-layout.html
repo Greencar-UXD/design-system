@@ -1,0 +1,33 @@
+<!-- @dsCard group="Layout" viewport="700x230" name="Grid & Layout" subtitle="12-col · 1120 max · 32 gutter · 20 gap" -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html,body{margin:0;background:var(--surface-card);font-family:var(--font-text);-webkit-font-smoothing:antialiased;}
+  .wrap{padding:26px 28px;}
+  .meta{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;}
+  .pill{font:var(--text-mono);font-size:11px;color:var(--text-secondary);background:var(--surface-sunken);border:1px solid var(--border);border-radius:var(--radius-pill);padding:6px 12px;}
+  .pill b{color:var(--text-primary);font-weight:600;}
+  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:8px;border:1px dashed var(--border-strong);border-radius:var(--radius-md);padding:10px;}
+  .col{height:64px;border-radius:var(--radius-xs);background:color-mix(in srgb, var(--accent) 12%, transparent);border:1px solid color-mix(in srgb, var(--accent) 30%, transparent);}
+  .cap{font:var(--text-caption);color:var(--text-tertiary);margin-top:10px;text-align:center;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta">
+    <span class="pill">columns · <b>12</b></span>
+    <span class="pill">max-width · <b>1120px</b></span>
+    <span class="pill">gutter · <b>32px</b></span>
+    <span class="pill">gap · <b>20px</b></span>
+  </div>
+  <div class="grid" id="grid"></div>
+  <div class="cap">12-column fluid grid · content capped at 1120–1240px · 32px page gutters</div>
+</div>
+<script>
+  document.getElementById('grid').innerHTML = Array.from({length:12}).map(()=>'<div class="col"></div>').join('');
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+/* ============================================================
+   Colors — Monochrome + Cobalt accent
+   Light is the base (:root). Dark overrides semantic tokens
+   under [data-theme="dark"]. Raw ramps stay constant; only
+   semantic aliases re-map per theme.
+
+   System intent: INK (near-black) drives primary text & actions;
+   COBALT is the signature accent — links, focus, selected/active,
+   key highlights. Used sparingly on a monochrome base.
+   ============================================================ */
+
+:root {
+  /* ---- Neutral ramp (cool-leaning gray) ---- */
+  --gray-0:   #ffffff;
+  --gray-50:  #f7f8f9;
+  --gray-100: #eceef1;
+  --gray-200: #dde0e5;
+  --gray-300: #c5cad1;
+  --gray-400: #9aa1ab;
+  --gray-500: #6b727d;
+  --gray-600: #4d535d;
+  --gray-700: #383d45;
+  --gray-800: #24282e;
+  --gray-900: #14171b;
+  --gray-950: #0c0e11;
+
+  /* ---- Cobalt ramp (signature accent) ---- */
+  --cobalt-50:  #eef2ff;
+  --cobalt-100: #dde5ff;
+  --cobalt-200: #bccbff;
+  --cobalt-300: #93acff;
+  --cobalt-400: #5e84ff;
+  --cobalt-500: #2d5bff;
+  --cobalt-600: #2447e0;
+  --cobalt-700: #1f3bb8;
+  --cobalt-800: #1c328f;
+  --cobalt-900: #1a2d70;
+
+  /* ---- Status ramps ---- */
+  --success-500: #0fa968;
+  --success-600: #0c8a54;
+  --success-50:  #e2f6ed;
+  --warning-500: #d9870b;
+  --warning-600: #b56e08;
+  --warning-50:  #fbf2df;
+  --danger-500:  #e0433a;
+  --danger-600:  #c5352d;
+  --danger-50:   #fbe9e8;
+
+  /* ===== Semantic — LIGHT ===== */
+  /* text */
+  --text-primary:   var(--gray-900);
+  --text-secondary: var(--gray-600);
+  --text-tertiary:  var(--gray-400);
+  --text-inverse:   var(--gray-0);
+  --text-link:      var(--cobalt-600);
+  --text-accent:    var(--cobalt-600);
+
+  /* surfaces */
+  --surface-page:    var(--gray-50);
+  --surface-card:    var(--gray-0);
+  --surface-sunken:  var(--gray-100);
+  --surface-raised:  var(--gray-0);
+  --surface-inverse: var(--gray-900);
+  --surface-accent-subtle: var(--cobalt-50);
+
+  /* borders */
+  --border:        var(--gray-200);
+  --border-strong: var(--gray-300);
+  --border-accent: var(--cobalt-500);
+
+  /* accent */
+  --accent:        var(--cobalt-500);
+  --accent-hover:  var(--cobalt-600);
+  --on-accent:     var(--gray-0);
+  --focus-ring:    var(--cobalt-500);
+
+  /* primary action (ink-forward) */
+  --action-primary-bg:       var(--gray-900);
+  --action-primary-bg-hover: var(--gray-800);
+  --action-primary-fg:       var(--gray-0);
+
+  /* status (semantic) */
+  --info-500: var(--cobalt-500);
+  --info-50:  var(--cobalt-50);
+
+  /* ---- Data-viz categorical palette (monochrome + cobalt led) ---- */
+  --chart-1: #2d5bff; /* @kind color */
+  --chart-2: #0fa968; /* @kind color */
+  --chart-3: #d9870b; /* @kind color */
+  --chart-4: #8b5cf6; /* @kind color */
+  --chart-5: #e0433a; /* @kind color */
+  --chart-6: #6b727d; /* @kind color */
+}
+
+/* ===== Semantic — DARK ===== */
+[data-theme="dark"] {
+  /* text */
+  --text-primary:   #f3f4f6;
+  --text-secondary: #9aa1ab;
+  --text-tertiary:  #6b727d;
+  --text-inverse:   var(--gray-900);
+  --text-link:      #7d97ff;
+  --text-accent:    #7d97ff;
+
+  /* surfaces */
+  --surface-page:    #0d0f12;
+  --surface-card:    #16181d;
+  --surface-sunken:  #1d2025;
+  --surface-raised:  #1d2025;
+  --surface-inverse: var(--gray-50);
+  --surface-accent-subtle: #18203f;
+
+  /* borders */
+  --border:        #262a30;
+  --border-strong: #343943;
+  --border-accent: #5b7cff;
+
+  /* accent (lifted for contrast on dark) */
+  --accent:        #5b7cff;
+  --accent-hover:  #7d97ff;
+  --on-accent:     #0d0f12;
+  --focus-ring:    #5b7cff;
+
+  /* primary action (near-white ink on dark) */
+  --action-primary-bg:       #f3f4f6;
+  --action-primary-bg-hover: #ffffff;
+  --action-primary-fg:       #0d0f12;
+
+  /* status surfaces */
+  --info-50:    #18203f;
+  --success-50: #0e2d20;
+  --warning-50: #2e2410;
+  --danger-50:  #371613;
+}

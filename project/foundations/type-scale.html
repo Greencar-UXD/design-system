@@ -1,0 +1,38 @@
+<!-- @dsCard group="Type" viewport="700x420" name="Type Scale" subtitle="40 → 10px, Pretendard" -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html,body{margin:0;background:var(--surface-card);color:var(--text-primary);font-family:var(--font-text);-webkit-font-smoothing:antialiased;}
+  .wrap{padding:28px 32px;display:flex;flex-direction:column;gap:13px;}
+  .row{display:flex;align-items:baseline;gap:18px;}
+  .row .meta{flex:none;width:72px;font:var(--text-mono);color:var(--text-tertiary);font-size:11px;letter-spacing:.02em;}
+  .s-display{font:var(--text-display);letter-spacing:var(--ls-tighter);}
+  .s-h1{font:var(--text-h1);letter-spacing:var(--ls-tight);}
+  .s-h2{font:var(--text-h2);}
+  .s-h3{font:var(--text-h3);}
+  .s-h4{font:var(--text-h4);}
+  .s-lg{font:var(--text-body-lg);}
+  .s-body{font:var(--text-body);}
+  .s-sm{font:var(--text-body-sm);color:var(--text-secondary);}
+  .s-cap{font:var(--text-caption);color:var(--text-tertiary);}
+  .s-2xs{font:var(--fw-regular) var(--fs-2xs)/var(--lh-normal) var(--font-text);color:var(--text-tertiary);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="row"><span class="meta">40 · 700</span><span class="s-display">디스플레이 Display</span></div>
+  <div class="row"><span class="meta">36 · 700</span><span class="s-h1">페이지 제목 Heading 1</span></div>
+  <div class="row"><span class="meta">32 · 700</span><span class="s-h2">페이지 제목 Heading 2</span></div>
+  <div class="row"><span class="meta">28 · 600</span><span class="s-h3">섹션 헤드 Heading 3</span></div>
+  <div class="row"><span class="meta">24 · 600</span><span class="s-h4">카드 타이틀 Heading 4</span></div>
+  <div class="row"><span class="meta">20 · 400</span><span class="s-lg">리드 본문 Body Large</span></div>
+  <div class="row"><span class="meta">16 · 400</span><span class="s-body">본문 텍스트 Body — 읽기 좋은 기본 사이즈</span></div>
+  <div class="row"><span class="meta">14 · 400</span><span class="s-sm">보조 텍스트 Small — secondary UI</span></div>
+  <div class="row"><span class="meta">12 · 400</span><span class="s-cap">캡션 Caption — meta</span></div>
+  <div class="row"><span class="meta">10 · 400</span><span class="s-2xs">오버라인 · fine print 2XS</span></div>
+</div>
+</body>
+</html>

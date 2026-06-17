@@ -1,0 +1,28 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Cobalt Accent" subtitle="Signature accent · 50 → 900" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html,body{margin:0;background:var(--surface-card);font-family:var(--font-text);-webkit-font-smoothing:antialiased;}
+  .wrap{padding:26px 28px;}
+  .ramp{display:grid;grid-template-columns:repeat(10,1fr);gap:8px;}
+  .sw{display:flex;flex-direction:column;gap:8px;}
+  .chip{height:64px;border-radius:var(--radius-md);box-shadow:inset 0 0 0 1px rgba(16,18,29,.08);position:relative;}
+  .chip.base::after{content:"500";position:absolute;inset:auto 0 6px 0;text-align:center;font:var(--text-mono);font-size:10px;color:#fff;font-weight:600;}
+  .lbl{font:var(--text-mono);font-size:10px;color:var(--text-tertiary);text-align:center;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="ramp" id="ramp"></div>
+</div>
+<script>
+  const steps = [50,100,200,300,400,500,600,700,800,900];
+  document.getElementById('ramp').innerHTML = steps.map(s =>
+    `<div class="sw"><div class="chip ${s===500?'base':''}" style="background:var(--cobalt-${s})"></div><div class="lbl">${s}</div></div>`
+  ).join('');
+</script>
+</body>
+</html>

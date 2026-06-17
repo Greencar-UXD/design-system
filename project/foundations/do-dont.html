@@ -1,0 +1,47 @@
+<!-- @dsCard group="Guidelines" viewport="700x280" name="Do / Don't — accent" subtitle="Use cobalt sparingly" -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html,body{margin:0;background:var(--surface-page);font-family:var(--font-text);-webkit-font-smoothing:antialiased;}
+  .wrap{padding:24px 28px;display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .col{background:var(--surface-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px;}
+  .hd{display:flex;align-items:center;gap:8px;font:var(--text-label);margin-bottom:14px;}
+  .do{color:var(--success-600);} .dont{color:var(--danger-500);}
+  .hd .ic{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;}
+  .do .ic{background:var(--success-50);} .dont .ic{background:var(--danger-50);}
+  .hd svg{width:12px;height:12px;}
+  .demo{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+  .btn{font-size:13px;font-weight:600;border-radius:var(--radius-md);padding:9px 14px;border:1px solid transparent;}
+  .ink{background:var(--action-primary-bg);color:var(--action-primary-fg);}
+  .cob{background:var(--accent);color:var(--on-accent);}
+  .out{background:var(--surface-card);border-color:var(--border-strong);color:var(--text-primary);}
+  .ghost{background:transparent;color:var(--text-primary);}
+  .note{font:var(--text-caption);color:var(--text-secondary);line-height:var(--lh-body);margin:0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="col">
+    <div class="hd do"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>DO</div>
+    <div class="demo">
+      <span class="btn ink">저장</span>
+      <span class="btn cob">시작하기</span>
+      <span class="btn ghost">취소</span>
+    </div>
+    <p class="note">잉크를 기본 액션으로, 코발트는 화면당 가장 중요한 CTA 하나에만. 위계가 분명합니다.</p>
+  </div>
+  <div class="col">
+    <div class="hd dont"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>DON'T</div>
+    <div class="demo">
+      <span class="btn cob">저장</span>
+      <span class="btn cob">시작하기</span>
+      <span class="btn cob">취소</span>
+    </div>
+    <p class="note">모든 버튼을 코발트로 칠하면 위계가 사라지고 액센트의 의미가 희석됩니다.</p>
+  </div>
+</div>
+</body>
+</html>

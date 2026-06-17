@@ -1,0 +1,34 @@
+<!-- @dsCard group="Motion" viewport="700x230" name="Easing & Duration" subtitle="Quick, understated motion — no bounce" -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html,body{margin:0;background:var(--surface-card);font-family:var(--font-text);-webkit-font-smoothing:antialiased;}
+  .wrap{padding:26px 28px;display:flex;flex-direction:column;gap:16px;}
+  .row{display:flex;align-items:center;gap:16px;}
+  .name{width:150px;flex:none;font:var(--text-mono);font-size:11px;color:var(--text-secondary);}
+  .track{flex:1;height:10px;border-radius:var(--radius-pill);background:var(--surface-sunken);position:relative;}
+  .dot{position:absolute;top:1px;left:1px;width:8px;height:8px;border-radius:50%;background:var(--accent);}
+  .d1{animation:run 1.8s var(--ease-out) infinite alternate;}
+  .d2{animation:run 1.8s var(--ease-in-out) infinite alternate;}
+  @keyframes run{from{left:1px;}to{left:calc(100% - 9px);}}
+  .durs{display:flex;gap:10px;margin-top:4px;}
+  .pill{font:var(--text-mono);font-size:11px;color:var(--text-secondary);background:var(--surface-sunken);border:1px solid var(--border);border-radius:var(--radius-pill);padding:6px 12px;}
+  .pill b{color:var(--text-primary);font-weight:600;}
+  @media (prefers-reduced-motion: reduce){ .dot{animation:none;left:calc(100% - 9px);} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="row"><span class="name">--ease-out</span><span class="track"><span class="dot d1"></span></span></div>
+  <div class="row"><span class="name">--ease-in-out</span><span class="track"><span class="dot d2"></span></span></div>
+  <div class="durs">
+    <span class="pill">fast · <b>120ms</b></span>
+    <span class="pill">base · <b>200ms</b></span>
+    <span class="pill">slow · <b>320ms</b></span>
+  </div>
+</div>
+</body>
+</html>

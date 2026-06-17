@@ -1,0 +1,59 @@
+/* ============================================================
+   Typography tokens
+   Family: Pretendard single-family system (KO + EN), Geist Mono for data.
+   Base scale + semantic aliases. Sizes in px for predictable UI rendering.
+   ============================================================ */
+
+:root {
+  /* ---- Families ---- */
+  --font-display: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --font-text:    "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --font-mono:    "Geist Mono", ui-monospace, "SFMono-Regular", "JetBrains Mono", "D2Coding", monospace;
+
+  /* ---- Weights (Pretendard axis 100–900) ---- */
+  --fw-regular:  400; /* @kind font */
+  --fw-medium:   500; /* @kind font */
+  --fw-semibold: 600; /* @kind font */
+  --fw-bold:     700; /* @kind font */
+
+  /* ---- Size scale (px) ---- 10·12·14·16·20·24·28·32·36·40 */
+  --fs-2xs:     10px;   /* overline, fine print */
+  --fs-caption: 12px;   /* captions, meta */
+  --fs-sm:      14px;   /* secondary UI, dense tables */
+  --fs-base:    16px;   /* default body */
+  --fs-lg:      20px;   /* lead body, large UI labels */
+  --fs-h4:      24px;   /* card titles, h4 */
+  --fs-h3:      28px;   /* section heads, h3 */
+  --fs-h2:      32px;   /* page titles, h2 */
+  --fs-h1:      36px;   /* h1 */
+  --fs-display: 40px;   /* hero / display */
+  --fs-display-lg: 40px;/* alias of display (back-compat) */
+
+  /* ---- Line heights ---- */
+  --lh-tight:   1.05;   /* @kind font */
+  --lh-snug:    1.18;   /* @kind font */
+  --lh-normal:  1.45;   /* @kind font */
+  --lh-body:    1.6;    /* @kind font */
+  --lh-relaxed: 1.72;   /* @kind font */
+
+  /* ---- Letter spacing ---- */
+  --ls-tighter: -0.035em; /* @kind font */
+  --ls-tight:   -0.02em;  /* @kind font */
+  --ls-snug:    -0.01em;  /* @kind font */
+  --ls-normal:  0;        /* @kind font */
+  --ls-wide:    0.04em;   /* @kind font */
+  --ls-caps:    0.13em;   /* @kind font */
+
+  /* ---- Semantic type aliases ---- */
+  --text-display:   var(--fw-bold) var(--fs-display-lg)/var(--lh-tight) var(--font-display);
+  --text-h1:        var(--fw-bold) var(--fs-h1)/var(--lh-snug) var(--font-display);
+  --text-h2:        var(--fw-bold) var(--fs-h2)/var(--lh-snug) var(--font-display);
+  --text-h3:        var(--fw-semibold) var(--fs-h3)/var(--lh-snug) var(--font-display);
+  --text-h4:        var(--fw-semibold) var(--fs-h4)/var(--lh-snug) var(--font-display);
+  --text-body-lg:   var(--fw-regular) var(--fs-lg)/var(--lh-body) var(--font-text);
+  --text-body:      var(--fw-regular) var(--fs-base)/var(--lh-body) var(--font-text);
+  --text-body-sm:   var(--fw-regular) var(--fs-sm)/var(--lh-normal) var(--font-text);
+  --text-caption:   var(--fw-regular) var(--fs-caption)/var(--lh-normal) var(--font-text);
+  --text-label:     var(--fw-semibold) var(--fs-sm)/var(--lh-normal) var(--font-text);
+  --text-mono:      var(--fw-regular) var(--fs-sm)/var(--lh-normal) var(--font-mono);
+}

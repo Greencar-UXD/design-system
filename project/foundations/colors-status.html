@@ -1,0 +1,37 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Status" subtitle="Success · Warning · Danger · Info" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html,body{margin:0;background:var(--surface-card);font-family:var(--font-text);-webkit-font-smoothing:antialiased;}
+  .wrap{padding:24px 28px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .item{display:flex;flex-direction:column;gap:10px;}
+  .pair{display:flex;gap:8px;align-items:center;}
+  .solid{width:40px;height:40px;border-radius:var(--radius-md);flex:none;}
+  .soft{flex:1;height:40px;border-radius:var(--radius-md);display:flex;align-items:center;padding:0 12px;font-size:12.5px;font-weight:600;}
+  .name{font:var(--text-caption);font-weight:var(--fw-semibold);letter-spacing:var(--ls-caps);text-transform:uppercase;color:var(--text-tertiary);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="item">
+    <span class="name">Success</span>
+    <div class="pair"><div class="solid" style="background:var(--success-500)"></div><div class="soft" style="background:var(--success-50);color:var(--success-600)">정상</div></div>
+  </div>
+  <div class="item">
+    <span class="name">Warning</span>
+    <div class="pair"><div class="solid" style="background:var(--warning-500)"></div><div class="soft" style="background:var(--warning-50);color:var(--warning-600)">주의</div></div>
+  </div>
+  <div class="item">
+    <span class="name">Danger</span>
+    <div class="pair"><div class="solid" style="background:var(--danger-500)"></div><div class="soft" style="background:var(--danger-50);color:var(--danger-600)">오류</div></div>
+  </div>
+  <div class="item">
+    <span class="name">Info</span>
+    <div class="pair"><div class="solid" style="background:var(--info-500)"></div><div class="soft" style="background:var(--info-50);color:var(--accent-hover)">안내</div></div>
+  </div>
+</div>
+</body>
+</html>

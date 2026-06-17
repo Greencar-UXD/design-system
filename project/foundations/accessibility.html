@@ -1,0 +1,32 @@
+<!-- @dsCard group="Guidelines" viewport="700x260" name="Accessibility" subtitle="Contrast · focus · hit targets · motion" -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html,body{margin:0;background:var(--surface-card);font-family:var(--font-text);-webkit-font-smoothing:antialiased;}
+  .wrap{padding:24px 28px;display:grid;grid-template-columns:1fr 1fr;gap:14px 28px;}
+  .item{display:flex;gap:11px;}
+  .tick{flex:none;width:22px;height:22px;border-radius:50%;background:var(--success-50);color:var(--success-600);display:grid;place-items:center;margin-top:1px;}
+  .tick svg{width:13px;height:13px;}
+  .t{font:var(--text-label);color:var(--text-primary);margin:0;}
+  .d{font:var(--text-caption);color:var(--text-secondary);margin:2px 0 0;line-height:var(--lh-body);}
+</style>
+</head>
+<body>
+<div class="wrap" id="wrap"></div>
+<script>
+  const tick = '<span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>';
+  const items = [
+    ['색 대비','본문 텍스트는 배경 대비 AA(4.5:1) 이상. --text-secondary까지 본문 사용 가능, --text-tertiary는 보조 라벨 전용.'],
+    ['포커스 링','모든 인터랙티브 요소에 2px 코발트 포커스 링(--focus-ring) + 2px offset. 절대 제거하지 않음.'],
+    ['터치 타깃','모바일 탭 영역 최소 44×44px. IconButton lg, BottomNav, ListRow는 이미 충족.'],
+    ['모션','prefers-reduced-motion 존중 — 스피너·스켈레톤·인디터미닛은 자동으로 정지/완화.'],
+    ['색에만 의존 금지','상태는 색 + 아이콘/텍스트 병행(Badge dot, Alert 아이콘 등).'],
+    ['시맨틱 마크업','버튼은 <button>, 링크는 <a>, 다이얼로그 role/aria-modal, 입력엔 라벨 연결.'],
+  ];
+  document.getElementById('wrap').innerHTML = items.map(([t,d])=>`<div class="item">${tick}<div><p class="t">${t}</p><p class="d">${d}</p></div></div>`).join('');
+</script>
+</body>
+</html>

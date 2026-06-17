@@ -1,0 +1,23 @@
+<!-- @dsCard group="Type" viewport="700x230" name="Monospace · Data" subtitle="Geist Mono — numerics, code, tabular" -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html,body{margin:0;background:var(--surface-card);color:var(--text-primary);font-family:var(--font-mono);-webkit-font-smoothing:antialiased;}
+  .wrap{padding:28px 32px;display:flex;flex-direction:column;gap:16px;}
+  .label{font-family:var(--font-text);font:var(--text-caption);font-weight:var(--fw-semibold);letter-spacing:var(--ls-caps);text-transform:uppercase;color:var(--text-tertiary);}
+  .nums{font-family:var(--font-mono);font-size:30px;font-weight:500;letter-spacing:-0.01em;font-variant-numeric:tabular-nums;}
+  .code{font-family:var(--font-mono);font-size:14px;color:var(--text-secondary);background:var(--surface-sunken);border-radius:var(--radius-sm);padding:12px 14px;line-height:1.5;}
+  .code .k{color:var(--text-accent);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="label">Tabular numerals</div>
+  <div class="nums">$1,284,950.00 · 99.98% · +12.4%</div>
+  <div class="code"><span class="k">const</span> radius = <span class="k">var</span>(--radius-md); <span style="color:var(--text-tertiary)">// 10px</span></div>
+</div>
+</body>
+</html>
