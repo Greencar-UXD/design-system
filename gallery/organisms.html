@@ -32,6 +32,9 @@
   .gx-nav a:hover{background:var(--surface-sunken);color:var(--text-primary);}
   .gx-nav a[aria-current]{color:var(--accent);background:var(--surface-accent-subtle);}
   .gx-nav .gx-sep{width:1px;height:20px;background:var(--border);margin:0 8px;}
+  .gx-right{display:flex;align-items:center;gap:8px;}
+  .gx-burger{display:none;align-items:center;justify-content:center;width:40px;height:40px;padding:0;border:1px solid var(--border);border-radius:var(--radius-md);background:transparent;color:var(--text-primary);cursor:pointer;}
+  .gx-burger:hover{background:var(--surface-sunken);}
   .gx-wrap{max-width:1120px;margin:0 auto;padding:40px 24px 120px;}
   .gx-h1{font:var(--text-h1);letter-spacing:var(--ls-tighter);margin:0 0 12px;}
   .gx-lead{font:var(--text-body-lg);color:var(--text-secondary);margin:0 0 8px;max-width:64ch;}
@@ -61,10 +64,12 @@
   .gx-faux__row{flex:none;height:64px;border-radius:var(--radius-lg);background:var(--surface-card);border:1px solid var(--border);}
   .gx-caption{font:var(--text-caption);color:var(--text-tertiary);margin:12px 0 0;text-align:center;}
   @media (max-width:600px){
-    .gx-top{flex-direction:column;align-items:stretch;gap:8px;padding:10px 14px;}
-    .gx-nav{flex-wrap:nowrap;overflow-x:auto;gap:4px;scrollbar-width:none;}
-    .gx-nav::-webkit-scrollbar{display:none;}
-    .gx-nav a{white-space:nowrap;flex:none;}
+    .gx-top{padding:10px 16px;}
+    .gx-burger{display:inline-flex;}
+    .gx-nav{position:absolute;top:100%;left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:2px;background:var(--surface-card);border-bottom:1px solid var(--border);box-shadow:var(--shadow-lg);padding:8px 12px 14px;}
+    .gx-nav.gx-nav--open{display:flex;}
+    .gx-nav a{padding:12px 10px;border-radius:var(--radius-sm);white-space:normal;}
+    .gx-nav .gx-sep{display:none;}
     .gx-wrap{padding:28px 16px 96px;}
     .gx-h1{font:var(--text-h2);}
     .gx-sec{margin:40px 0 0;}
@@ -77,7 +82,8 @@
 <body>
 <header class="gx-top">
   <a class="gx-brand" href="../index.html">Cobalt<span class="gx-dot"></span></a>
-  <nav class="gx-nav">
+  <div class="gx-right">
+  <nav class="gx-nav" id="gxNav">
     <a href="../index.html">Overview</a>
     <a href="./foundations.html">Foundations</a>
     <a href="./ux-writing.html">UX Writing</a>
@@ -88,6 +94,8 @@
     <span class="gx-sep"></span>
     <button id="gxTheme" class="ds-btn ds-btn--secondary ds-btn--sm" type="button">Dark</button>
   </nav>
+    <button id="gxBurger" class="gx-burger" type="button" aria-label="메뉴" aria-expanded="false" aria-controls="gxNav"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
 </header>
 <main class="gx-wrap">
   <h1 class="gx-h1">Organisms</h1>
@@ -589,6 +597,11 @@
   var saved='light';try{saved=localStorage.getItem('ds-theme')||'light';}catch(e){}
   setT(saved);
   btn.addEventListener('click',function(){setT(root.getAttribute('data-theme')==='dark'?'light':'dark');});
+  var burger=document.getElementById('gxBurger'),nav=document.getElementById('gxNav');
+  if(burger&&nav){
+    burger.addEventListener('click',function(){var o=nav.classList.toggle('gx-nav--open');burger.setAttribute('aria-expanded',o?'true':'false');});
+    nav.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(a){nav.classList.remove('gx-nav--open');burger.setAttribute('aria-expanded','false');}});
+  }
 </script>
 </body>
 </html>
