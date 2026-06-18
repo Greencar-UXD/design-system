@@ -92,6 +92,19 @@
   .gx-note{font:var(--text-caption);color:var(--text-tertiary);margin:16px 0 0;word-break:keep-all;}
   code{font-family:var(--font-mono);font-size:.92em;background:var(--surface-sunken);padding:2px 6px;border-radius:var(--radius-xs);}
   @media(max-width:720px){ .gx-pair{grid-template-columns:1fr;} }
+  @media (max-width:600px){
+    .gx-top{flex-direction:column;align-items:stretch;gap:8px;padding:10px 14px;}
+    .gx-nav{flex-wrap:nowrap;overflow-x:auto;gap:4px;scrollbar-width:none;}
+    .gx-nav::-webkit-scrollbar{display:none;}
+    .gx-nav a{white-space:nowrap;flex:none;}
+    .gx-wrap{padding:28px 16px 96px;}
+    .gx-h1{font:var(--text-h2);}
+    .gx-sec{margin:40px 0 0;}
+    .gx-card{padding:20px 16px;}
+    .gx-prin{grid-template-columns:1fr;}
+    .gx-pair{grid-template-columns:1fr;}
+    .gx-toc{gap:6px;}
+  }
 </style>
 </head>
 <body>

@@ -50,6 +50,17 @@
      never reach into the next track; vertical padding clears top/bottom bubbles */
   .gx-tipgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:52px 8px;justify-items:center;transform:translateZ(0);isolation:isolate;}
   .gx-tipgrid > .ds-tip{align-self:center;}
+  @media (max-width:600px){
+    .gx-top{flex-direction:column;align-items:stretch;gap:8px;padding:10px 14px;}
+    .gx-nav{flex-wrap:nowrap;overflow-x:auto;gap:4px;scrollbar-width:none;}
+    .gx-nav::-webkit-scrollbar{display:none;}
+    .gx-nav a{white-space:nowrap;flex:none;}
+    .gx-wrap{padding:28px 16px 96px;}
+    .gx-h1{font:var(--text-h2);}
+    .gx-sec{margin:40px 0 0;}
+    .gx-demo{padding:20px 16px;}
+    .gx-grid{grid-template-columns:1fr;}
+  }
 </style>
 </head>
 <body>
