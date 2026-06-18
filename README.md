@@ -52,6 +52,7 @@ The look: **monochrome surfaces, ink text, one cobalt accent used sparingly.** Q
 - **Delivery:** in HTML specimens and prototypes, inline the Lucide SVG paths (stroke, fill:none) or load Lucide from CDN. Component code (Button, IconButton, etc.) accepts any icon node via an `icon` prop — pass a Lucide `<svg>`.
 - **No emoji as icons. No PNG icons.** Unicode arrows (`→ ↗ ←`) are acceptable inline.
 - **Assets:** see `assets/` for logos/marks (placeholder lockups until a real logo is supplied).
+- **Social / share cards:** `assets/og-cover.png` (light) and `assets/og-cover-dark.png` (dark) — 1200×630 Open Graph covers. `index.html` and every gallery page carry `og:*` / `twitter:card` meta with a page-specific title, so shared links render a proper preview. _Link-preview services cache aggressively; re-scrape via the platform's debugger if an old/empty thumbnail sticks._
 
 ---
 

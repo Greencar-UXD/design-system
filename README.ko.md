@@ -52,6 +52,7 @@
 - **전달 방식:** HTML 스페시먼·프로토타입에서는 Lucide SVG path를 인라인(stroke, fill:none)하거나 CDN으로 로드. 컴포넌트 코드(Button, IconButton 등)는 `icon` prop으로 아이콘 노드를 받습니다 — Lucide `<svg>`를 넘기세요.
 - **이모지를 아이콘으로 쓰지 않음. PNG 아이콘도 안 씀.** 인라인 유니코드 화살표(`→ ↗ ←`)는 허용.
 - **에셋:** 로고/마크는 `assets/` 참고 (실제 로고가 오기 전까지는 플레이스홀더 lockup).
+- **소셜 / 공유 카드:** `assets/og-cover.png`(라이트) · `assets/og-cover-dark.png`(다크) — 1200×630 Open Graph 커버. `index.html`과 모든 갤러리 페이지에 페이지별 제목의 `og:*` / `twitter:card` 메타가 들어가 있어, 링크 공유 시 미리보기가 제대로 뜹니다. _미리보기 서비스는 캐시가 강해서, 옛/빈 썸네일이 남으면 각 플랫폼 디버거로 재크롤하세요._
 
 ---
 
