@@ -50,7 +50,6 @@
      descendants AND isolates their z-index from the page (so overlays can't
      paint over the sticky nav). `overflow:hidden` clips any spill. */
   .gx-stage{position:relative;overflow:hidden;border-radius:var(--radius-lg);background:var(--surface-sunken);min-height:300px;display:flex;align-items:center;justify-content:center;padding:24px;transform:translateZ(0);isolation:isolate;}
-  .gx-stage--backdrop{background:rgba(8,10,14,.45);}
   .gx-stage .gx-anchor{position:relative;}
   /* 375×812 device artboard — Figma-style preview for mobile overlays */
   .gx-board{display:flex;flex-wrap:wrap;gap:24px;}

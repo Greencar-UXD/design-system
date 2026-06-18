@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 · Cobalt — Mono Design System</title>
+<link rel="icon" href="/design-system/favicon.ico" sizes="any">
+<link rel="icon" href="/design-system/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/design-system/styles.css">
+<style>
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-text);-webkit-font-smoothing:antialiased;text-align:center;padding:24px;}
+  .wrap{max-width:420px;}
+  .code{font-family:var(--font-mono);font-weight:var(--fw-bold);font-size:72px;letter-spacing:var(--ls-tight);line-height:1;}
+  .code .dot{color:var(--accent);}
+  h1{font:var(--text-h3);letter-spacing:var(--ls-tight);margin:12px 0 8px;}
+  p{font:var(--text-body);color:var(--text-secondary);margin:0 0 24px;word-break:keep-all;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="code">404<span class="dot">.</span></div>
+    <h1>페이지를 찾을 수 없어요</h1>
+    <p>주소가 바뀌었거나 삭제된 페이지일 수 있어요. 홈에서 다시 둘러보세요.</p>
+    <a class="ds-btn ds-btn--primary ds-btn--lg" href="/design-system/">홈으로 돌아가기 →</a>
+  </div>
+  <script>
+    try{document.documentElement.setAttribute('data-theme',localStorage.getItem('ds-theme')||'light');}catch(e){}
+  </script>
+</body>
+</html>
