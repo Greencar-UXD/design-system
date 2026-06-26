@@ -1,0 +1,39 @@
+<!-- @dsCard group="Foundations" viewport="760x300" name="Signature — the point" subtitle="One cobalt mark, recurring: label · emptiness · loading" -->
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html,body{margin:0;background:var(--surface-card);color:var(--text-primary);font-family:var(--font-text);-webkit-font-smoothing:antialiased;}
+  .wrap{padding:26px 30px;display:flex;gap:36px;align-items:center;flex-wrap:wrap;}
+  .cell{display:flex;flex-direction:column;gap:12px;}
+  .cap{font:var(--text-caption);color:var(--text-tertiary);}
+  .big{font:var(--text-h4);letter-spacing:var(--ls-tight);}
+  .swatchgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;width:64px;aspect-ratio:1;}
+  .swatchgrid span{border-radius:5px;background:var(--surface-sunken);}
+  .swatchgrid span.is-point{background:var(--accent);box-shadow:0 6px 16px -6px color-mix(in srgb,var(--accent) 55%,transparent);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="cell">
+    <span class="cap">Kicker</span>
+    <p class="ds-kicker">Mono design system</p>
+  </div>
+  <div class="cell">
+    <span class="cap">Emptiness</span>
+    <div class="swatchgrid"><span></span><span></span><span></span><span></span><span class="is-point"></span><span></span><span></span><span></span><span></span></div>
+  </div>
+  <div class="cell">
+    <span class="cap">Loading</span>
+    <span class="ds-dots" role="status" aria-label="로딩 중"><span></span><span></span><span></span></span>
+  </div>
+  <div class="cell">
+    <span class="cap">Selected</span>
+    <span class="ds-badge ds-badge--accent">● the one</span>
+  </div>
+</div>
+</body>
+</html>

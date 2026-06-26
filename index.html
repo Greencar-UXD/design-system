@@ -43,7 +43,8 @@
   .gx-wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
   .gx-section{padding-block:72px;border-top:1px solid var(--border);}
   .gx-section:first-of-type{border-top:0;}
-  .gx-kicker{font:var(--text-caption);font-weight:var(--fw-semibold);letter-spacing:var(--ls-caps);text-transform:uppercase;color:var(--text-tertiary);margin:0 0 16px;}
+  .gx-kicker{display:inline-flex;align-items:center;gap:8px;font:var(--text-caption);font-weight:var(--fw-semibold);letter-spacing:var(--ls-caps);text-transform:uppercase;color:var(--text-tertiary);margin:0 0 16px;}
+  .gx-kicker::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--accent);flex:none;}
   .gx-h2{font:var(--text-h2);letter-spacing:var(--ls-tight);margin:0 0 12px;}
   .gx-sub{font:var(--text-body);color:var(--text-secondary);margin:0;max-width:60ch;}
   /* hero — monochrome field, one cobalt point */
