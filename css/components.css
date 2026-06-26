@@ -503,3 +503,33 @@
 .ds-cmdk__hint{font:var(--text-caption);font-family:var(--font-mono);color:var(--text-tertiary);}
 .ds-cmdk__empty{padding:24px;text-align:center;font:var(--text-body-sm);color:var(--text-tertiary);}
 @media (prefers-reduced-motion: reduce){ .ds-combobox__list,.ds-cmdk-overlay,.ds-cmdk{animation:none;} }
+
+/* ---------------- Charts (dependency-free SVG) ---------------- */
+/* Sparkline */
+.ds-spark{display:inline-block;vertical-align:middle;overflow:visible;}
+.ds-spark__line{stroke:var(--accent);}
+.ds-spark__area{fill:color-mix(in srgb, var(--accent) 12%, transparent);stroke:none;}
+.ds-spark__dot{fill:var(--accent);}
+
+/* BarChart */
+.ds-barchart__plot{display:flex;align-items:flex-end;gap:12px;}
+.ds-barchart__col{flex:1;display:flex;flex-direction:column;align-items:center;min-width:0;}
+.ds-barchart__track{width:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding-top:18px;}
+.ds-barchart__val{font-family:var(--font-mono);font-size:var(--fs-caption);color:var(--text-secondary);font-variant-numeric:tabular-nums;margin-bottom:6px;}
+.ds-barchart__bar{width:100%;max-width:48px;background:var(--surface-sunken);border:1px solid var(--border);border-bottom:none;
+  border-radius:var(--radius-sm) var(--radius-sm) 0 0;transition:height var(--dur-slow) var(--ease-out);}
+.ds-barchart__bar.is-accent{background:var(--accent);border-color:var(--accent);}
+.ds-barchart__lbl{font:var(--text-caption);color:var(--text-tertiary);margin-top:8px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;}
+
+/* DonutChart */
+.ds-donut{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.ds-donut__chart{position:relative;flex:none;}
+.ds-donut__center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;
+  font:var(--text-h4);color:var(--text-primary);font-variant-numeric:tabular-nums;}
+.ds-donut__legend{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;min-width:0;}
+.ds-donut__item{display:flex;align-items:center;gap:8px;font:var(--text-body-sm);}
+.ds-donut__dot{width:10px;height:10px;border-radius:3px;flex:none;}
+.ds-donut__lbl{color:var(--text-primary);}
+.ds-donut__val{margin-left:auto;font-family:var(--font-mono);font-size:var(--fs-caption);color:var(--text-tertiary);
+  font-variant-numeric:tabular-nums;padding-left:16px;}
+@media (prefers-reduced-motion: reduce){ .ds-barchart__bar{transition:none;} }

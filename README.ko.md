@@ -106,10 +106,10 @@ npx serve .        # 또는:  python3 -m http.server
 - Guidelines: `accessibility`, `do-dont`, `voice`
 - Brand: `iconography`, `assets/wordmark`
 
-컴포넌트 — **`components/`**, **아토믹 디자인** 레벨로 구성 — 총 40개. 각 레벨에 배럴 `index.js`가 있고, 루트 `components/index.js`가 전체를 다시 export 합니다.
+컴포넌트 — **`components/`**, **아토믹 디자인** 레벨로 구성 — 총 43개. 각 레벨에 배럴 `index.js`가 있고, 루트 `components/index.js`가 전체를 다시 export 합니다.
 
-- **`atoms/`** (17) — 더 쪼갤 수 없는 프리미티브: **Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Badge, Tag, Avatar, Divider, Skeleton, Spinner, Progress, Dots**
-- **`molecules/`** (17) — 원자들의 작은 조합: **Card, Stat, Accordion, EmptyState, Alert, Toast, Tabs, SegmentedControl, Breadcrumb, Pagination, Stepper, Menu, Tooltip, AppBar, BottomNav, ListRow, Combobox**
+- **`atoms/`** (18) — 더 쪼갤 수 없는 프리미티브: **Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Badge, Tag, Avatar, Divider, Skeleton, Spinner, Progress, Dots, Sparkline**
+- **`molecules/`** (19) — 원자들의 작은 조합: **Card, Stat, Accordion, EmptyState, Alert, Toast, Tabs, SegmentedControl, Breadcrumb, Pagination, Stepper, Menu, Tooltip, AppBar, BottomNav, ListRow, Combobox, BarChart, DonutChart**
 - **`organisms/`** (6) — 복합·조합된 큰 단위: **Dialog, Drawer, Popover, BottomSheet, Table, Command**
 
 모든 컴포넌트는 `<Name>.jsx` + `<Name>.d.ts`(props) + `<Name>.prompt.md`(사용법)로 구성됩니다 — 2.0 추가분 포함. **Combobox**(검색형 단일선택)·**Command**(⌘K 팔레트)는 풀 WAI-ARIA 키보드 위젯이고, **Dots**는 시그니처 로더입니다.

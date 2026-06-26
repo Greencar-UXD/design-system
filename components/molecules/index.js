@@ -3,10 +3,12 @@
 export { Accordion } from './Accordion.jsx';
 export { Alert } from './Alert.jsx';
 export { AppBar } from './AppBar.jsx';
+export { BarChart } from './BarChart.jsx';
 export { BottomNav } from './BottomNav.jsx';
 export { Breadcrumb } from './Breadcrumb.jsx';
 export { Card } from './Card.jsx';
 export { Combobox } from './Combobox.jsx';
+export { DonutChart } from './DonutChart.jsx';
 export { EmptyState } from './EmptyState.jsx';
 export { ListRow } from './ListRow.jsx';
 export { Menu } from './Menu.jsx';

@@ -13,6 +13,7 @@ export { Radio } from './Radio.jsx';
 export { Select } from './Select.jsx';
 export { Skeleton } from './Skeleton.jsx';
 export { Slider } from './Slider.jsx';
+export { Sparkline } from './Sparkline.jsx';
 export { Spinner } from './Spinner.jsx';
 export { Switch } from './Switch.jsx';
 export { Tag } from './Tag.jsx';

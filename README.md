@@ -106,10 +106,10 @@ Foundations specimen cards — **`foundations/`** (also rendered in `gallery/fou
 - Guidelines: `accessibility`, `do-dont`, `voice`
 - Brand: `iconography`, `assets/wordmark`
 
-Components — **`components/`**, organized by **atomic design** level — 40 components. Each level has a barrel `index.js`; the root `components/index.js` re-exports everything.
+Components — **`components/`**, organized by **atomic design** level — 43 components. Each level has a barrel `index.js`; the root `components/index.js` re-exports everything.
 
-- **`atoms/`** (17) — indivisible primitives: **Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Badge, Tag, Avatar, Divider, Skeleton, Spinner, Progress, Dots**
-- **`molecules/`** (17) — small compositions of atoms: **Card, Stat, Accordion, EmptyState, Alert, Toast, Tabs, SegmentedControl, Breadcrumb, Pagination, Stepper, Menu, Tooltip, AppBar, BottomNav, ListRow, Combobox**
+- **`atoms/`** (18) — indivisible primitives: **Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Badge, Tag, Avatar, Divider, Skeleton, Spinner, Progress, Dots, Sparkline**
+- **`molecules/`** (19) — small compositions of atoms: **Card, Stat, Accordion, EmptyState, Alert, Toast, Tabs, SegmentedControl, Breadcrumb, Pagination, Stepper, Menu, Tooltip, AppBar, BottomNav, ListRow, Combobox, BarChart, DonutChart**
 - **`organisms/`** (6) — complex, composed pieces: **Dialog, Drawer, Popover, BottomSheet, Table, Command**
 
 Every component ships `<Name>.jsx` + `<Name>.d.ts` (props) + `<Name>.prompt.md` (usage) — including the 2.0 additions. **Combobox** (searchable single-select) and **Command** (⌘K palette) are full WAI-ARIA keyboard widgets; **Dots** is the signature loader.
