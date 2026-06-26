@@ -46,17 +46,12 @@ The look: **monochrome surfaces, ink text, one cobalt accent used sparingly.** Q
 
 ## Theming & signature
 
-**Brand accent is swappable.** The accent is an indirection layer — `--accent-50…900` — that defaults to the Cobalt ramp. Override those ten steps and the entire accent system (links, focus, selected states, the solid CTA, `chart-1`) re-derives, in **both light and dark**, staying WCAG AA. The semantics split the role: `--accent` (decorative — focus ring, signature mark, fills) vs `--accent-solid` (anything with text/icon on top; 600 in light, ink-on-accent in dark).
+**One accent: Cobalt.** The system is monochrome with a single signature accent — Cobalt. There is no brand-swap layer; semantics reference the Cobalt ramp directly. The accent role is split for contrast: `--accent` (decorative — focus ring, signature mark, fills; the 500 step) vs `--accent-solid` (anything with text/icon on top; the 600 step in light, which keeps white text ≥ 4.5 AA; ink-on-accent in dark). Links, focus, selected states, the solid CTA and `chart-1` all derive from Cobalt, in **both light and dark**, staying WCAG AA.
 
-- **Switch brand at runtime** — set `data-accent` on `<html>`:
-  ```html
-  <html data-accent="violet">   <!-- or "indigo"; unset = Cobalt -->
-  ```
-  The showcase header has a live brand switcher (Cobalt / Blue / Indigo / Violet / Purple / Teal), persisted in `localStorage`.
-- **Add a brand** — drop a 50→900 ramp under `[data-accent="<name>"]` in `tokens/colors.css`. Verify white-on-600 ≥ 4.5 (light CTA) and 600-on-page ≥ 4.5 (link text), both themes. For a light/bright hue (green, teal, amber) that fails at 600, step the light-mode accent semantics to 600/700 via `[data-accent="<name>"]:not([data-theme="dark"])` — see the `teal` preset as a template.
-- **Single source of truth** — `tokens/tokens.json` (W3C Design Tokens format) mirrors the color system: primitives → accent ramp → semantic light/dark.
+- **Light / dark** — set `data-theme="dark"` on `<html>`; the accent steps lift automatically (Cobalt 500/600 in light → 400/300 in dark) so contrast holds in both themes.
+- **Single source of truth** — `tokens/tokens.json` (W3C Design Tokens format) mirrors the color system: primitive ramps (gray / cobalt / status) → semantic light/dark.
 
-**The signature — "the point."** The one accent mark (a small rounded square) recurs as the system's spark and follows the active brand: it leads `.ds-kicker` section labels, sits at the center of the empty state (a monochrome field with a single cobalt point), and lands last in the `<Dots>` loader. One memorable mark; everything else stays quiet. See `foundations/signature.html`.
+**The signature — "the point."** The one cobalt mark (a small rounded square) recurs as the system's spark: it leads `.ds-kicker` section labels, sits at the center of the empty state (a monochrome field with a single cobalt point), and lands last in the `<Dots>` loader. One memorable mark; everything else stays quiet. See `foundations/signature.html`.
 
 ---
 
@@ -136,6 +131,6 @@ function Example() {
 }
 ```
 
-For dark mode, set `data-theme="dark"` on `<html>` (or any ancestor) — components flip automatically via semantic tokens. For a different brand accent, set `data-accent="violet"` (or `"indigo"`; see **Theming & signature**).
+For dark mode, set `data-theme="dark"` on `<html>` (or any ancestor) — components flip automatically via semantic tokens. The accent is Cobalt in both themes (see **Theming & signature**).
 
 > **Migrating from the Claude Design export?** The old `_ds_bundle.js` / `window.DesignSystem_d67542` runtime is gone (Claude Design's compiler generated it). Use the direct imports above — the component source is standard React and unchanged.
