@@ -52,7 +52,7 @@ The look: **monochrome surfaces, ink text, one cobalt accent used sparingly.** Q
   ```html
   <html data-accent="violet">   <!-- or "indigo"; unset = Cobalt -->
   ```
-  The showcase header has a live brand switcher (Cobalt / Violet / Indigo), persisted in `localStorage`.
+  The showcase header has a live brand switcher (Cobalt / Blue / Indigo / Violet / Purple), persisted in `localStorage`.
 - **Add a brand** — drop a 50→900 ramp under `[data-accent="<name>"]` in `tokens/colors.css`. Verify white-on-600 ≥ 4.5 (light CTA) and 600-on-page ≥ 4.5 (link text), both themes.
 - **Single source of truth** — `tokens/tokens.json` (W3C Design Tokens format) mirrors the color system: primitives → accent ramp → semantic light/dark.
 
@@ -112,7 +112,7 @@ Components — **`components/`**, organized by **atomic design** level — 40 co
 - **`molecules/`** (17) — small compositions of atoms: **Card, Stat, Accordion, EmptyState, Alert, Toast, Tabs, SegmentedControl, Breadcrumb, Pagination, Stepper, Menu, Tooltip, AppBar, BottomNav, ListRow, Combobox**
 - **`organisms/`** (6) — complex, composed pieces: **Dialog, Drawer, Popover, BottomSheet, Table, Command**
 
-Most components ship `<Name>.jsx` + `<Name>.d.ts` (props) + `<Name>.prompt.md` (usage); the 2.0 additions (**Dots, Combobox, Command**) ship `.jsx` today, with typings/prompts to follow. **Combobox** (searchable single-select) and **Command** (⌘K palette) are full WAI-ARIA keyboard widgets; **Dots** is the signature loader.
+Every component ships `<Name>.jsx` + `<Name>.d.ts` (props) + `<Name>.prompt.md` (usage) — including the 2.0 additions. **Combobox** (searchable single-select) and **Command** (⌘K palette) are full WAI-ARIA keyboard widgets; **Dots** is the signature loader.
 
 _UI kits (full product-screen recreations) are intentionally not built yet — the focus is the system itself (tokens + components + docs)._
 

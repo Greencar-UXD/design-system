@@ -52,7 +52,7 @@
   ```html
   <html data-accent="violet">   <!-- 또는 "indigo"; 미설정 = 코발트 -->
   ```
-  쇼케이스 헤더에 라이브 브랜드 스위처(Cobalt / Violet / Indigo)가 있고 `localStorage`에 저장됩니다.
+  쇼케이스 헤더에 라이브 브랜드 스위처(Cobalt / Blue / Indigo / Violet / Purple)가 있고 `localStorage`에 저장됩니다.
 - **브랜드 추가** — `tokens/colors.css`에서 `[data-accent="<name>"]` 아래 50→900 램프 한 블록을 추가. 흰글자/600 ≥ 4.5(라이트 CTA)와 600/page ≥ 4.5(링크)를 양 테마에서 확인.
 - **단일 소스** — `tokens/tokens.json`(W3C Design Tokens 포맷)이 컬러 시스템을 미러링: primitive → accent ramp → semantic.
 
@@ -112,7 +112,7 @@ npx serve .        # 또는:  python3 -m http.server
 - **`molecules/`** (17) — 원자들의 작은 조합: **Card, Stat, Accordion, EmptyState, Alert, Toast, Tabs, SegmentedControl, Breadcrumb, Pagination, Stepper, Menu, Tooltip, AppBar, BottomNav, ListRow, Combobox**
 - **`organisms/`** (6) — 복합·조합된 큰 단위: **Dialog, Drawer, Popover, BottomSheet, Table, Command**
 
-대부분의 컴포넌트는 `<Name>.jsx` + `<Name>.d.ts`(props) + `<Name>.prompt.md`(사용법)로 구성됩니다. 2.0 추가분(**Dots, Combobox, Command**)은 지금은 `.jsx`만, 타이핑/프롬프트는 추후. **Combobox**(검색형 단일선택)·**Command**(⌘K 팔레트)는 풀 WAI-ARIA 키보드 위젯이고, **Dots**는 시그니처 로더입니다.
+모든 컴포넌트는 `<Name>.jsx` + `<Name>.d.ts`(props) + `<Name>.prompt.md`(사용법)로 구성됩니다 — 2.0 추가분 포함. **Combobox**(검색형 단일선택)·**Command**(⌘K 팔레트)는 풀 WAI-ARIA 키보드 위젯이고, **Dots**는 시그니처 로더입니다.
 
 _UI 킷(실제 제품 화면 전체 재현)은 의도적으로 아직 만들지 않았습니다 — 지금은 시스템 자체(토큰 + 컴포넌트 + 문서)에 집중._
 

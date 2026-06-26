@@ -175,3 +175,13 @@
   --accent-300: #a5b4fc; --accent-400: #818cf8; --accent-500: #6366f1;
   --accent-600: #4f46e5; --accent-700: #4338ca; --accent-800: #3730a3; --accent-900: #312e81;
 }
+[data-accent="blue"] {
+  --accent-50:  #eff6ff; --accent-100: #dbeafe; --accent-200: #bfdbfe;
+  --accent-300: #93c5fd; --accent-400: #60a5fa; --accent-500: #3b82f6;
+  --accent-600: #2563eb; --accent-700: #1d4ed8; --accent-800: #1e40af; --accent-900: #1e3a8a;
+}
+[data-accent="purple"] {
+  --accent-50:  #faf5ff; --accent-100: #f3e8ff; --accent-200: #e9d5ff;
+  --accent-300: #d8b4fe; --accent-400: #c084fc; --accent-500: #a855f7;
+  --accent-600: #9333ea; --accent-700: #7e22ce; --accent-800: #6b21a8; --accent-900: #581c87;
+}
