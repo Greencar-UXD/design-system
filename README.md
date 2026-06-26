@@ -1,6 +1,6 @@
 # Cobalt — Mono Design System
 
-**🌐 Language / 언어: English (this file) · [한국어](./README.ko.md)**
+**Language / 언어: English (this file) · [한국어](./README.ko.md)**
 
 A monochrome-first design system with a single signature accent (**Cobalt `#2D5BFF`**), built for a personal portfolio / website and for prototyping mobile service screens. Light mode is the base; full dark mode is supported. Korean + English are first-class — the entire type system runs on **Pretendard**, which covers both scripts in one family.
 
