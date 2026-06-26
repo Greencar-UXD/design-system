@@ -14,7 +14,7 @@ export function Stepper({ steps = [], current = 0, className = '' }) {
         return (
           <React.Fragment key={i}>
             {i > 0 ? <span className={['ds-step__line', i <= current ? 'ds-step__line--done' : ''].filter(Boolean).join(' ')}></span> : null}
-            <div className={cls}>
+            <div className={cls} aria-current={active ? 'step' : undefined}>
               <span className="ds-step__dot">{done ? CHECK : i + 1}</span>
               <span className="ds-step__label">{label}</span>
             </div>
