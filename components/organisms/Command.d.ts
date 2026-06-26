@@ -6,6 +6,8 @@ export interface CommandItem {
   /** Trailing hint, e.g. a shortcut like "⌘N". */
   hint?: React.ReactNode;
   icon?: React.ReactNode;
+  /** Items sharing a `group` render under a heading. */
+  group?: string;
   onSelect?: () => void;
 }
 
@@ -17,6 +19,10 @@ export interface CommandProps {
   placeholder?: string;
   /** Shown when no item matches. @default "결과 없음" */
   emptyText?: React.ReactNode;
+  /** Show a busy row instead of items (the caller fetches `items`). */
+  loading?: boolean;
+  /** Text beside the busy indicator. @default "불러오는 중…" */
+  loadingText?: React.ReactNode;
 }
 
 /** ⌘K command palette (modal): search + keyboard nav + focus trap. Renders null when closed. */

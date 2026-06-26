@@ -22,4 +22,5 @@ useEffect(() => {
 
 - **Keyboard**: type to filter, ↓/↑/Home/End to move, Enter to run, Esc / backdrop to close.
 - **a11y**: `role=dialog aria-modal`, focus trapped in the panel and restored to the trigger on close; list is `role=listbox` with `aria-activedescendant`.
-- **items**: `{ label, hint?, icon?, onSelect }`.
+- **items**: `{ label, hint?, icon?, group?, onSelect }`. Items sharing a `group` render under a heading; arrow keys flow across groups.
+- **Async**: pass `loading` to show a busy row while you fetch `items`.
