@@ -14,5 +14,5 @@ If the user invokes this skill without any other guidance, ask them what they wa
 - **Components:** import from source — `import { Button, Card, Input } from "./components";` (or per-file `./components/atoms/Button.jsx`). Standard React; the consuming app's bundler handles JSX. No runtime bundle.
 - **Dark mode:** set `data-theme="dark"` on `<html>` or any ancestor; components flip automatically.
 - **Accent discipline:** ink (`--gray-900`) is primary; cobalt (`--accent`) is reserved for links, focus, selected states, and the single most important CTA per view.
-- **Type:** Pretendard for all UI/display, Geist Mono for numbers/code. No emoji.
+- **Type:** Pretendard single family for everything (display → data); numbers use tabular figures. No emoji.
 - **Icons:** Lucide (monoline, stroke 2), inherit `currentColor`.
