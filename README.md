@@ -44,6 +44,22 @@ The look: **monochrome surfaces, ink text, one cobalt accent used sparingly.** Q
 
 ---
 
+## Theming & signature
+
+**Brand accent is swappable.** The accent is an indirection layer — `--accent-50…900` — that defaults to the Cobalt ramp. Override those ten steps and the entire accent system (links, focus, selected states, the solid CTA, `chart-1`) re-derives, in **both light and dark**, staying WCAG AA. The semantics split the role: `--accent` (decorative — focus ring, signature mark, fills) vs `--accent-solid` (anything with text/icon on top; 600 in light, ink-on-accent in dark).
+
+- **Switch brand at runtime** — set `data-accent` on `<html>`:
+  ```html
+  <html data-accent="violet">   <!-- or "indigo"; unset = Cobalt -->
+  ```
+  The showcase header has a live brand switcher (Cobalt / Violet / Indigo), persisted in `localStorage`.
+- **Add a brand** — drop a 50→900 ramp under `[data-accent="<name>"]` in `tokens/colors.css`. Verify white-on-600 ≥ 4.5 (light CTA) and 600-on-page ≥ 4.5 (link text), both themes.
+- **Single source of truth** — `tokens/tokens.json` (W3C Design Tokens format) mirrors the color system: primitives → accent ramp → semantic light/dark.
+
+**The signature — "the point."** The one accent mark (a small rounded square) recurs as the system's spark and follows the active brand: it leads `.ds-kicker` section labels, sits at the center of the empty state (a monochrome field with a single cobalt point), and lands last in the `<Dots>` loader. One memorable mark; everything else stays quiet. See `foundations/signature.html`.
+
+---
+
 ## Iconography
 
 - **System: [Lucide](https://lucide.dev)** — clean monoline icons, 1.5–2px stroke, rounded caps/joins. This matches the monochrome, precise tone better than filled or duotone sets.
@@ -90,13 +106,13 @@ Foundations specimen cards — **`foundations/`** (also rendered in `gallery/fou
 - Guidelines: `accessibility`, `do-dont`, `voice`
 - Brand: `iconography`, `assets/wordmark`
 
-Components — **`components/`**, organized by **atomic design** level — 37 components. Each level has a barrel `index.js`; the root `components/index.js` re-exports everything.
+Components — **`components/`**, organized by **atomic design** level — 40 components. Each level has a barrel `index.js`; the root `components/index.js` re-exports everything.
 
-- **`atoms/`** (16) — indivisible primitives: **Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Badge, Tag, Avatar, Divider, Skeleton, Spinner, Progress**
-- **`molecules/`** (16) — small compositions of atoms: **Card, Stat, Accordion, EmptyState, Alert, Toast, Tabs, SegmentedControl, Breadcrumb, Pagination, Stepper, Menu, Tooltip, AppBar, BottomNav, ListRow**
-- **`organisms/`** (5) — complex, composed pieces: **Dialog, Drawer, Popover, BottomSheet, Table**
+- **`atoms/`** (17) — indivisible primitives: **Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Badge, Tag, Avatar, Divider, Skeleton, Spinner, Progress, Dots**
+- **`molecules/`** (17) — small compositions of atoms: **Card, Stat, Accordion, EmptyState, Alert, Toast, Tabs, SegmentedControl, Breadcrumb, Pagination, Stepper, Menu, Tooltip, AppBar, BottomNav, ListRow, Combobox**
+- **`organisms/`** (6) — complex, composed pieces: **Dialog, Drawer, Popover, BottomSheet, Table, Command**
 
-Each component ships `<Name>.jsx` + `<Name>.d.ts` (props) + `<Name>.prompt.md` (usage).
+Most components ship `<Name>.jsx` + `<Name>.d.ts` (props) + `<Name>.prompt.md` (usage); the 2.0 additions (**Dots, Combobox, Command**) ship `.jsx` today, with typings/prompts to follow. **Combobox** (searchable single-select) and **Command** (⌘K palette) are full WAI-ARIA keyboard widgets; **Dots** is the signature loader.
 
 _UI kits (full product-screen recreations) are intentionally not built yet — the focus is the system itself (tokens + components + docs)._
 
@@ -120,6 +136,6 @@ function Example() {
 }
 ```
 
-For dark mode, set `data-theme="dark"` on `<html>` (or any ancestor) — components flip automatically via semantic tokens.
+For dark mode, set `data-theme="dark"` on `<html>` (or any ancestor) — components flip automatically via semantic tokens. For a different brand accent, set `data-accent="violet"` (or `"indigo"`; see **Theming & signature**).
 
 > **Migrating from the Claude Design export?** The old `_ds_bundle.js` / `window.DesignSystem_d67542` runtime is gone (Claude Design's compiler generated it). Use the direct imports above — the component source is standard React and unchanged.

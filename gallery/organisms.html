@@ -99,11 +99,29 @@
 <main class="gx-wrap">
   <h1 class="gx-h1">Organisms</h1>
   <p class="gx-lead">여러 요소가 결합된 복합 컴포넌트 — 다이얼로그, 드로어, 팝오버, 바텀시트, 테이블. 오버레이와 데이터 밀도가 높은 표면을 다룹니다.</p>
-  <p class="gx-count">5 components</p>
+  <p class="gx-count">6 components</p>
 
   <!-- ========================================================= -->
   <!-- Dialog                                                     -->
   <!-- ========================================================= -->
+  <section class="gx-sec" id="command">
+    <h2 class="gx-sec__h">Command</h2>
+    <p class="gx-sec__sub">⌘K 명령 팔레트 — 검색 + 필터 리스트, 화살표·Enter 실행, Esc·백드롭 닫힘, 포커스 트랩. (패널만 표시)</p>
+    <div class="gx-demo">
+      <div class="ds-cmdk" style="max-width:480px;box-shadow:var(--shadow-lg);">
+        <div class="ds-cmdk__search">
+          <span class="ds-cmdk__searchicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+          <input class="ds-cmdk__input" type="text" aria-label="명령 검색" placeholder="명령 검색…">
+        </div>
+        <ul class="ds-cmdk__list" role="listbox">
+          <li class="ds-cmdk__item is-active" role="option" aria-selected="true"><span class="ds-cmdk__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span><span class="ds-cmdk__label">새 파일</span><span class="ds-cmdk__hint">⌘N</span></li>
+          <li class="ds-cmdk__item" role="option"><span class="ds-cmdk__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span><span class="ds-cmdk__label">설정 열기</span></li>
+          <li class="ds-cmdk__item" role="option"><span class="ds-cmdk__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 0 18 9 9 0 0 1 0-18z"/></svg></span><span class="ds-cmdk__label">테마 전환</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section class="gx-sec" id="dialog">
     <h2 class="gx-sec__h">Dialog</h2>
     <p class="gx-sec__sub">모달 오버레이 · 백드롭/Esc/× 로 닫힘 · 크기 sm · md · lg · 푸터 액션은 우측 정렬</p>

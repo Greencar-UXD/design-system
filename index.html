@@ -39,6 +39,15 @@
   .gx-right{display:flex;align-items:center;gap:8px;}
   .gx-burger{display:none;align-items:center;justify-content:center;width:40px;height:40px;padding:0;border:1px solid var(--border);border-radius:var(--radius-md);background:transparent;color:var(--text-primary);cursor:pointer;}
   .gx-burger:hover{background:var(--surface-sunken);}
+  /* brand accent switcher */
+  .gx-accentsw{display:inline-flex;align-items:center;gap:6px;}
+  .gx-sw{width:20px;height:20px;border-radius:50%;padding:0;cursor:pointer;border:2px solid transparent;background-clip:padding-box;transition:transform var(--dur-fast) var(--ease-out);}
+  .gx-sw:hover{transform:scale(1.12);}
+  .gx-sw[aria-pressed="true"]{border-color:var(--text-primary);}
+  .gx-sw:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px;}
+  .gx-sw--cobalt{background:#2d5bff;}
+  .gx-sw--violet{background:#8b5cf6;}
+  .gx-sw--indigo{background:#6366f1;}
   /* layout */
   .gx-wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
   .gx-section{padding-block:72px;border-top:1px solid var(--border);}
@@ -148,6 +157,11 @@
     <span class="gx-sep"></span>
     <a href="https://github.com/Greencar-UXD/design-system" target="_blank" rel="noopener">GitHub</a>
     <span class="gx-sep"></span>
+    <div class="gx-accentsw" role="group" aria-label="브랜드 액센트">
+      <button type="button" class="gx-sw gx-sw--cobalt" data-accent="" aria-label="Cobalt 액센트" title="Cobalt"></button>
+      <button type="button" class="gx-sw gx-sw--violet" data-accent="violet" aria-label="Violet 액센트" title="Violet"></button>
+      <button type="button" class="gx-sw gx-sw--indigo" data-accent="indigo" aria-label="Indigo 액센트" title="Indigo"></button>
+    </div>
     <button id="gxTheme" class="ds-btn ds-btn--secondary ds-btn--sm" type="button">Dark</button>
   </nav>
     <button id="gxBurger" class="gx-burger" type="button" aria-label="메뉴" aria-expanded="false" aria-controls="gxNav"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
@@ -165,7 +179,7 @@
         <a class="ds-btn ds-btn--primary ds-btn--lg" href="./gallery/atoms.html">컴포넌트 둘러보기 →</a>
         <a class="ds-btn ds-btn--secondary ds-btn--lg" href="./gallery/foundations.html">Foundations</a>
       </div>
-      <p class="gx-spec"><b>37</b> components · <b>144</b> tokens · <b>2</b> themes · <b>4px</b> grid</p>
+      <p class="gx-spec"><b>40</b> components · <b>3</b> brands · <b>2</b> themes · <b>4px</b> grid</p>
     </div>
     <div class="gx-hero__sig" aria-hidden="true">
       <div class="gx-grid">
@@ -193,22 +207,22 @@
     <p class="gx-sub">기반 토큰부터 원자·분자·유기체 컴포넌트까지, 아토믹 디자인 구조로 정리되어 있습니다.</p>
     <div class="gx-cards">
       <a class="gx-card" href="./gallery/foundations.html">
-        <div class="gx-card__top"><span class="gx-card__name">Foundations</span><span class="gx-card__count">20</span></div>
+        <div class="gx-card__top"><span class="gx-card__name">Foundations</span><span class="gx-card__count">21</span></div>
         <span class="gx-card__desc">타입 · 컬러 · 스페이싱 · 모션 · 레이아웃 · 가이드</span>
         <span class="gx-card__go">specimen 보기 →</span>
       </a>
       <a class="gx-card" href="./gallery/atoms.html">
-        <div class="gx-card__top"><span class="gx-card__name">Atoms</span><span class="gx-card__count">16</span></div>
+        <div class="gx-card__top"><span class="gx-card__name">Atoms</span><span class="gx-card__count">17</span></div>
         <span class="gx-card__desc">Button · Input · Badge · Avatar · Slider 등 최소 단위 프리미티브</span>
         <span class="gx-card__go">갤러리 보기 →</span>
       </a>
       <a class="gx-card" href="./gallery/molecules.html">
-        <div class="gx-card__top"><span class="gx-card__name">Molecules</span><span class="gx-card__count">16</span></div>
+        <div class="gx-card__top"><span class="gx-card__name">Molecules</span><span class="gx-card__count">17</span></div>
         <span class="gx-card__desc">Card · Alert · Tabs · Menu · 모바일 셸 등 조합 패턴</span>
         <span class="gx-card__go">갤러리 보기 →</span>
       </a>
       <a class="gx-card" href="./gallery/organisms.html">
-        <div class="gx-card__top"><span class="gx-card__name">Organisms</span><span class="gx-card__count">5</span></div>
+        <div class="gx-card__top"><span class="gx-card__name">Organisms</span><span class="gx-card__count">6</span></div>
         <span class="gx-card__desc">Dialog · Drawer · Popover · BottomSheet · Table</span>
         <span class="gx-card__go">갤러리 보기 →</span>
       </a>
@@ -302,6 +316,16 @@ document.documentElement
   var saved='light';try{saved=localStorage.getItem('ds-theme')||'light';}catch(e){}
   setT(saved);
   btn.addEventListener('click',function(){setT(root.getAttribute('data-theme')==='dark'?'light':'dark');});
+  // brand accent switcher
+  var SW=document.querySelectorAll('.gx-sw');
+  function setAccent(a){
+    if(a){root.setAttribute('data-accent',a);}else{root.removeAttribute('data-accent');}
+    SW.forEach(function(s){s.setAttribute('aria-pressed',((s.getAttribute('data-accent')||'')===(a||''))?'true':'false');});
+    try{localStorage.setItem('ds-accent',a||'');}catch(e){}
+  }
+  var savedA='';try{savedA=localStorage.getItem('ds-accent')||'';}catch(e){}
+  setAccent(savedA);
+  SW.forEach(function(s){s.addEventListener('click',function(){setAccent(s.getAttribute('data-accent'));});});
   var burger=document.getElementById('gxBurger'),nav=document.getElementById('gxNav');
   if(burger&&nav){
     burger.addEventListener('click',function(){var o=nav.classList.toggle('gx-nav--open');burger.setAttribute('aria-expanded',o?'true':'false');});

@@ -89,7 +89,7 @@
 <main class="gx-wrap">
   <h1 class="gx-h1">Molecules</h1>
   <p class="gx-lead">원자들이 모여 만들어진 작은 조합 — 카드, 알림, 탭, 메뉴, 그리고 모바일 셸 요소까지. 실제 화면을 구성하는 패턴입니다.</p>
-  <p class="gx-count">16 components</p>
+  <p class="gx-count">17 components</p>
 
   <!-- ============================ Accordion ============================ -->
   <section class="gx-sec" id="accordion">
@@ -279,6 +279,24 @@
   </section>
 
   <!-- ============================ EmptyState ============================ -->
+  <section class="gx-sec" id="combobox">
+    <h2 class="gx-sec__h">Combobox</h2>
+    <p class="gx-sec__sub">검색형 단일 선택 — 타이핑으로 필터, 화살표·Enter로 선택. WAI-ARIA combobox + listbox. (열린 상태 표시)</p>
+    <div class="gx-demo">
+      <div class="ds-field" style="max-width:320px;">
+        <label class="ds-field__label">도시</label>
+        <div class="ds-combobox">
+          <input class="ds-input ds-combobox__input" type="text" role="combobox" aria-expanded="true" aria-label="도시" value="Se" autocomplete="off">
+          <ul class="ds-combobox__list" role="listbox" style="position:static;box-shadow:none;margin-top:6px;">
+            <li class="ds-combobox__opt is-active" role="option" aria-selected="true"><span class="ds-combobox__optlabel">Seoul</span><svg class="ds-combobox__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></li>
+            <li class="ds-combobox__opt" role="option"><span class="ds-combobox__optlabel">Seongnam</span></li>
+            <li class="ds-combobox__opt" role="option"><span class="ds-combobox__optlabel">Sejong</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="gx-sec" id="emptystate">
     <h2 class="gx-sec__h">EmptyState</h2>
     <p class="gx-sec__sub">데이터가 아직 없을 때의 친절한 자리표시자 — 아이콘, 제목, 설명, 행동 버튼.</p>
