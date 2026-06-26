@@ -39,18 +39,6 @@
   .gx-right{display:flex;align-items:center;gap:8px;}
   .gx-burger{display:none;align-items:center;justify-content:center;width:40px;height:40px;padding:0;border:1px solid var(--border);border-radius:var(--radius-md);background:transparent;color:var(--text-primary);cursor:pointer;}
   .gx-burger:hover{background:var(--surface-sunken);}
-  /* brand accent switcher */
-  .gx-accentsw{display:inline-flex;align-items:center;gap:6px;}
-  .gx-sw{width:20px;height:20px;border-radius:50%;padding:0;cursor:pointer;border:2px solid transparent;background-clip:padding-box;transition:transform var(--dur-fast) var(--ease-out);}
-  .gx-sw:hover{transform:scale(1.12);}
-  .gx-sw[aria-pressed="true"]{border-color:var(--text-primary);}
-  .gx-sw:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px;}
-  .gx-sw--cobalt{background:#2d5bff;}
-  .gx-sw--blue{background:#3b82f6;}
-  .gx-sw--indigo{background:#6366f1;}
-  .gx-sw--violet{background:#8b5cf6;}
-  .gx-sw--purple{background:#a855f7;}
-  .gx-sw--teal{background:#14b8a6;}
   /* layout */
   .gx-wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
   .gx-section{padding-block:72px;border-top:1px solid var(--border);}
@@ -60,8 +48,8 @@
   .gx-h2{font:var(--text-h2);letter-spacing:var(--ls-tight);margin:0 0 12px;}
   .gx-sub{font:var(--text-body);color:var(--text-secondary);margin:0;max-width:60ch;}
   /* hero — monochrome field, one cobalt point */
-  .gx-hero{position:relative;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:48px;align-items:center;padding-block:96px 80px;}
-  .gx-hero__copy{min-width:0;}
+  .gx-hero{position:relative;padding-block:96px 80px;}
+  .gx-hero__copy{min-width:0;max-width:62ch;}
   .gx-eyebrow{display:inline-flex;align-items:center;gap:10px;font:var(--text-mono);font-size:var(--fs-caption);text-transform:uppercase;letter-spacing:var(--ls-caps);color:var(--text-tertiary);margin:0 0 24px;}
   .gx-eyebrow__mark{width:8px;height:8px;border-radius:2px;background:var(--accent);flex:none;}
   .gx-hero h1{font-family:var(--font-display);font-weight:var(--fw-bold);font-size:clamp(30px,5vw,40px);line-height:var(--lh-tight);letter-spacing:var(--ls-tighter);margin:0 0 20px;max-width:16ch;word-break:keep-all;text-wrap:balance;}
@@ -71,13 +59,6 @@
   .gx-cta{display:flex;gap:12px;flex-wrap:wrap;}
   .gx-spec{font-family:var(--font-mono);font-size:var(--fs-sm);letter-spacing:var(--ls-snug);color:var(--text-tertiary);margin:32px 0 0;}
   .gx-spec b{color:var(--text-primary);font-weight:var(--fw-semibold);}
-  /* signature: 12 neutral cells, exactly one cobalt */
-  .gx-hero__sig{min-width:0;}
-  .gx-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;gap:var(--space-1);aspect-ratio:4/3;}
-  .gx-grid__cell{border-radius:var(--radius-sm);background:var(--surface-card);border:1px solid var(--border);}
-  .gx-grid__cell--sunken{background:var(--surface-sunken);border-color:transparent;}
-  .gx-grid__cell--accent{background:var(--accent);border-color:var(--accent);box-shadow:0 10px 28px -8px color-mix(in srgb,var(--accent) 55%,transparent);}
-  .gx-sig__cap{font-family:var(--font-mono);font-size:var(--fs-caption);letter-spacing:var(--ls-snug);color:var(--text-tertiary);margin:14px 0 0;text-align:right;}
   /* explore cards */
   .gx-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:32px;}
   .gx-card{display:flex;flex-direction:column;gap:8px;background:var(--surface-card);border:1px solid var(--border);border-radius:var(--radius-xl);box-shadow:var(--shadow-sm);padding:24px;text-decoration:none;transition:transform var(--dur-fast) var(--ease-out),box-shadow var(--dur-base) var(--ease-out),border-color var(--dur-fast);}
@@ -113,21 +94,11 @@
   .gx-foot strong{color:var(--text-secondary);}
   .gx-foot ul{margin:12px 0 0;padding-left:20px;}
   .gx-foot li{margin:4px 0;}
-  /* one orchestrated load moment — the cobalt point lands last */
+  /* one orchestrated load moment for the hero copy */
   @keyframes gx-fade-up{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
-  @keyframes gx-cell-in{from{opacity:0;transform:translateY(6px) scale(.96);}to{opacity:1;transform:none;}}
-  @keyframes gx-point-in{0%{opacity:0;transform:scale(.5);}65%{opacity:1;transform:scale(1.08);}100%{opacity:1;transform:scale(1);}}
   @media (prefers-reduced-motion:no-preference){
     .gx-hero__copy>*{opacity:0;animation:gx-fade-up .6s var(--ease-out) both;animation-delay:var(--d,0ms);}
     .gx-eyebrow{--d:60ms;} .gx-hero h1{--d:140ms;} .gx-lead{--d:220ms;} .gx-cta{--d:300ms;} .gx-spec{--d:380ms;}
-    .gx-grid__cell{animation:gx-cell-in .5s var(--ease-out) both;animation-delay:calc(var(--i,0)*40ms);}
-    .gx-grid__cell--accent{animation:gx-point-in .62s var(--ease-out) both;animation-delay:660ms;}
-    .gx-sig__cap{animation:gx-fade-up .6s var(--ease-out) both;animation-delay:760ms;}
-  }
-  @media(max-width:860px){
-    .gx-hero{grid-template-columns:1fr;gap:36px;}
-    .gx-hero__sig{max-width:460px;}
-    .gx-sig__cap{text-align:left;}
   }
   @media(max-width:720px){
     .gx-usagegrid{grid-template-columns:1fr;}
@@ -160,14 +131,6 @@
     <span class="gx-sep"></span>
     <a href="https://github.com/Greencar-UXD/design-system" target="_blank" rel="noopener">GitHub</a>
     <span class="gx-sep"></span>
-    <div class="gx-accentsw" role="group" aria-label="브랜드 액센트">
-      <button type="button" class="gx-sw gx-sw--cobalt" data-accent="" aria-label="Cobalt 액센트" title="Cobalt"></button>
-      <button type="button" class="gx-sw gx-sw--blue" data-accent="blue" aria-label="Blue 액센트" title="Blue"></button>
-      <button type="button" class="gx-sw gx-sw--indigo" data-accent="indigo" aria-label="Indigo 액센트" title="Indigo"></button>
-      <button type="button" class="gx-sw gx-sw--violet" data-accent="violet" aria-label="Violet 액센트" title="Violet"></button>
-      <button type="button" class="gx-sw gx-sw--purple" data-accent="purple" aria-label="Purple 액센트" title="Purple"></button>
-      <button type="button" class="gx-sw gx-sw--teal" data-accent="teal" aria-label="Teal 액센트" title="Teal"></button>
-    </div>
     <button id="gxTheme" class="ds-btn ds-btn--secondary ds-btn--sm" type="button">Dark</button>
   </nav>
     <button id="gxBurger" class="gx-burger" type="button" aria-label="메뉴" aria-expanded="false" aria-controls="gxNav"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
@@ -185,24 +148,7 @@
         <a class="ds-btn ds-btn--primary ds-btn--lg" href="./gallery/atoms.html">컴포넌트 둘러보기 →</a>
         <a class="ds-btn ds-btn--secondary ds-btn--lg" href="./gallery/foundations.html">Foundations</a>
       </div>
-      <p class="gx-spec"><b>43</b> components · <b>6</b> brands · <b>2</b> themes · <b>4px</b> grid</p>
-    </div>
-    <div class="gx-hero__sig" aria-hidden="true">
-      <div class="gx-grid">
-        <span class="gx-grid__cell" style="--i:0"></span>
-        <span class="gx-grid__cell gx-grid__cell--sunken" style="--i:1"></span>
-        <span class="gx-grid__cell" style="--i:2"></span>
-        <span class="gx-grid__cell" style="--i:3"></span>
-        <span class="gx-grid__cell" style="--i:4"></span>
-        <span class="gx-grid__cell" style="--i:5"></span>
-        <span class="gx-grid__cell gx-grid__cell--accent" style="--i:6"></span>
-        <span class="gx-grid__cell" style="--i:7"></span>
-        <span class="gx-grid__cell gx-grid__cell--sunken" style="--i:8"></span>
-        <span class="gx-grid__cell" style="--i:9"></span>
-        <span class="gx-grid__cell" style="--i:10"></span>
-        <span class="gx-grid__cell" style="--i:11"></span>
-      </div>
-      <p class="gx-sig__cap">12개 중 단 하나 — 코발트 포인트</p>
+      <p class="gx-spec"><b>43</b> components · <b>1</b> accent · <b>2</b> themes · <b>4px</b> grid</p>
     </div>
   </section>
 
@@ -322,16 +268,6 @@ document.documentElement
   var saved='light';try{saved=localStorage.getItem('ds-theme')||'light';}catch(e){}
   setT(saved);
   btn.addEventListener('click',function(){setT(root.getAttribute('data-theme')==='dark'?'light':'dark');});
-  // brand accent switcher
-  var SW=document.querySelectorAll('.gx-sw');
-  function setAccent(a){
-    if(a){root.setAttribute('data-accent',a);}else{root.removeAttribute('data-accent');}
-    SW.forEach(function(s){s.setAttribute('aria-pressed',((s.getAttribute('data-accent')||'')===(a||''))?'true':'false');});
-    try{localStorage.setItem('ds-accent',a||'');}catch(e){}
-  }
-  var savedA='';try{savedA=localStorage.getItem('ds-accent')||'';}catch(e){}
-  setAccent(savedA);
-  SW.forEach(function(s){s.addEventListener('click',function(){setAccent(s.getAttribute('data-accent'));});});
   var burger=document.getElementById('gxBurger'),nav=document.getElementById('gxNav');
   if(burger&&nav){
     burger.addEventListener('click',function(){var o=nav.classList.toggle('gx-nav--open');burger.setAttribute('aria-expanded',o?'true':'false');});
