@@ -1,6 +1,6 @@
 /* ============================================================
    Typography tokens
-   Family: Pretendard single-family system (KO + EN), Geist Mono for data.
+   Family: Pretendard single family for everything (KO + EN, display → data).
    Base scale + semantic aliases. Sizes in px for predictable UI rendering.
    ============================================================ */
 
@@ -8,7 +8,7 @@
   /* ---- Families ---- */
   --font-display: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
   --font-text:    "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
-  --font-mono:    "Geist Mono", ui-monospace, "SFMono-Regular", "JetBrains Mono", "D2Coding", monospace;
+  --font-mono:    var(--font-text); /* single-family system — data/numeric role uses Pretendard with tabular-nums */
 
   /* ---- Weights (Pretendard axis 100–900) ---- */
   --fw-regular:  400; /* @kind font */

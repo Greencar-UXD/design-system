@@ -1,8 +1,8 @@
 /* ============================================================
    Fonts — webfont declarations (self-hosted)
-   Primary:  Pretendard  (Korean + Latin, variable 100–900)
-   Mono:     Geist Mono   (numerics, code, data — variable)
-   Files live in assets/fonts/. No external CDN / @import, so
+   Pretendard — single family (Korean + Latin, variable 100–900),
+   used for everything incl. data/numerics (with tabular-nums).
+   File lives in assets/fonts/. No external CDN / @import, so
    there is no render-blocking font request and the showcase
    works fully offline.
    ============================================================ */
@@ -14,13 +14,4 @@
   font-style: normal;
   font-display: swap;
   src: url("../assets/fonts/PretendardVariable.woff2") format("woff2-variations");
-}
-
-/* Geist Mono — variable */
-@font-face {
-  font-family: "Geist Mono";
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-  src: url("../assets/fonts/GeistMono-Variable.woff2") format("woff2-variations");
 }
