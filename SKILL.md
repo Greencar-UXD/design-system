@@ -16,3 +16,4 @@ If the user invokes this skill without any other guidance, ask them what they wa
 - **Accent discipline:** ink (`--gray-900`) is primary; cobalt (`--accent`) is reserved for links, focus, selected states, and the single most important CTA per view.
 - **Type:** Pretendard for all UI/display, Geist Mono for numbers/code. No emoji.
 - **Icons:** Lucide (monoline, stroke 2), inherit `currentColor`.
+- **Responsive:** mobile-first. Breakpoints `--bp-sm 480 · md 768 · lg 1024 · xl 1280`; content caps 720/1120/1240; gutters step 16→24→32 (`--gutter`). Display type auto-shrinks ≤ 640px. Touch ≥ 44px (`--touch-min`); safe-area via `--safe-*` on fixed bars. Use `.ds-container`. See `foundations/responsive.html`.

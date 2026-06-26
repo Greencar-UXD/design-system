@@ -31,7 +31,8 @@ The look: **monochrome surfaces, ink text, one cobalt accent used sparingly.** Q
 - **Themes.** Light is the base on `:root`; dark overrides semantic tokens under `[data-theme="dark"]`. Components read semantic tokens (`--text-primary`, `--surface-card`, `--border`, `--accent`) so they flip automatically — no per-component dark CSS.
 - **Type.** Pretendard for everything (display → caption), Geist Mono for data. Tight tracking on display/headings (`--ls-tight`/`--ls-tighter`), neutral on body. Weights: 400/500/600/700. Hierarchy comes from size + weight, not color.
 - **Spacing & layout.** Strict **4px base grid** (`--space-*`: 4·8·12·16·20·24·28·32·40·48·64·80·96). Radius is also on the 4px grid (`--radius-*`: 4·8·12·16·20·28). All component padding/gap/margin snap to the grid; the only deliberate off-grid values are hairline borders (1px), focus/centering offsets (2px), icon glyph sizing, and the 44px touch target. Generous whitespace; content max-widths around 1100–1240px on web. Use flex/grid with `gap` — never margin chains.
-- **Corner radii.** Soft but not pill-y for containers: inputs/buttons `--radius-md` (10px), cards `--radius-xl` (20px). Pills (`--radius-pill`) only for badges, tags, switches, and avatars.
+- **Responsive & mobile.** **Mobile-first.** A five-stop breakpoint ladder (`--bp-sm 480 · --bp-md 768 · --bp-lg 1024 · --bp-xl 1280`) and content caps (`--content-narrow 720 / --content-max 1120 / --content-wide 1240`) live in `tokens/breakpoints.css`. Page gutters step **16 → 24 → 32** (`--gutter`, remapped per breakpoint). Display type auto-scales down on phones (≤ 640px: display 40→32, h1 36→30, h2 32→26, h3 28→22) while body/labels/data stay fixed for legibility. Touch targets are **≥ 44px** (`--touch-min`; `--touch-comfortable` 48px for primary actions). Edge-anchored components (BottomNav, BottomSheet, Drawer) pad for notches/home-indicators via `env(safe-area-inset-*)` (`--safe-*`) — zero-impact on non-notched devices. Use **`.ds-container`** for the centered, gutter-aware column (`--narrow`/`--wide`/`--fluid` modifiers), `.ds-safe-*` helpers for your own fixed bars, and `.ds-touch` to guarantee a hit area. Note: CSS `@media` can't read `var()`, so the `@media` literals in `css/responsive.css` are kept in sync with the breakpoint tokens. See `foundations/responsive.html`.
+- **Corner radii.** Soft but not pill-y for containers: inputs/buttons `--radius-md` (12px), cards `--radius-xl` (20px). Pills (`--radius-pill`) only for badges, tags, switches, and avatars.
 - **Borders.** Hairline `--border` (1px, `--gray-200`) is the default separator. `--border-strong` for inputs and emphasis. Borders do the structural work; shadows stay subtle.
 - **Shadows / elevation.** Soft, cool, low-spread (`--shadow-xs … --shadow-xl`). Cards rest on `--shadow-sm`; raise to `--shadow-lg` on hover. No hard or colored drop shadows.
 - **Backgrounds.** Flat color only — `--surface-page` (off-white) behind, `--surface-card` (white) for cards. **No gradients, no decorative blobs, no textures.** Dark mode uses near-black `#0d0f12` page / `#16181d` cards.
@@ -74,8 +75,9 @@ npx serve .        # or:  python3 -m http.server
 
 Root files:
 - **`styles.css`** — the single entry point consumers link. `@import`s the token + component CSS below.
-- **`tokens/`** — `fonts.css` (Pretendard + Geist Mono `@font-face`), `colors.css` (neutral + cobalt ramps, light/dark semantic), `typography.css` (families, scale, weights, leading, tracking), `spacing.css` (space grid, radius, shadow, motion).
+- **`tokens/`** — `fonts.css` (Pretendard + Geist Mono `@font-face`), `colors.css` (neutral + cobalt ramps, light/dark semantic), `typography.css` (families, scale, weights, leading, tracking), `spacing.css` (space grid, radius, shadow, motion), `breakpoints.css` (breakpoint ladder, content widths, gutters, touch, safe-area).
 - **`css/components.css`** — class-based, token-driven component styles (`.ds-*`), auto-adapting to dark.
+- **`css/responsive.css`** — mobile-first `@media` layer: live gutter remap, display-type down-scale on phones, `.ds-container`/`.ds-safe-*`/`.ds-touch` utilities, safe-area padding for fixed bars.
 - **`package.json`** — package metadata + `exports` map (ships source; no build step). **`.gitignore`**.
 - **`README.md`** / **`README.ko.md`** — this guide (EN / KO). **`SKILL.md`** — Agent Skill manifest.
 - **`index.html`** + **`gallery/`** — the showcase (above).
@@ -84,7 +86,7 @@ Foundations specimen cards — **`foundations/`** (also rendered in `gallery/fou
 - Type: `type-scale`, `type-display`, `type-weights`, `type-mono`
 - Colors: `colors-neutral`, `colors-cobalt`, `colors-semantic-light`, `colors-dark`, `colors-status`, `chart-palette`
 - Spacing: `spacing-scale`, `radius-scale`, `shadow-scale`
-- Motion: `motion` · Layout: `grid-layout`
+- Motion: `motion` · Layout: `grid-layout`, `responsive`
 - Guidelines: `accessibility`, `do-dont`, `voice`
 - Brand: `iconography`, `assets/wordmark`
 

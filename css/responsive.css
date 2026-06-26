@@ -1,0 +1,82 @@
+/* ============================================================
+   Responsive layer — mobile-first @media rules.
+   Loaded LAST (after components.css) so breakpoint overrides win.
+
+   Three concerns, all token-driven:
+     1) Live page gutter — steps 16 → 24 → 32 with width.
+     2) Display type — the largest sizes step down on phones so
+        heroes/titles don't overflow narrow screens. Body, labels,
+        and data sizes are deliberately left fixed for readability.
+     3) Layout primitives & component fit on small screens
+        (.ds-container, dialog overlay, safe-area for fixed bars).
+
+   Breakpoint literals here MUST match tokens/breakpoints.css.
+   ============================================================ */
+
+/* ---- 1) Live gutter remap ---- */
+@media (min-width: 768px)  { :root { --gutter: var(--gutter-md); } }
+@media (min-width: 1024px) { :root { --gutter: var(--gutter-lg); } }
+
+/* ---- 2) Display type steps down on phones (≤ 640px) ---- */
+/* Composite --text-* shorthands reference these size vars, so they
+   recompute automatically. Only display/h1/h2/h3 scale; --fs-base
+   (16px body) and smaller stay put. */
+@media (max-width: 640px) {
+  :root {
+    --fs-display:    32px;  /* 40 → 32 */
+    --fs-display-lg: 32px;
+    --fs-h1:         30px;  /* 36 → 30 */
+    --fs-h2:         26px;  /* 32 → 26 */
+    --fs-h3:         22px;  /* 28 → 22 */
+    /* --fs-h4 (24) and below unchanged */
+  }
+  /* Stat value uses a literal 32px — bring it down in step */
+  .ds-stat__value { font-size: 26px; }
+}
+
+/* ---- 3a) Container utility ---- */
+/* Centered, gutter-aware content column. Default caps at
+   --content-max; modifiers swap the cap. */
+.ds-container {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.ds-container--narrow { max-width: var(--content-narrow); }
+.ds-container--wide   { max-width: var(--content-wide); }
+.ds-container--fluid  { max-width: none; }
+
+/* ---- 3b) Dialog fits small screens ---- */
+/* Tighten the overlay gutter so sm/md dialogs aren't pinched on
+   phones; the dialog itself is already width:100% up to its cap. */
+@media (max-width: 480px) {
+  .ds-dialog-overlay { padding: 16px; align-items: flex-end; }
+  .ds-dialog { max-height: calc(100vh - 32px); }
+}
+
+/* ---- 3c) Safe-area for edge-anchored mobile components ---- */
+/* env() resolves to 0 on non-notched devices, so max()/calc()
+   below are zero-regression there. Applies only to components that
+   sit flush against a screen edge. */
+.ds-bottomnav {
+  padding-bottom: max(8px, var(--safe-bottom));
+}
+.ds-sheet {
+  padding-bottom: max(24px, calc(var(--safe-bottom) + 8px));
+}
+.ds-drawer {
+  padding-bottom: var(--safe-bottom);
+}
+
+/* App-level safe-area helpers — apply to your own fixed top/bottom
+   bars (the design-system's .ds-appbar height contract is left
+   untouched; opt in with these on the wrapping element). */
+.ds-safe-top    { padding-top:    var(--safe-top); }
+.ds-safe-bottom { padding-bottom: var(--safe-bottom); }
+.ds-safe-x      { padding-left:   var(--safe-left); padding-right: var(--safe-right); }
+
+/* ---- 3d) Touch-target helper ---- */
+/* Guarantees a 44px min hit area on any interactive element without
+   forcing visual size (uses min-height/min-width). */
+.ds-touch { min-height: var(--touch-min); min-width: var(--touch-min); }

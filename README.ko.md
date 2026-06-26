@@ -31,6 +31,7 @@
 - **테마.** 라이트가 `:root` 기본, 다크는 `[data-theme="dark"]`에서 시맨틱 토큰을 덮어씁니다. 컴포넌트는 시맨틱 토큰(`--text-primary`, `--surface-card`, `--border`, `--accent`)을 읽기 때문에 자동으로 전환돼요 — 컴포넌트별 다크 CSS 불필요.
 - **타입.** 전부 Pretendard(디스플레이 → 캡션), 데이터는 Geist Mono. 디스플레이/제목은 자간을 좁게(`--ls-tight`/`--ls-tighter`), 본문은 중립. 굵기: 400/500/600/700. 위계는 색이 아니라 크기 + 굵기로.
 - **스페이싱 & 레이아웃.** 엄격한 **4px 기준 그리드**(`--space-*`: 4·8·12·16·20·24·28·32·40·48·64·80·96). Radius도 4px 그리드 위에 있습니다(`--radius-*`: 4·8·12·16·20·28). 모든 컴포넌트의 padding/gap/margin은 그리드에 스냅됩니다. 의도적으로 그리드를 벗어나는 값은 헤어라인 보더(1px), 포커스/센터링 오프셋(2px), 아이콘 글리프 크기, 44px 터치 타깃뿐입니다. 여백은 넉넉하게, 웹 콘텐츠 최대 폭은 1100~1240px 정도. 마진 체인 대신 flex/grid + `gap`을 쓰세요.
+- **반응형 & 모바일.** **모바일 우선(mobile-first).** 5단 브레이크포인트 사다리(`--bp-sm 480 · --bp-md 768 · --bp-lg 1024 · --bp-xl 1280`)와 콘텐츠 최대 폭(`--content-narrow 720 / --content-max 1120 / --content-wide 1240`)이 `tokens/breakpoints.css`에 있습니다. 페이지 거터는 폭에 따라 **16 → 24 → 32**로 단계 변화(`--gutter`). 디스플레이 타입은 폰(≤ 640px)에서 자동으로 한 단계 작아집니다(display 40→32, h1 36→30, h2 32→26, h3 28→22). 본문·라벨·데이터 크기는 가독성을 위해 고정. 터치 타깃은 **44px 이상**(`--touch-min`, 주요 액션은 `--touch-comfortable` 48px). 화면 가장자리에 붙는 컴포넌트(BottomNav·BottomSheet·Drawer)는 노치/홈 인디케이터를 위해 `env(safe-area-inset-*)`(`--safe-*`)로 패딩을 더합니다 — 노치 없는 기기엔 영향 0. 중앙 정렬·거터 자동 콘텐츠 칼럼은 **`.ds-container`**(`--narrow`/`--wide`/`--fluid` 변형), 직접 만든 고정 바에는 `.ds-safe-*`, 히트 영역 보장에는 `.ds-touch`를 쓰세요. 참고: CSS `@media`는 `var()`를 읽지 못하므로 `css/responsive.css`의 `@media` 리터럴 값은 브레이크포인트 토큰과 동기화해 유지합니다. `foundations/responsive.html` 참고.
 - **모서리 둥글기.** 컨테이너는 부드럽되 과하지 않게: 입력/버튼 `--radius-md`(12px), 카드 `--radius-xl`(20px). 완전한 pill(`--radius-pill`)은 배지·태그·스위치·아바타에만.
 - **보더.** 헤어라인 `--border`(1px, `--gray-200`)가 기본 구분선. 입력·강조에는 `--border-strong`. 구조는 보더가 잡고, 그림자는 은은하게 유지.
 - **그림자 / 엘리베이션.** 부드럽고 쿨하며 퍼짐이 적게(`--shadow-xs … --shadow-xl`). 카드는 평소 `--shadow-sm`, hover 시 `--shadow-lg`로 띄움. 딱딱하거나 컬러가 들어간 그림자는 금지.
@@ -74,8 +75,9 @@ npx serve .        # 또는:  python3 -m http.server
 
 루트 파일:
 - **`styles.css`** — 소비자가 링크하는 단일 진입점. 아래 토큰·컴포넌트 CSS를 `@import`.
-- **`tokens/`** — `fonts.css`(Pretendard + Geist Mono `@font-face`), `colors.css`(뉴트럴 + 코발트 램프, 라이트/다크 시맨틱), `typography.css`(패밀리·스케일·굵기·행간·자간), `spacing.css`(스페이싱 그리드·radius·그림자·모션).
+- **`tokens/`** — `fonts.css`(Pretendard + Geist Mono `@font-face`), `colors.css`(뉴트럴 + 코발트 램프, 라이트/다크 시맨틱), `typography.css`(패밀리·스케일·굵기·행간·자간), `spacing.css`(스페이싱 그리드·radius·그림자·모션), `breakpoints.css`(브레이크포인트 사다리·콘텐츠 폭·거터·터치·safe-area).
 - **`css/components.css`** — 클래스 기반, 토큰 구동 컴포넌트 스타일(`.ds-*`), 다크 자동 대응.
+- **`css/responsive.css`** — 모바일 우선 `@media` 레이어: 거터 리맵, 폰에서 디스플레이 타입 축소, `.ds-container`/`.ds-safe-*`/`.ds-touch` 유틸, 고정 바 safe-area 패딩.
 - **`package.json`** — 패키지 메타데이터 + `exports` 맵(소스를 그대로 배포; 빌드 단계 없음). **`.gitignore`**.
 - **`README.md`** / **`README.ko.md`** — 가이드(영문 / 한글). **`SKILL.md`** — Agent Skill 매니페스트.
 - **`index.html`** + **`gallery/`** — 쇼케이스(위 참고).
@@ -84,7 +86,7 @@ npx serve .        # 또는:  python3 -m http.server
 - Type: `type-scale`, `type-display`, `type-weights`, `type-mono`
 - Colors: `colors-neutral`, `colors-cobalt`, `colors-semantic-light`, `colors-dark`, `colors-status`, `chart-palette`
 - Spacing: `spacing-scale`, `radius-scale`, `shadow-scale`
-- Motion: `motion` · Layout: `grid-layout`
+- Motion: `motion` · Layout: `grid-layout`, `responsive`
 - Guidelines: `accessibility`, `do-dont`, `voice`
 - Brand: `iconography`, `assets/wordmark`
 
