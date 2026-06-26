@@ -36,6 +36,22 @@
   --cobalt-800: #1c328f;
   --cobalt-900: #1a2d70;
 
+  /* ---- Brand accent ramp (indirection layer) ----
+     Default = Cobalt. Override --accent-50…900 under [data-accent="…"]
+     to re-brand the entire accent system (links, focus, selected
+     states, the solid CTA, chart-1) in BOTH light and dark — nothing
+     else changes. Accent SEMANTICS below pick contrast-safe steps. */
+  --accent-50:  var(--cobalt-50);
+  --accent-100: var(--cobalt-100);
+  --accent-200: var(--cobalt-200);
+  --accent-300: var(--cobalt-300);
+  --accent-400: var(--cobalt-400);
+  --accent-500: var(--cobalt-500);
+  --accent-600: var(--cobalt-600);
+  --accent-700: var(--cobalt-700);
+  --accent-800: var(--cobalt-800);
+  --accent-900: var(--cobalt-900);
+
   /* ---- Status ramps ---- */
   --success-500: #0fa968;
   --success-600: #0c8a54;
@@ -56,8 +72,8 @@
   --text-secondary: var(--gray-600);
   --text-tertiary:  var(--gray-500); /* was gray-400 (2.45:1); gray-500 = 4.56:1 AA */
   --text-inverse:   var(--gray-0);
-  --text-link:      var(--cobalt-600);
-  --text-accent:    var(--cobalt-600);
+  --text-link:      var(--accent-600);
+  --text-accent:    var(--accent-600);
 
   /* surfaces */
   --surface-page:    var(--gray-50);
@@ -65,19 +81,21 @@
   --surface-sunken:  var(--gray-100);
   --surface-raised:  var(--gray-0);
   --surface-inverse: var(--gray-900);
-  --surface-accent-subtle: var(--cobalt-50);
+  --surface-accent-subtle: color-mix(in srgb, var(--accent-500) 8%, var(--surface-card));
 
   /* borders */
   --border:        var(--gray-200);
   --border-strong: var(--gray-300);
   --border-control: #868d97;        /* form-field boundary, ≥3:1 (WCAG 1.4.11) */
-  --border-accent: var(--cobalt-500);
+  --border-accent: var(--accent-500);
 
-  /* accent */
-  --accent:        var(--cobalt-500);
-  --accent-hover:  var(--cobalt-600);
-  --on-accent:     var(--gray-0);
-  --focus-ring:    var(--cobalt-500);
+  /* accent — decorative (500) vs. solid/text-bearing (600, AA for white text) */
+  --accent:             var(--accent-500);
+  --accent-hover:       var(--accent-600);
+  --accent-solid:       var(--accent-600);  /* fills with text/icon on top */
+  --accent-solid-hover: var(--accent-700);
+  --on-accent:          var(--gray-0);
+  --focus-ring:         var(--accent-500);
 
   /* primary action (ink-forward) */
   --action-primary-bg:       var(--gray-900);
@@ -85,11 +103,11 @@
   --action-primary-fg:       var(--gray-0);
 
   /* status (semantic) */
-  --info-500: var(--cobalt-500);
-  --info-50:  var(--cobalt-50);
+  --info-500: var(--accent-500);
+  --info-50:  var(--surface-accent-subtle);
 
-  /* ---- Data-viz categorical palette (monochrome + cobalt led) ---- */
-  --chart-1: #2d5bff; /* @kind color */
+  /* ---- Data-viz categorical palette (chart-1 follows the brand accent) ---- */
+  --chart-1: var(--accent-500); /* @kind color */
   --chart-2: #0fa968; /* @kind color */
   --chart-3: #d9870b; /* @kind color */
   --chart-4: #8b5cf6; /* @kind color */
@@ -104,8 +122,8 @@
   --text-secondary: #9aa1ab;
   --text-tertiary:  #868d97; /* was #6b727d (3.66:1); #868d97 = 5.66:1 AA */
   --text-inverse:   var(--gray-900);
-  --text-link:      #7d97ff;
-  --text-accent:    #7d97ff;
+  --text-link:      var(--accent-300);
+  --text-accent:    var(--accent-300);
 
   /* surfaces */
   --surface-page:    #0d0f12;
@@ -113,19 +131,21 @@
   --surface-sunken:  #1d2025;
   --surface-raised:  #1d2025;
   --surface-inverse: var(--gray-50);
-  --surface-accent-subtle: #18203f;
+  --surface-accent-subtle: color-mix(in srgb, var(--accent-400) 20%, var(--surface-card));
 
   /* borders */
   --border:        #262a30;
   --border-strong: #343943;
   --border-control: #5e6571;        /* form-field boundary, ≥3:1 on dark */
-  --border-accent: #5b7cff;
+  --border-accent: var(--accent-400);
 
-  /* accent (lifted for contrast on dark) */
-  --accent:        #5b7cff;
-  --accent-hover:  #7d97ff;
-  --on-accent:     #0d0f12;
-  --focus-ring:    #5b7cff;
+  /* accent (lifted steps for dark; ink text on the solid CTA) */
+  --accent:             var(--accent-400);
+  --accent-hover:       var(--accent-300);
+  --accent-solid:       var(--accent-400);
+  --accent-solid-hover: var(--accent-300);
+  --on-accent:          #0d0f12;
+  --focus-ring:         var(--accent-400);
 
   /* primary action (near-white ink on dark) */
   --action-primary-bg:       #f3f4f6;
@@ -133,8 +153,35 @@
   --action-primary-fg:       #0d0f12;
 
   /* status surfaces */
-  --info-50:    #18203f;
+  --info-500:   var(--accent-400);
+  --info-50:    var(--surface-accent-subtle);
   --success-50: #0e2d20;
   --warning-50: #2e2410;
   --danger-50:  #371613;
+}
+
+/* ===== Brand accent presets — set [data-accent] on <html> =====
+   Each preset swaps ONLY the 10-step accent ramp; every accent
+   semantic re-derives and stays WCAG AA in light and dark.
+   To add a brand: drop a 50→900 ramp here. Verify white-on-600 ≥4.5
+   (light CTA) and 600-on-page ≥4.5 (link text). */
+[data-accent="violet"] {
+  --accent-50:  #f5f3ff; --accent-100: #ede9fe; --accent-200: #ddd6fe;
+  --accent-300: #c4b5fd; --accent-400: #a78bfa; --accent-500: #8b5cf6;
+  --accent-600: #7c3aed; --accent-700: #6d28d9; --accent-800: #5b21b6; --accent-900: #4c1d95;
+}
+[data-accent="indigo"] {
+  --accent-50:  #eef2ff; --accent-100: #e0e7ff; --accent-200: #c7d2fe;
+  --accent-300: #a5b4fc; --accent-400: #818cf8; --accent-500: #6366f1;
+  --accent-600: #4f46e5; --accent-700: #4338ca; --accent-800: #3730a3; --accent-900: #312e81;
+}
+[data-accent="blue"] {
+  --accent-50:  #eff6ff; --accent-100: #dbeafe; --accent-200: #bfdbfe;
+  --accent-300: #93c5fd; --accent-400: #60a5fa; --accent-500: #3b82f6;
+  --accent-600: #2563eb; --accent-700: #1d4ed8; --accent-800: #1e40af; --accent-900: #1e3a8a;
+}
+[data-accent="purple"] {
+  --accent-50:  #faf5ff; --accent-100: #f3e8ff; --accent-200: #e9d5ff;
+  --accent-300: #d8b4fe; --accent-400: #c084fc; --accent-500: #a855f7;
+  --accent-600: #9333ea; --accent-700: #7e22ce; --accent-800: #6b21a8; --accent-900: #581c87;
 }

@@ -5,6 +5,7 @@ export { Badge } from './Badge.jsx';
 export { Button } from './Button.jsx';
 export { Checkbox } from './Checkbox.jsx';
 export { Divider } from './Divider.jsx';
+export { Dots } from './Dots.jsx';
 export { IconButton } from './IconButton.jsx';
 export { Input } from './Input.jsx';
 export { Progress } from './Progress.jsx';

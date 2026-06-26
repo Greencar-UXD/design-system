@@ -44,6 +44,22 @@
 
 ---
 
+## 테마화 & 시그니처 (Theming & signature)
+
+**액센트는 교체 가능합니다.** 액센트는 `--cobalt-*`를 직접 참조하지 않고 **간접화 레이어 `--accent-50…900`**(기본값 = 코발트 램프)을 거칩니다. 이 10스텝만 덮어쓰면 전체 액센트 시스템(링크·포커스·선택 상태·솔리드 CTA·`chart-1`)이 **라이트·다크 양쪽에서** 다시 파생되며 WCAG AA를 유지합니다. 시맨틱은 역할을 분리합니다 — `--accent`(장식: 포커스 링·시그니처 마크·채움) vs `--accent-solid`(텍스트/아이콘이 위에 올라가는 곳; 라이트 600, 다크는 ink-on-accent).
+
+- **런타임 브랜드 전환** — `<html>`에 `data-accent` 설정:
+  ```html
+  <html data-accent="violet">   <!-- 또는 "indigo"; 미설정 = 코발트 -->
+  ```
+  쇼케이스 헤더에 라이브 브랜드 스위처(Cobalt / Blue / Indigo / Violet / Purple)가 있고 `localStorage`에 저장됩니다.
+- **브랜드 추가** — `tokens/colors.css`에서 `[data-accent="<name>"]` 아래 50→900 램프 한 블록을 추가. 흰글자/600 ≥ 4.5(라이트 CTA)와 600/page ≥ 4.5(링크)를 양 테마에서 확인.
+- **단일 소스** — `tokens/tokens.json`(W3C Design Tokens 포맷)이 컬러 시스템을 미러링: primitive → accent ramp → semantic.
+
+**시그니처 — '한 점'.** 액센트 마크 하나(작은 라운드 스퀘어)가 시스템의 스파크로 반복되며 활성 브랜드를 따라갑니다 — `.ds-kicker` 섹션 라벨을 이끌고, 빈 상태(모노톤 필드 + 코발트 한 점)의 중심에 놓이고, `<Dots>` 로더에서 마지막에 착지합니다. 기억에 남는 마크 하나, 나머지는 조용히. `foundations/signature.html` 참고.
+
+---
+
 ## 아이코노그래피 (Iconography)
 
 - **시스템: [Lucide](https://lucide.dev)** — 깔끔한 모노라인 아이콘, 1.5~2px 스트로크, 둥근 캡/조인. 채움형이나 듀오톤보다 무채색·정밀한 톤에 잘 맞습니다.
@@ -90,13 +106,13 @@ npx serve .        # 또는:  python3 -m http.server
 - Guidelines: `accessibility`, `do-dont`, `voice`
 - Brand: `iconography`, `assets/wordmark`
 
-컴포넌트 — **`components/`**, **아토믹 디자인** 레벨로 구성 — 총 37개. 각 레벨에 배럴 `index.js`가 있고, 루트 `components/index.js`가 전체를 다시 export 합니다.
+컴포넌트 — **`components/`**, **아토믹 디자인** 레벨로 구성 — 총 40개. 각 레벨에 배럴 `index.js`가 있고, 루트 `components/index.js`가 전체를 다시 export 합니다.
 
-- **`atoms/`** (16) — 더 쪼갤 수 없는 프리미티브: **Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Badge, Tag, Avatar, Divider, Skeleton, Spinner, Progress**
-- **`molecules/`** (16) — 원자들의 작은 조합: **Card, Stat, Accordion, EmptyState, Alert, Toast, Tabs, SegmentedControl, Breadcrumb, Pagination, Stepper, Menu, Tooltip, AppBar, BottomNav, ListRow**
-- **`organisms/`** (5) — 복합·조합된 큰 단위: **Dialog, Drawer, Popover, BottomSheet, Table**
+- **`atoms/`** (17) — 더 쪼갤 수 없는 프리미티브: **Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Badge, Tag, Avatar, Divider, Skeleton, Spinner, Progress, Dots**
+- **`molecules/`** (17) — 원자들의 작은 조합: **Card, Stat, Accordion, EmptyState, Alert, Toast, Tabs, SegmentedControl, Breadcrumb, Pagination, Stepper, Menu, Tooltip, AppBar, BottomNav, ListRow, Combobox**
+- **`organisms/`** (6) — 복합·조합된 큰 단위: **Dialog, Drawer, Popover, BottomSheet, Table, Command**
 
-각 컴포넌트는 `<Name>.jsx` + `<Name>.d.ts`(props) + `<Name>.prompt.md`(사용법)로 구성됩니다.
+모든 컴포넌트는 `<Name>.jsx` + `<Name>.d.ts`(props) + `<Name>.prompt.md`(사용법)로 구성됩니다 — 2.0 추가분 포함. **Combobox**(검색형 단일선택)·**Command**(⌘K 팔레트)는 풀 WAI-ARIA 키보드 위젯이고, **Dots**는 시그니처 로더입니다.
 
 _UI 킷(실제 제품 화면 전체 재현)은 의도적으로 아직 만들지 않았습니다 — 지금은 시스템 자체(토큰 + 컴포넌트 + 문서)에 집중._
 
@@ -120,6 +136,6 @@ function Example() {
 }
 ```
 
-다크 모드는 `<html>`(또는 임의의 상위 요소)에 `data-theme="dark"`를 설정하세요 — 컴포넌트가 시맨틱 토큰을 통해 자동 전환됩니다.
+다크 모드는 `<html>`(또는 임의의 상위 요소)에 `data-theme="dark"`를 설정하세요 — 컴포넌트가 시맨틱 토큰을 통해 자동 전환됩니다. 브랜드 액센트를 바꾸려면 `data-accent="violet"`(또는 `"indigo"`)을 설정하세요 — **테마화 & 시그니처** 참고.
 
 > **Claude Design 익스포트에서 마이그레이션하나요?** 기존 `_ds_bundle.js` / `window.DesignSystem_d67542` 런타임은 사라졌습니다(Claude Design 컴파일러가 생성하던 것). 위의 직접 import를 쓰세요 — 컴포넌트 소스는 표준 React이며 변경되지 않았습니다.
