@@ -52,8 +52,8 @@
   ```html
   <html data-accent="violet">   <!-- 또는 "indigo"; 미설정 = 코발트 -->
   ```
-  쇼케이스 헤더에 라이브 브랜드 스위처(Cobalt / Blue / Indigo / Violet / Purple)가 있고 `localStorage`에 저장됩니다.
-- **브랜드 추가** — `tokens/colors.css`에서 `[data-accent="<name>"]` 아래 50→900 램프 한 블록을 추가. 흰글자/600 ≥ 4.5(라이트 CTA)와 600/page ≥ 4.5(링크)를 양 테마에서 확인.
+  쇼케이스 헤더에 라이브 브랜드 스위처(Cobalt / Blue / Indigo / Violet / Purple / Teal)가 있고 `localStorage`에 저장됩니다.
+- **브랜드 추가** — `tokens/colors.css`에서 `[data-accent="<name>"]` 아래 50→900 램프 한 블록을 추가. 흰글자/600 ≥ 4.5(라이트 CTA)와 600/page ≥ 4.5(링크)를 양 테마에서 확인. 녹색·teal·amber처럼 밝은 색이 600에서 미달하면, `[data-accent="<name>"]:not([data-theme="dark"])`로 라이트 모드 액센트 스텝을 600/700으로 올리세요 — `teal` 프리셋이 템플릿입니다.
 - **단일 소스** — `tokens/tokens.json`(W3C Design Tokens 포맷)이 컬러 시스템을 미러링: primitive → accent ramp → semantic.
 
 **시그니처 — '한 점'.** 액센트 마크 하나(작은 라운드 스퀘어)가 시스템의 스파크로 반복되며 활성 브랜드를 따라갑니다 — `.ds-kicker` 섹션 라벨을 이끌고, 빈 상태(모노톤 필드 + 코발트 한 점)의 중심에 놓이고, `<Dots>` 로더에서 마지막에 착지합니다. 기억에 남는 마크 하나, 나머지는 조용히. `foundations/signature.html` 참고.
