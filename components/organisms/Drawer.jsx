@@ -1,19 +1,22 @@
 import React from 'react';
+import { useFocusTrap } from '../_useFocusTrap.js';
 
 /** Drawer — side panel (sheet). Controlled via open/onClose. */
 export function Drawer({ open, onClose, side = 'right', title, footer = null, children }) {
+  const panelRef = React.useRef(null);
   React.useEffect(() => {
     if (!open) return undefined;
     const onKey = (e) => { if (e.key === 'Escape' && onClose) onClose(); };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, [open, onClose]);
+  useFocusTrap(open, panelRef);
 
   if (!open) return null;
 
   return (
     <div className="ds-drawer-overlay" onClick={(e) => { if (e.target === e.currentTarget && onClose) onClose(); }}>
-      <div className={`ds-drawer ds-drawer--${side}`} role="dialog" aria-modal="true" aria-label={title || undefined}>
+      <div ref={panelRef} tabIndex={-1} className={`ds-drawer ds-drawer--${side}`} role="dialog" aria-modal="true" aria-label={title || undefined}>
         <div className="ds-drawer__head">
           {title ? <h2 className="ds-drawer__title">{title}</h2> : <span></span>}
           <button className="ds-alert__close" style={{ width: '20px', height: '20px' }} aria-label="닫기" onClick={onClose}>

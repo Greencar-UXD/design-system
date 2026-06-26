@@ -1,19 +1,22 @@
 import React from 'react';
+import { useFocusTrap } from '../_useFocusTrap.js';
 
 /** Dialog — modal overlay. Controlled via `open` / `onClose`. Closes on backdrop click & Esc. */
 export function Dialog({ open, onClose, title, size = 'md', footer = null, children, ...rest }) {
+  const panelRef = React.useRef(null);
   React.useEffect(() => {
     if (!open) return undefined;
     const onKey = (e) => { if (e.key === 'Escape' && onClose) onClose(); };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, [open, onClose]);
+  useFocusTrap(open, panelRef);
 
   if (!open) return null;
 
   return (
     <div className="ds-dialog-overlay" onClick={(e) => { if (e.target === e.currentTarget && onClose) onClose(); }}>
-      <div className={`ds-dialog ds-dialog--${size}`} role="dialog" aria-modal="true" aria-label={title || undefined} {...rest}>
+      <div ref={panelRef} tabIndex={-1} className={`ds-dialog ds-dialog--${size}`} role="dialog" aria-modal="true" aria-label={title || undefined} {...rest}>
         <div className="ds-dialog__head">
           {title ? <h2 className="ds-dialog__title">{title}</h2> : <span></span>}
           <button className="ds-alert__close" aria-label="닫기" onClick={onClose} style={{ width: '20px', height: '20px' }}>
