@@ -23,9 +23,6 @@
 <meta name="twitter:title" content="Cobalt — Mono Design System">
 <meta name="twitter:description" content="Monochrome surfaces with a single cobalt accent. Pretendard type (Korean + English), light & dark.">
 <meta name="twitter:image" content="https://greencar-uxd.github.io/design-system/assets/og-cover.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="./styles.css">
 <style>
   *{box-sizing:border-box;}
@@ -290,7 +287,7 @@ document.documentElement
   <footer class="gx-wrap gx-foot">
     <strong>Cobalt — Mono Design System</strong> · v0.1.0 · 아토믹 구조(atoms / molecules / organisms) · 4px 그리드
     <ul>
-      <li><strong>폰트</strong>: Pretendard + Geist Mono를 CDN으로 로드합니다. 오프라인/프로덕션에서는 파일을 받아 <code>tokens/fonts.css</code>의 <code>src</code>를 교체하세요.</li>
+      <li><strong>폰트</strong>: Pretendard + Geist Mono를 <code>assets/fonts/</code>에서 self-host 합니다(가변 woff2). 외부 CDN·렌더 블로킹 요청이 없고 오프라인에서도 동작합니다.</li>
       <li><strong>아이콘</strong>: Lucide(monoline, stroke 2). 갤러리에는 인라인 SVG로 표기했습니다.</li>
       <li><strong>로고</strong>: 현재 워드마크는 플레이스홀더입니다 — 실제 로고로 교체 가능.</li>
       <li><strong>문서</strong>: <a href="./README.md">README.md</a> · <a href="./README.ko.md">README.ko.md</a> · <a href="./SKILL.md">SKILL.md</a></li>

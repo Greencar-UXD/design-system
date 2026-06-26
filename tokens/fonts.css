@@ -1,13 +1,11 @@
 /* ============================================================
-   Fonts — webfont declarations
-   Primary:  Pretendard  (Korean + Latin, variable weight)
-   Mono:     Geist Mono   (numerics, code, data)
-   NOTE: currently loaded from CDN. To self-host, drop the
-   .woff2 files into assets/fonts/ and repoint the src below.
+   Fonts — webfont declarations (self-hosted)
+   Primary:  Pretendard  (Korean + Latin, variable 100–900)
+   Mono:     Geist Mono   (numerics, code, data — variable)
+   Files live in assets/fonts/. No external CDN / @import, so
+   there is no render-blocking font request and the showcase
+   works fully offline.
    ============================================================ */
-
-/* @import must precede all other rules */
-@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap");
 
 /* Pretendard — variable, 100–900 */
 @font-face {
@@ -15,5 +13,14 @@
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
-  src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/woff2/PretendardVariable.woff2") format("woff2-variations");
+  src: url("../assets/fonts/PretendardVariable.woff2") format("woff2-variations");
+}
+
+/* Geist Mono — variable */
+@font-face {
+  font-family: "Geist Mono";
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  src: url("../assets/fonts/GeistMono-Variable.woff2") format("woff2-variations");
 }
