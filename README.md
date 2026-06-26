@@ -52,8 +52,8 @@ The look: **monochrome surfaces, ink text, one cobalt accent used sparingly.** Q
   ```html
   <html data-accent="violet">   <!-- or "indigo"; unset = Cobalt -->
   ```
-  The showcase header has a live brand switcher (Cobalt / Blue / Indigo / Violet / Purple), persisted in `localStorage`.
-- **Add a brand** — drop a 50→900 ramp under `[data-accent="<name>"]` in `tokens/colors.css`. Verify white-on-600 ≥ 4.5 (light CTA) and 600-on-page ≥ 4.5 (link text), both themes.
+  The showcase header has a live brand switcher (Cobalt / Blue / Indigo / Violet / Purple / Teal), persisted in `localStorage`.
+- **Add a brand** — drop a 50→900 ramp under `[data-accent="<name>"]` in `tokens/colors.css`. Verify white-on-600 ≥ 4.5 (light CTA) and 600-on-page ≥ 4.5 (link text), both themes. For a light/bright hue (green, teal, amber) that fails at 600, step the light-mode accent semantics to 600/700 via `[data-accent="<name>"]:not([data-theme="dark"])` — see the `teal` preset as a template.
 - **Single source of truth** — `tokens/tokens.json` (W3C Design Tokens format) mirrors the color system: primitives → accent ramp → semantic light/dark.
 
 **The signature — "the point."** The one accent mark (a small rounded square) recurs as the system's spark and follows the active brand: it leads `.ds-kicker` section labels, sits at the center of the empty state (a monochrome field with a single cobalt point), and lands last in the `<Dots>` loader. One memorable mark; everything else stays quiet. See `foundations/signature.html`.
@@ -106,10 +106,10 @@ Foundations specimen cards — **`foundations/`** (also rendered in `gallery/fou
 - Guidelines: `accessibility`, `do-dont`, `voice`
 - Brand: `iconography`, `assets/wordmark`
 
-Components — **`components/`**, organized by **atomic design** level — 40 components. Each level has a barrel `index.js`; the root `components/index.js` re-exports everything.
+Components — **`components/`**, organized by **atomic design** level — 43 components. Each level has a barrel `index.js`; the root `components/index.js` re-exports everything.
 
-- **`atoms/`** (17) — indivisible primitives: **Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Badge, Tag, Avatar, Divider, Skeleton, Spinner, Progress, Dots**
-- **`molecules/`** (17) — small compositions of atoms: **Card, Stat, Accordion, EmptyState, Alert, Toast, Tabs, SegmentedControl, Breadcrumb, Pagination, Stepper, Menu, Tooltip, AppBar, BottomNav, ListRow, Combobox**
+- **`atoms/`** (18) — indivisible primitives: **Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Badge, Tag, Avatar, Divider, Skeleton, Spinner, Progress, Dots, Sparkline**
+- **`molecules/`** (19) — small compositions of atoms: **Card, Stat, Accordion, EmptyState, Alert, Toast, Tabs, SegmentedControl, Breadcrumb, Pagination, Stepper, Menu, Tooltip, AppBar, BottomNav, ListRow, Combobox, BarChart, DonutChart**
 - **`organisms/`** (6) — complex, composed pieces: **Dialog, Drawer, Popover, BottomSheet, Table, Command**
 
 Every component ships `<Name>.jsx` + `<Name>.d.ts` (props) + `<Name>.prompt.md` (usage) — including the 2.0 additions. **Combobox** (searchable single-select) and **Command** (⌘K palette) are full WAI-ARIA keyboard widgets; **Dots** is the signature loader.

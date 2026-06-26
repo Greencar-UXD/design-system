@@ -52,8 +52,8 @@
   ```html
   <html data-accent="violet">   <!-- 또는 "indigo"; 미설정 = 코발트 -->
   ```
-  쇼케이스 헤더에 라이브 브랜드 스위처(Cobalt / Blue / Indigo / Violet / Purple)가 있고 `localStorage`에 저장됩니다.
-- **브랜드 추가** — `tokens/colors.css`에서 `[data-accent="<name>"]` 아래 50→900 램프 한 블록을 추가. 흰글자/600 ≥ 4.5(라이트 CTA)와 600/page ≥ 4.5(링크)를 양 테마에서 확인.
+  쇼케이스 헤더에 라이브 브랜드 스위처(Cobalt / Blue / Indigo / Violet / Purple / Teal)가 있고 `localStorage`에 저장됩니다.
+- **브랜드 추가** — `tokens/colors.css`에서 `[data-accent="<name>"]` 아래 50→900 램프 한 블록을 추가. 흰글자/600 ≥ 4.5(라이트 CTA)와 600/page ≥ 4.5(링크)를 양 테마에서 확인. 녹색·teal·amber처럼 밝은 색이 600에서 미달하면, `[data-accent="<name>"]:not([data-theme="dark"])`로 라이트 모드 액센트 스텝을 600/700으로 올리세요 — `teal` 프리셋이 템플릿입니다.
 - **단일 소스** — `tokens/tokens.json`(W3C Design Tokens 포맷)이 컬러 시스템을 미러링: primitive → accent ramp → semantic.
 
 **시그니처 — '한 점'.** 액센트 마크 하나(작은 라운드 스퀘어)가 시스템의 스파크로 반복되며 활성 브랜드를 따라갑니다 — `.ds-kicker` 섹션 라벨을 이끌고, 빈 상태(모노톤 필드 + 코발트 한 점)의 중심에 놓이고, `<Dots>` 로더에서 마지막에 착지합니다. 기억에 남는 마크 하나, 나머지는 조용히. `foundations/signature.html` 참고.
@@ -106,10 +106,10 @@ npx serve .        # 또는:  python3 -m http.server
 - Guidelines: `accessibility`, `do-dont`, `voice`
 - Brand: `iconography`, `assets/wordmark`
 
-컴포넌트 — **`components/`**, **아토믹 디자인** 레벨로 구성 — 총 40개. 각 레벨에 배럴 `index.js`가 있고, 루트 `components/index.js`가 전체를 다시 export 합니다.
+컴포넌트 — **`components/`**, **아토믹 디자인** 레벨로 구성 — 총 43개. 각 레벨에 배럴 `index.js`가 있고, 루트 `components/index.js`가 전체를 다시 export 합니다.
 
-- **`atoms/`** (17) — 더 쪼갤 수 없는 프리미티브: **Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Badge, Tag, Avatar, Divider, Skeleton, Spinner, Progress, Dots**
-- **`molecules/`** (17) — 원자들의 작은 조합: **Card, Stat, Accordion, EmptyState, Alert, Toast, Tabs, SegmentedControl, Breadcrumb, Pagination, Stepper, Menu, Tooltip, AppBar, BottomNav, ListRow, Combobox**
+- **`atoms/`** (18) — 더 쪼갤 수 없는 프리미티브: **Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Badge, Tag, Avatar, Divider, Skeleton, Spinner, Progress, Dots, Sparkline**
+- **`molecules/`** (19) — 원자들의 작은 조합: **Card, Stat, Accordion, EmptyState, Alert, Toast, Tabs, SegmentedControl, Breadcrumb, Pagination, Stepper, Menu, Tooltip, AppBar, BottomNav, ListRow, Combobox, BarChart, DonutChart**
 - **`organisms/`** (6) — 복합·조합된 큰 단위: **Dialog, Drawer, Popover, BottomSheet, Table, Command**
 
 모든 컴포넌트는 `<Name>.jsx` + `<Name>.d.ts`(props) + `<Name>.prompt.md`(사용법)로 구성됩니다 — 2.0 추가분 포함. **Combobox**(검색형 단일선택)·**Command**(⌘K 팔레트)는 풀 WAI-ARIA 키보드 위젯이고, **Dots**는 시그니처 로더입니다.

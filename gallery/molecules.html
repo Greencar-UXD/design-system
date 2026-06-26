@@ -89,7 +89,7 @@
 <main class="gx-wrap">
   <h1 class="gx-h1">Molecules</h1>
   <p class="gx-lead">원자들이 모여 만들어진 작은 조합 — 카드, 알림, 탭, 메뉴, 그리고 모바일 셸 요소까지. 실제 화면을 구성하는 패턴입니다.</p>
-  <p class="gx-count">17 components</p>
+  <p class="gx-count">19 components</p>
 
   <!-- ============================ Accordion ============================ -->
   <section class="gx-sec" id="accordion">
@@ -200,6 +200,22 @@
   </section>
 
   <!-- ============================ BottomNav ============================ -->
+  <section class="gx-sec" id="barchart">
+    <h2 class="gx-sec__h">BarChart</h2>
+    <p class="gx-sec__sub">세로 막대 + 값 직접 표기(색만으로 의미 전달 안 함). 막대는 모노톤, 강조 하나만 액센트.</p>
+    <div class="gx-demo">
+      <div class="ds-barchart" role="img" aria-label="막대 차트 — Mon 30, Tue 52, Wed 41, Thu 64, Fri 48" style="max-width:420px;">
+        <div class="ds-barchart__plot">
+          <div class="ds-barchart__col"><div class="ds-barchart__track" style="height:160px"><span class="ds-barchart__val">30</span><div class="ds-barchart__bar" style="height:47%"></div></div><span class="ds-barchart__lbl">Mon</span></div>
+          <div class="ds-barchart__col"><div class="ds-barchart__track" style="height:160px"><span class="ds-barchart__val">52</span><div class="ds-barchart__bar" style="height:81%"></div></div><span class="ds-barchart__lbl">Tue</span></div>
+          <div class="ds-barchart__col"><div class="ds-barchart__track" style="height:160px"><span class="ds-barchart__val">41</span><div class="ds-barchart__bar" style="height:64%"></div></div><span class="ds-barchart__lbl">Wed</span></div>
+          <div class="ds-barchart__col"><div class="ds-barchart__track" style="height:160px"><span class="ds-barchart__val">64</span><div class="ds-barchart__bar is-accent" style="height:100%"></div></div><span class="ds-barchart__lbl">Thu</span></div>
+          <div class="ds-barchart__col"><div class="ds-barchart__track" style="height:160px"><span class="ds-barchart__val">48</span><div class="ds-barchart__bar" style="height:75%"></div></div><span class="ds-barchart__lbl">Fri</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="gx-sec" id="bottomnav">
     <h2 class="gx-sec__h">BottomNav</h2>
     <p class="gx-sec__sub">모바일 하단 탭 바 — 아이콘과 라벨. 선택된 항목은 코발트 색으로 강조됩니다.</p>
@@ -293,6 +309,29 @@
             <li class="ds-combobox__opt" role="option"><span class="ds-combobox__optlabel">Sejong</span></li>
           </ul>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gx-sec" id="donutchart">
+    <h2 class="gx-sec__h">DonutChart</h2>
+    <p class="gx-sec__sub">전체 대비 비율 — 범례가 색·라벨·값을 함께 보여줘 색맹도 구분 가능. chart-1은 브랜드를 따릅니다.</p>
+    <div class="gx-demo">
+      <div class="ds-donut">
+        <div class="ds-donut__chart" style="width:160px;height:160px" role="img" aria-label="도넛 차트 — Direct 45%, Search 30%, Social 25%">
+          <svg viewBox="0 0 100 100" width="160" height="160">
+            <circle cx="50" cy="50" r="41" fill="none" stroke="var(--surface-sunken)" stroke-width="18"/>
+            <circle cx="50" cy="50" r="41" fill="none" stroke="var(--chart-1)" stroke-width="18" stroke-dasharray="115.9 141.7" stroke-dashoffset="0" transform="rotate(-90 50 50)"/>
+            <circle cx="50" cy="50" r="41" fill="none" stroke="var(--chart-2)" stroke-width="18" stroke-dasharray="77.3 180.3" stroke-dashoffset="-115.9" transform="rotate(-90 50 50)"/>
+            <circle cx="50" cy="50" r="41" fill="none" stroke="var(--chart-3)" stroke-width="18" stroke-dasharray="64.4 193.2" stroke-dashoffset="-193.2" transform="rotate(-90 50 50)"/>
+          </svg>
+          <div class="ds-donut__center">100</div>
+        </div>
+        <ul class="ds-donut__legend">
+          <li class="ds-donut__item"><span class="ds-donut__dot" style="background:var(--chart-1)"></span><span class="ds-donut__lbl">Direct</span><span class="ds-donut__val">45 · 45%</span></li>
+          <li class="ds-donut__item"><span class="ds-donut__dot" style="background:var(--chart-2)"></span><span class="ds-donut__lbl">Search</span><span class="ds-donut__val">30 · 30%</span></li>
+          <li class="ds-donut__item"><span class="ds-donut__dot" style="background:var(--chart-3)"></span><span class="ds-donut__lbl">Social</span><span class="ds-donut__val">25 · 25%</span></li>
+        </ul>
       </div>
     </div>
   </section>

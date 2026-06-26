@@ -20,4 +20,11 @@ const [city, setCity] = useState();
 
 - **Keyboard**: ↓/↑ open + move, Home/End jump, Enter select, Esc close; typing filters. Outside-click dismisses.
 - **a11y**: `role=combobox` + `aria-expanded` / `aria-controls` / `aria-activedescendant`; options are `role=option` with `aria-selected`.
-- Sorting/grouping is the caller's job — pass already-ordered `options`.
+- **Multiple** — `value` is a string[], selections render as removable chips, the list stays open, Backspace removes the last chip:
+  ```jsx
+  <Combobox multiple value={tags} onChange={setTags} options={tagOptions} />
+  ```
+- **Async** — fetch options yourself and pass `loading` while in-flight:
+  ```jsx
+  <Combobox options={results} loading={isFetching} onChange={…} />
+  ```
