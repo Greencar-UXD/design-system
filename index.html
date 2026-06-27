@@ -36,7 +36,7 @@
   /* stats */
   .gx-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-top:56px;}
   .gx-stat{background:var(--surface-card);padding:24px;}
-  .gx-stat__n{font-family:var(--font-mono);font-weight:var(--fw-semibold);font-size:32px;letter-spacing:var(--ls-tight);color:var(--text-primary);}
+  .gx-stat__n{font-family:var(--font-mono);font-variant-numeric:tabular-nums;font-weight:var(--fw-semibold);font-size:32px;letter-spacing:var(--ls-tight);color:var(--text-primary);}
   .gx-stat__l{font:var(--text-body-sm);color:var(--text-tertiary);margin-top:4px;}
   /* explore cards */
   .gx-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:32px;}
@@ -182,7 +182,7 @@
       <div class="ln"><span class="tag">h2</span><span style="font:var(--text-h2);letter-spacing:var(--ls-tight)">섹션 제목 Heading</span></div>
       <div class="ln"><span class="tag">h4</span><span style="font:var(--text-h4)">카드 타이틀 Subhead</span></div>
       <div class="ln"><span class="tag">body</span><span style="font:var(--text-body)">본문 텍스트입니다. Pretendard는 한글과 영문을 한 패밀리로 자연스럽게 담아냅니다.</span></div>
-      <div class="ln"><span class="tag">mono</span><span style="font:var(--text-mono);color:var(--text-secondary)">123,456 · 98.6% · v0.1.0 — Geist Mono</span></div>
+      <div class="ln"><span class="tag">num</span><span style="font:var(--text-mono);color:var(--text-secondary);font-variant-numeric:tabular-nums">123,456 · 98.6% · v0.1.0 — Pretendard tabular</span></div>
     </div>
   </section>
 
@@ -220,7 +220,7 @@ document.documentElement
   <footer class="gx-wrap gx-foot">
     <strong>Cobalt — Mono Design System</strong> · v0.1.0 · 아토믹 구조(atoms / molecules / organisms) · 4px 그리드
     <ul>
-      <li><strong>폰트</strong>: Pretendard + Geist Mono를 CDN으로 로드합니다. 오프라인/프로덕션에서는 파일을 받아 <code>tokens/fonts.css</code>의 <code>src</code>를 교체하세요.</li>
+      <li><strong>폰트</strong>: Pretendard 한 패밀리를 CDN으로 로드합니다(숫자는 tabular-nums). 오프라인/프로덕션에서는 파일을 받아 <code>tokens/fonts.css</code>의 <code>src</code>를 교체하세요.</li>
       <li><strong>아이콘</strong>: Lucide(monoline, stroke 2). 갤러리에는 인라인 SVG로 표기했습니다.</li>
       <li><strong>로고</strong>: 현재 워드마크는 플레이스홀더입니다 — 실제 로고로 교체 가능.</li>
       <li><strong>문서</strong>: <a href="./README.md">README.md</a> · <a href="./README.ko.md">README.ko.md</a> · <a href="./SKILL.md">SKILL.md</a></li>
