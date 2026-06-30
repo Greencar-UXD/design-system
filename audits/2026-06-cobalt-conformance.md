@@ -15,7 +15,7 @@
 | **career** / shared-css | 🟠 mixed | 14 | High 4 | `landing.css`가 마지막 로드로 모든 공유 셀렉터를 덮어씀 — 하드코딩 팔레트 드리프트 + 히어로 그라데이션 + CTA 코발트 도배 |
 | **career** / case-pages (13) | 🟢 strong | 6 | High 1 | 케이스 페이지가 포커스 링 정의(`landing.css`)를 로드 안 함 → 캐논 2px 코발트 링 부재 |
 | **career** / doc-pages (4) | 🟠 mixed | 11 | (High→Med 1) | 모바일 리플로우/거터 스텝다운 없음, 본문 15px(캐논 16), 반절-픽셀 사이즈 다수 |
-| **crewfit** / app | 🟠 mixed | 11 | High 2 | 클럽별 멀티-휴 팀컬러(2차 브랜드색), 히어로 그라데이션×2, Geist Mono 미사용, 본문 14px |
+| **crewfit** / app | 🟠 mixed | 11 | High 2 | 클럽별 멀티-휴 팀컬러(2차 브랜드색), 히어로 그라데이션×2, 본문 14px |
 | **dilettantisme** / fork-drift | 🟡 good | 4 | High 2 | 포크된 `cobalt/`가 **반응형 표준 누락**(breakpoints.css·responsive.css 부재) — 복사된 파일은 byte-identical |
 | **dilettantisme** / app | 🟡 good | 7 | High 1 | 반응형 레이어 미적용 + 자체 880px 단일 브레이크포인트, `viewport-fit=cover`인데 safe-area 패딩 없음 |
 | **grandfather** / a11y-app | 🟡 good | 9 | High 1 | `privacy.html`이 **잘못된 액센트 블루 `#0b66ff`**(코발트 아님), 큰글씨/고대비는 정당한 a11y 이탈로 인정 |
@@ -31,7 +31,7 @@
 2. **하드코딩 hex 드리프트** — career `landing.css`(`--ink:#1B2430` vs 캐논 `#14171b`), grandfather `privacy.html`(`#0b66ff` vs 코발트 `#2d5bff`)가 토큰을 참조하지 않고 평행 팔레트를 재선언.
 3. **색 규율 이탈(랜딩/히어로)** — 그라데이션 배경(career 히어로, crewfit 히어로×2), 액센트 도배(career CTA 풀블리드 코발트), 2차 브랜드색(crewfit 클럽 팀컬러 red/blue/green/purple/orange). 캐논은 "배경은 플랫 단색, 그라데이션 금지 / 코발트는 단일 액센트, 도배 금지".
 4. **4px 그리드·타입 스케일 이탈** — 반절-픽셀 사이즈(13.5/12.5/11.5px), off-grid 패딩/반경(9/14/18/22px), off-axis 굵기(640/660/740/760, 800/900)가 여러 레포에 산재.
-5. **Geist Mono 데이터 타이포 미사용** — crewfit이 `--font-mono`를 Pretendard로 별칭(수치 정렬 텍스처 상실). 반면 career/dilettantisme는 올바르게 데이터에만 mono 사용.
+5. **데이터 타이포 = Pretendard 단일 + tabular-nums** — (후속 결정 반영) 별도 모노 폰트는 시스템 전체에서 제거. 숫자·데이터는 Pretendard + `font-variant-numeric: tabular-nums`로 정렬. crewfit이 먼저 택했던 방식이 전체 표준이 됨.
 
 ---
 
@@ -76,7 +76,7 @@
 | **High** ✅확인 | color | `styles.css:268-272` | 클럽별 팀컬러 `--acc:#e5302a/#2b6fe0/#1f9d4d/...` — **2차 브랜드 휴 패밀리** 도입(캐논 단일 액센트 위반). → 제품 필수면 명시적 스코프 예외로 격리, 아니면 제거 |
 | **High** ✅확인 | color | `styles.css:252,325` | `.hero`/`.sinfo-hero` `linear-gradient(...)` — 그라데이션 금지. → 플랫 표면 |
 | Med | color | `styles.css:256` | `.hero::after` 장식용 SVG 블롭 오버레이 → 제거(표면 플랫 유지) |
-| Med | typography | `styles.css:56` | `--font-mono:var(--font-text)` — Geist Mono 전면 미사용 → 데이터(D-day·랭킹·정산액)에 mono 로드 |
+| ✓ 무효 | typography | `styles.css:56` | `--font-mono:var(--font-text)` — (후속 결정으로 무효) 별도 모노 폰트는 시스템 전체에서 제거. 데이터는 Pretendard + `tabular-nums` 정렬이 표준. crewfit 방식이 곧 캐논. |
 | Med | typography | `styles.css:102` | 본문 `0.875rem`(14px) — 캐논 16px. 가장 모바일-중요 표면 → 16px/1.6 |
 | Low | accessibility | `styles.css:649` | `.pin-real{outline:none}` — **refuted**(거짓양성): 포커스는 `.pin-cell.active` 링으로 가시화됨 |
 | Low | responsive | `styles.css:598` | `.custom-row input{width:112px}` — **refuted**: 형제 flex:1라 360px 오버플로 안 됨 |
@@ -140,7 +140,7 @@
 
 **P2 — 그리드/타입 위생**
 - off-grid 사이즈/반경/굵기 → 4px 그리드·px 스케일·400-700 축 스냅
-- crewfit: 본문 14→16px, Geist Mono 데이터 타이포 복원
+- crewfit: 본문 14→16px (데이터 타이포는 Pretendard + tabular-nums 유지 — 별도 모노 폰트 미사용이 표준)
 - career doc-pages: 모바일 거터 스텝다운 추가, 본문 15→16px
 
 ---
