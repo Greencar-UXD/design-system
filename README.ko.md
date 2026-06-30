@@ -1,4 +1,4 @@
-# Daniel's Design System
+# 다니엘의 디자인 시스템 (Daniel's Design System)
 
 **Language / 언어: [English](./README.md) · 한국어 (현재 파일)**
 
