@@ -1,6 +1,6 @@
-# Cobalt — Mono 디자인 시스템 적합성 감사
+# 다니엘의 디자인 시스템 적합성 감사
 
-**일자:** 2026-06-26 · **기준(canon):** `Greencar-UXD/design-system` (Cobalt — Mono, accent `#2D5BFF`)
+**일자:** 2026-06-26 · **기준(canon):** `Greencar-UXD/design-system` (Daniel's Design System, accent cobalt `#2D5BFF`)
 **범위:** 연결된 6개 레포의 웹 디자인 산출물 → career · crewfit · dilettantisme · grandfather · (skills는 디자인 산출물 아님) · design-system 자체
 **방법:** 8개 감사 유닛을 병렬로 정전(canon) 대조 → **고심각·의심 항목 33건을 적대적(refute 우선) 재검증** → 거짓양성/심각도 정정 반영. (총 41 에이전트, 69 발견)
 

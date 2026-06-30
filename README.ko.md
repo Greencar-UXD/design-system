@@ -1,4 +1,4 @@
-# Cobalt — Mono Design System
+# Daniel's Design System
 
 **Language / 언어: [English](./README.md) · 한국어 (현재 파일)**
 
@@ -108,7 +108,7 @@ _UI 킷(실제 제품 화면 전체 재현)은 의도적으로 아직 만들지 
 
 ```jsx
 // 1) 스타일 — 앱 루트에서 한 번만
-import "cobalt-mono-design-system/styles.css";
+import "daniels-design-system/styles.css";
 //   순수 HTML 대안:  <link rel="stylesheet" href="styles.css">
 
 // 2) 컴포넌트 — 배럴에서, 또는 개별 파일에서

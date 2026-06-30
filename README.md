@@ -1,4 +1,4 @@
-# Cobalt — Mono Design System
+# Daniel's Design System
 
 **Language / 언어: English (this file) · [한국어](./README.ko.md)**
 
@@ -108,7 +108,7 @@ This system ships **source** — there is no compiler or runtime bundle. Link th
 
 ```jsx
 // 1) Styles — once, at your app root
-import "cobalt-mono-design-system/styles.css";
+import "daniels-design-system/styles.css";
 //   plain HTML alternative:  <link rel="stylesheet" href="styles.css">
 
 // 2) Components — from the barrel, or per-file
