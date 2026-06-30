@@ -7,20 +7,20 @@
 <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="./assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
-<title>Cobalt — Mono Design System</title>
+<title>Daniel's Design System</title>
 <meta name="description" content="Monochrome surfaces with a single cobalt accent. Pretendard type (Korean + English), light & dark. 37 React components + token-driven CSS.">
 <!-- Open Graph / link preview -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Cobalt — Mono Design System">
-<meta property="og:title" content="Cobalt — Mono Design System">
+<meta property="og:site_name" content="Daniel's Design System">
+<meta property="og:title" content="Daniel's Design System">
 <meta property="og:description" content="Monochrome surfaces with a single cobalt accent. Pretendard type (Korean + English), light & dark. 37 React components + token-driven CSS.">
 <meta property="og:url" content="https://greencar-uxd.github.io/design-system/">
 <meta property="og:image" content="https://greencar-uxd.github.io/design-system/assets/og-cover.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Cobalt — Mono Design System. Monochrome neutral ramp with a single cobalt accent.">
+<meta property="og:image:alt" content="Daniel's Design System. Monochrome neutral ramp with a single cobalt accent.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Cobalt — Mono Design System">
+<meta name="twitter:title" content="Daniel's Design System">
 <meta name="twitter:description" content="Monochrome surfaces with a single cobalt accent. Pretendard type (Korean + English), light & dark.">
 <meta name="twitter:image" content="https://greencar-uxd.github.io/design-system/assets/og-cover.png">
 <link rel="stylesheet" href="./styles.css">
@@ -31,10 +31,10 @@
   /* header */
   .gx-top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 24px;background:color-mix(in srgb,var(--surface-page) 84%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
   .gx-brand{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:var(--fw-bold);font-size:18px;letter-spacing:var(--ls-tight);color:var(--text-primary);text-decoration:none;}
-  .gx-brand .gx-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);}
   .gx-nav{display:flex;gap:2px;align-items:center;flex-wrap:wrap;}
   .gx-nav a{font:var(--text-label);color:var(--text-secondary);text-decoration:none;padding:8px 12px;border-radius:var(--radius-sm);}
   .gx-nav a:hover{background:var(--surface-sunken);color:var(--text-primary);}
+  .gx-nav a[aria-current]{color:var(--accent);background:var(--surface-accent-subtle);}
   .gx-nav .gx-sep{width:1px;height:20px;background:var(--border);margin:0 8px;}
   .gx-right{display:flex;align-items:center;gap:8px;}
   .gx-burger{display:none;align-items:center;justify-content:center;width:40px;height:40px;padding:0;border:1px solid var(--border);border-radius:var(--radius-md);background:transparent;color:var(--text-primary);cursor:pointer;}
@@ -120,18 +120,19 @@
 </head>
 <body>
 <header class="gx-top">
-  <a class="gx-brand" href="./index.html">Cobalt<span class="gx-dot"></span></a>
+  <a class="gx-brand" href="./index.html">Daniel</a>
   <div class="gx-right">
   <nav class="gx-nav" id="gxNav">
+    <a href="./index.html" aria-current="page">Overview</a>
     <a href="./gallery/foundations.html">Foundations</a>
-    <a href="./gallery/ux-writing.html">UX Writing</a>
     <a href="./gallery/atoms.html">Atoms</a>
     <a href="./gallery/molecules.html">Molecules</a>
     <a href="./gallery/organisms.html">Organisms</a>
+    <a href="./gallery/ux-writing.html">UX Writing</a>
+    <a href="./guide.html">Guide</a>
     <span class="gx-sep"></span>
     <a href="https://github.com/Greencar-UXD/design-system" target="_blank" rel="noopener">GitHub</a>
-    <span class="gx-sep"></span>
-    <button id="gxTheme" class="ds-btn ds-btn--secondary ds-btn--sm" type="button">Dark</button>
+    <button id="gxTheme" class="ds-iconbtn ds-iconbtn--md" type="button" aria-label="다크/라이트 모드 전환"></button>
   </nav>
     <button id="gxBurger" class="gx-burger" type="button" aria-label="메뉴" aria-expanded="false" aria-controls="gxNav"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
   </div>
@@ -252,7 +253,7 @@ document.documentElement
 
   <!-- FOOTER -->
   <footer class="gx-wrap gx-foot">
-    <strong>Cobalt — Mono Design System</strong> · v0.1.0 · 아토믹 구조(atoms / molecules / organisms) · 4px 그리드
+    <strong>Daniel's Design System</strong> · v0.1.0 · 아토믹 구조(atoms / molecules / organisms) · 4px 그리드
     <ul>
       <li><strong>폰트</strong>: Pretendard 단일 패밀리를 <code>assets/fonts/</code>에서 self-host 합니다(가변 woff2). 숫자는 tabular 피겨. 외부 CDN·렌더 블로킹 요청이 없고 오프라인에서도 동작합니다.</li>
       <li><strong>아이콘</strong>: Lucide(monoline, stroke 2). 갤러리에는 인라인 SVG로 표기했습니다.</li>
@@ -264,7 +265,8 @@ document.documentElement
 
 <script>
   var root=document.documentElement,btn=document.getElementById('gxTheme');
-  function setT(t){root.setAttribute('data-theme',t);btn.textContent=t==='dark'?'Light':'Dark';try{localStorage.setItem('ds-theme',t);}catch(e){}}
+  var THEME_SUN='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>',THEME_MOON='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>';
+  function setT(t){root.setAttribute('data-theme',t);btn.innerHTML=t==='dark'?THEME_SUN:THEME_MOON;btn.setAttribute('aria-label',t==='dark'?'라이트 모드로 전환':'다크 모드로 전환');try{localStorage.setItem('ds-theme',t);}catch(e){}}
   var saved='light';try{saved=localStorage.getItem('ds-theme')||'light';}catch(e){}
   setT(saved);
   btn.addEventListener('click',function(){setT(root.getAttribute('data-theme')==='dark'?'light':'dark');});
