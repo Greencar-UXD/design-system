@@ -1,4 +1,4 @@
-# Cobalt — Mono Design System
+# Daniel's Design System
 
 **🌐 Language / 언어: English (this file) · [한국어](./README.ko.md)**
 
