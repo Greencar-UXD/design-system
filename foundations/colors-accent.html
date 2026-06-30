@@ -1,4 +1,4 @@
-<!-- @dsCard group="Colors" viewport="700x180" name="Cobalt Accent" subtitle="Signature accent · 50 → 900" -->
+<!-- @dsCard group="Colors" viewport="700x180" name="Accent" subtitle="Signature accent · 50 → 900" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +22,7 @@
 <script>
   const steps = [50,100,200,300,400,500,600,700,800,900];
   document.getElementById('ramp').innerHTML = steps.map(s =>
-    `<div class="sw"><div class="chip ${s===500?'base':''}" style="background:var(--cobalt-${s})"></div><div class="lbl">${s}</div></div>`
+    `<div class="sw"><div class="chip ${s===500?'base':''}" style="background:var(--accent-${s})"></div><div class="lbl">${s}</div></div>`
   ).join('');
 </script>
 </body>

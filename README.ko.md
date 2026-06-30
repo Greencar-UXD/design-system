@@ -2,7 +2,7 @@
 
 **🌐 Language / 언어: [English](./README.md) · 한국어 (현재 파일)**
 
-무채색(모노톤)을 기본으로 하고, 단 하나의 시그니처 포인트 컬러(**Cobalt `#2D5BFF`**)를 쓰는 디자인 시스템입니다. 개인 포트폴리오/웹사이트와 모바일 서비스 화면 프로토타이핑을 위해 만들었습니다. 라이트 모드가 기본이며, 다크 모드도 완전히 지원합니다. 한글과 영문이 모두 1급 시민이에요 — 전체 타입 시스템이 한 패밀리로 두 문자를 모두 커버하는 **Pretendard** 위에서 돌아갑니다.
+무채색(모노톤)을 기본으로 하고, 단 하나의 시그니처 포인트 컬러(**Accent `#2D5BFF`**)를 쓰는 디자인 시스템입니다. 개인 포트폴리오/웹사이트와 모바일 서비스 화면 프로토타이핑을 위해 만들었습니다. 라이트 모드가 기본이며, 다크 모드도 완전히 지원합니다. 한글과 영문이 모두 1급 시민이에요 — 전체 타입 시스템이 한 패밀리로 두 문자를 모두 커버하는 **Pretendard** 위에서 돌아갑니다.
 
 > **출처 / 기원:** 처음부터 새로 제작(기존 코드베이스·Figma·브랜드 가이드 없음). 최초에 첨부됐던 `design-system/` 로컬 폴더가 비어 있어서, 모든 기반을 새로 작성하고 사용자와 단계별로(폰트 → 컬러 → 컴포넌트) 확정했습니다. 추후 실제 코드베이스나 브랜드가 생기면 이 토큰부터 맞춰 조정하세요.
 
@@ -25,9 +25,9 @@
 
 ## 비주얼 기반 (Visual foundations)
 
-룩앤필: **무채색 표면, 잉크색 텍스트, 절제해서 쓰는 코발트 포인트 하나.** 조용하고 정밀하게 — 콘텐츠(작업·제품)가 주인공이고, 시스템은 뒤로 빠집니다.
+룩앤필: **무채색 표면, 잉크색 텍스트, 절제해서 쓰는 강조색 포인트 하나.** 조용하고 정밀하게 — 콘텐츠(작업·제품)가 주인공이고, 시스템은 뒤로 빠집니다.
 
-- **컬러.** 쿨한 기운의 뉴트럴 램프(`--gray-0 … --gray-950`)가 모든 화면의 95%를 차지합니다. **잉크**(`--gray-900`)가 주 텍스트이자 기본 버튼 채움색. **코발트**(`--cobalt-500`, 다크에서는 `#5B7CFF`로 한 톤 밝게)는 단일 액센트 — 링크·포커스 링·선택/활성 상태, 그리고 화면당 가장 중요한 CTA 하나에만 씁니다. 액센트로 화면을 도배하지 마세요. 상태색(녹/주황/빨강)은 배지와 피드백에만 등장합니다.
+- **컬러.** 쿨한 기운의 뉴트럴 램프(`--gray-0 … --gray-950`)가 모든 화면의 95%를 차지합니다. **잉크**(`--gray-900`)가 주 텍스트이자 기본 버튼 채움색. **강조색**(`--accent-500`, 다크에서는 `#5B7CFF`로 한 톤 밝게)는 단일 액센트 — 링크·포커스 링·선택/활성 상태, 그리고 화면당 가장 중요한 CTA 하나에만 씁니다. 액센트로 화면을 도배하지 마세요. 상태색(녹/주황/빨강)은 배지와 피드백에만 등장합니다.
 - **테마.** 라이트가 `:root` 기본, 다크는 `[data-theme="dark"]`에서 시맨틱 토큰을 덮어씁니다. 컴포넌트는 시맨틱 토큰(`--text-primary`, `--surface-card`, `--border`, `--accent`)을 읽기 때문에 자동으로 전환돼요 — 컴포넌트별 다크 CSS 불필요.
 - **타입.** 전부 Pretendard 단일 패밀리(디스플레이 → 데이터, 한글+영문). 숫자는 tabular 피겨. 디스플레이/제목은 자간을 좁게(`--ls-tight`/`--ls-tighter`), 본문은 중립. 굵기: 400/500/600/700. 위계는 색이 아니라 크기 + 굵기로.
 - **스페이싱 & 레이아웃.** 엄격한 **4px 기준 그리드**(`--space-*`: 4·8·12·16·20·24·28·32·40·48·64·80·96). Radius도 4px 그리드 위에 있습니다(`--radius-*`: 4·8·12·16·20·28). 모든 컴포넌트의 padding/gap/margin은 그리드에 스냅됩니다. 의도적으로 그리드를 벗어나는 값은 헤어라인 보더(1px), 포커스/센터링 오프셋(2px), 아이콘 글리프 크기, 44px 터치 타깃뿐입니다. 여백은 넉넉하게, 웹 콘텐츠 최대 폭은 1100~1240px 정도. 마진 체인 대신 flex/grid + `gap`을 쓰세요.
@@ -39,19 +39,19 @@
 - **이미지.** 실제 사진/작업물은 둥근 카드(`--radius-xl`) 안에 풀블리드로, 쿨/뉴트럴 톤 선호. 실제 에셋이 오기 전엔 플레이스홀더(이미지 슬롯)를 쓰고, 장식 이미지를 임의로 생성하지 마세요.
 - **모션.** 빠르고 절제되게. hover에 `--dur-fast`(120ms), 토글/스위치에 `--dur-base`(200ms), 대부분 `--ease-out`, 양방향엔 `--ease-in-out`. 바운스나 출렁이는 오버슈트 없음.
 - **Hover 상태:** ghost/secondary는 은은한 배경 채움(`--surface-sunken`), 솔리드 채움은 한 단계 어둡게(`--action-primary-bg-hover`, `--accent-hover`), 카드는 `translateY(-2px)` + 더 깊은 그림자.
-- **Press 상태:** 살짝 `scale(.985~.94)` 축소. **Focus:** 항상 보이는 2px 코발트 링(`--focus-ring`) + 2px 오프셋 — 절대 제거하지 않음.
-- **투명도 / 블러:** 드물게만 — 포커스 링이 반투명 코발트 헤일로(`color-mix`)를 씁니다. 기본적으로 글래스모피즘은 안 씁니다.
+- **Press 상태:** 살짝 `scale(.985~.94)` 축소. **Focus:** 항상 보이는 2px 강조색 링(`--focus-ring`) + 2px 오프셋 — 절대 제거하지 않음.
+- **투명도 / 블러:** 드물게만 — 포커스 링이 반투명 강조색 헤일로(`color-mix`)를 씁니다. 기본적으로 글래스모피즘은 안 씁니다.
 
 ---
 
 ## 테마화 & 시그니처 (Theming & signature)
 
-**액센트는 코발트 하나입니다.** 모노톤 위에 시그니처 액센트는 코발트 단일 색뿐입니다. 브랜드 교체 레이어는 없으며, 시맨틱은 코발트 램프를 직접 참조합니다. 대비를 위해 액센트 역할만 분리합니다 — `--accent`(장식: 포커스 링·시그니처 마크·채움; 500 스텝) vs `--accent-solid`(텍스트/아이콘이 위에 올라가는 곳; 라이트는 흰 글자 ≥ 4.5 AA를 지키는 600 스텝, 다크는 ink-on-accent). 링크·포커스·선택 상태·솔리드 CTA·`chart-1`이 모두 코발트에서 **라이트·다크 양쪽으로** 파생되며 WCAG AA를 유지합니다.
+**액센트는 강조색 하나입니다.** 모노톤 위에 시그니처 액센트는 강조색 단일 색뿐입니다. 브랜드 교체 레이어는 없으며, 시맨틱은 강조색 램프를 직접 참조합니다. 대비를 위해 액센트 역할만 분리합니다 — `--accent`(장식: 포커스 링·시그니처 마크·채움; 500 스텝) vs `--accent-solid`(텍스트/아이콘이 위에 올라가는 곳; 라이트는 흰 글자 ≥ 4.5 AA를 지키는 600 스텝, 다크는 ink-on-accent). 링크·포커스·선택 상태·솔리드 CTA·`chart-1`이 모두 강조색에서 **라이트·다크 양쪽으로** 파생되며 WCAG AA를 유지합니다.
 
-- **라이트 / 다크** — `<html>`에 `data-theme="dark"`만 설정하면 액센트 스텝이 자동으로 올라가(라이트 코발트 500/600 → 다크 400/300) 양 테마에서 대비가 유지됩니다.
-- **단일 소스** — `tokens/tokens.json`(W3C Design Tokens 포맷)이 컬러 시스템을 미러링: primitive 램프(gray / cobalt / status) → semantic light/dark.
+- **라이트 / 다크** — `<html>`에 `data-theme="dark"`만 설정하면 액센트 스텝이 자동으로 올라가(라이트 강조색 500/600 → 다크 400/300) 양 테마에서 대비가 유지됩니다.
+- **단일 소스** — `tokens/tokens.json`(W3C Design Tokens 포맷)이 컬러 시스템을 미러링: primitive 램프(gray / accent / status) → semantic light/dark.
 
-**시그니처 — '한 점'.** 코발트 마크 하나(작은 라운드 스퀘어)가 시스템의 스파크로 반복됩니다 — `.ds-kicker` 섹션 라벨을 이끌고, 빈 상태(모노톤 필드 + 코발트 한 점)의 중심에 놓이고, `<Dots>` 로더에서 마지막에 착지합니다. 기억에 남는 마크 하나, 나머지는 조용히. `foundations/signature.html` 참고.
+**시그니처 — '한 점'.** 강조색 마크 하나(작은 라운드 스퀘어)가 시스템의 스파크로 반복됩니다 — `.ds-kicker` 섹션 라벨을 이끌고, 빈 상태(모노톤 필드 + 강조색 한 점)의 중심에 놓이고, `<Dots>` 로더에서 마지막에 착지합니다. 기억에 남는 마크 하나, 나머지는 조용히. `foundations/signature.html` 참고.
 
 ---
 
@@ -87,7 +87,7 @@ npx serve .        # 또는:  python3 -m http.server
 
 루트 파일:
 - **`styles.css`** — 소비자가 링크하는 단일 진입점. 아래 토큰·컴포넌트 CSS를 `@import`.
-- **`tokens/`** — `fonts.css`(Pretendard `@font-face`), `colors.css`(뉴트럴 + 코발트 램프, 라이트/다크 시맨틱), `typography.css`(패밀리·스케일·굵기·행간·자간), `spacing.css`(스페이싱 그리드·radius·그림자·모션), `layout.css`(브레이크포인트·컨테이너 폭·거터).
+- **`tokens/`** — `fonts.css`(Pretendard `@font-face`), `colors.css`(뉴트럴 + 강조색 램프, 라이트/다크 시맨틱), `typography.css`(패밀리·스케일·굵기·행간·자간), `spacing.css`(스페이싱 그리드·radius·그림자·모션), `layout.css`(브레이크포인트·컨테이너 폭·거터).
 - **`css/components.css`** — 클래스 기반, 토큰 구동 컴포넌트 스타일(`.ds-*`), 다크 자동 대응. **`css/layout.css`** — 컨테이너·반응형 그리드 유틸(`.ds-container`, `.ds-grid--*`).
 - **`package.json`** — 패키지 메타데이터 + `exports` 맵(소스를 그대로 배포; 빌드 단계 없음). **`.gitignore`**.
 - **`README.md`** / **`README.ko.md`** — 가이드(영문 / 한글). **`SKILL.md`** — Agent Skill 매니페스트.
@@ -95,7 +95,7 @@ npx serve .        # 또는:  python3 -m http.server
 
 파운데이션 스페시먼 카드 — **`foundations/`** (`gallery/foundations.html`에서도 렌더):
 - Type: `type-scale`, `type-display`, `type-weights`, `type-mono`
-- Colors: `colors-neutral`, `colors-cobalt`, `colors-semantic-light`, `colors-dark`, `colors-status`, `chart-palette`
+- Colors: `colors-neutral`, `colors-accent`, `colors-semantic-light`, `colors-dark`, `colors-status`, `chart-palette`
 - Spacing: `spacing-scale`, `radius-scale`, `shadow-scale`
 - Motion: `motion` · Layout: `grid-layout`, `responsive`
 - Guidelines: `accessibility`, `do-dont`, `voice`
@@ -119,7 +119,7 @@ _UI 킷(실제 제품 화면 전체 재현)은 의도적으로 아직 만들지 
 
 ```jsx
 // 1) 스타일 — 앱 루트에서 한 번만
-import "cobalt-mono-design-system/styles.css";
+import "accent-mono-design-system/styles.css";
 //   순수 HTML 대안:  <link rel="stylesheet" href="styles.css">
 
 // 2) 컴포넌트 — 배럴에서, 또는 개별 파일에서
@@ -131,6 +131,6 @@ function Example() {
 }
 ```
 
-다크 모드는 `<html>`(또는 임의의 상위 요소)에 `data-theme="dark"`를 설정하세요 — 컴포넌트가 시맨틱 토큰을 통해 자동 전환됩니다. 액센트는 양 테마에서 코발트 하나입니다 — **테마화 & 시그니처** 참고.
+다크 모드는 `<html>`(또는 임의의 상위 요소)에 `data-theme="dark"`를 설정하세요 — 컴포넌트가 시맨틱 토큰을 통해 자동 전환됩니다. 액센트는 양 테마에서 강조색 하나입니다 — **테마화 & 시그니처** 참고.
 
 > **Claude Design 익스포트에서 마이그레이션하나요?** 기존 `_ds_bundle.js` / `window.DesignSystem_d67542` 런타임은 사라졌습니다(Claude Design 컴파일러가 생성하던 것). 위의 직접 import를 쓰세요 — 컴포넌트 소스는 표준 React이며 변경되지 않았습니다.

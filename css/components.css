@@ -438,7 +438,7 @@
 }
 
 /* ============================================================
-   Signature language — "the cobalt point"
+   Signature language — "the accent point"
    One accent mark (a small rounded square) recurs as the system's
    spark: it leads section labels, sits at the center of emptiness,
    and lands last while loading. Follows the active brand accent.
@@ -450,7 +450,7 @@
   text-transform:uppercase;letter-spacing:var(--ls-caps);color:var(--text-tertiary);}
 .ds-kicker::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--accent);flex:none;}
 
-/* Empty state — a monochrome field with one cobalt point */
+/* Empty state — a monochrome field with one accent point */
 .ds-empty__sig{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:5px;
   width:68px;aspect-ratio:1;margin-bottom:16px;}
 .ds-empty__sig span{border-radius:5px;background:var(--surface-sunken);}

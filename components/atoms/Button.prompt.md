@@ -1,4 +1,4 @@
-Button — the primary action control; ink-forward by default with a cobalt `accent` variant for key CTAs.
+Button — the primary action control; ink-forward by default with a an `accent` variant for key CTAs.
 
 ```jsx
 import { Button } from './components/forms/Button';
@@ -10,7 +10,7 @@ import { Button } from './components/forms/Button';
 <Button variant="danger">삭제</Button>
 ```
 
-- **variant**: `primary` (ink, default) · `accent` (cobalt) · `secondary` (outline) · `ghost` · `danger`
+- **variant**: `primary` (ink, default) · `accent` · `secondary` (outline) · `ghost` · `danger`
 - **size**: `sm` · `md` · `lg`
 - **icon / iconRight**: pass an SVG/icon node; sized automatically to the button.
 - **fullWidth**: stretch to container.

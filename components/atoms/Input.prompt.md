@@ -1,4 +1,4 @@
-Input — text field with optional label, leading icon, hint, and error state. Focus ring uses the cobalt accent.
+Input — text field with optional label, leading icon, hint, and error state. Focus ring uses the accent.
 
 ```jsx
 import { Input } from './components/forms/Input';

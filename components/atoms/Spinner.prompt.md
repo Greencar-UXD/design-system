@@ -1,4 +1,4 @@
-Spinner — circular loading indicator with a cobalt arc.
+Spinner — circular loading indicator with a accent arc.
 
 ```jsx
 import { Spinner } from './components/feedback/Spinner';

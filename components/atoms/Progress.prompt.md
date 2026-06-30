@@ -1,4 +1,4 @@
-Progress — linear bar with a cobalt fill.
+Progress — linear bar with a accent fill.
 
 ```jsx
 import { Progress } from './components/feedback/Progress';

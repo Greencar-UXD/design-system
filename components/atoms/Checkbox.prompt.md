@@ -1,4 +1,4 @@
-Checkbox — labeled checkbox; checked state fills with cobalt accent.
+Checkbox — labeled checkbox; checked state fills with accent.
 
 ```jsx
 import { Checkbox } from './components/forms/Checkbox';

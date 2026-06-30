@@ -2,7 +2,7 @@
 
 **🌐 Language / 언어: English (this file) · [한국어](./README.ko.md)**
 
-A monochrome-first design system with a single signature accent (**Cobalt `#2D5BFF`**), built for a personal portfolio / website and for prototyping mobile service screens. Light mode is the base; full dark mode is supported. Korean + English are first-class — the entire type system runs on **Pretendard**, which covers both scripts in one family.
+A monochrome-first design system with a single signature accent (**Accent `#2D5BFF`**), built for a personal portfolio / website and for prototyping mobile service screens. Light mode is the base; full dark mode is supported. Korean + English are first-class — the entire type system runs on **Pretendard**, which covers both scripts in one family.
 
 > **Sources / origin:** Built from scratch (no prior codebase, Figma, or brand guide). The originally-attached `design-system/` local folder read as empty, so all foundations were authored fresh and confirmed with the user step by step (font → color → components). If a real codebase or brand later appears, reconcile tokens here first.
 
@@ -25,9 +25,9 @@ How copy is written across the system. Keep it consistent in every screen, card,
 
 ## Visual foundations
 
-The look: **monochrome surfaces, ink text, one cobalt accent used sparingly.** Quiet and precise — the content (work, product) is the hero; the system gets out of the way.
+The look: **monochrome surfaces, ink text, one accent used sparingly.** Quiet and precise — the content (work, product) is the hero; the system gets out of the way.
 
-- **Color.** Cool-leaning neutral ramp (`--gray-0 … --gray-950`) carries 95% of every screen. **Ink** (`--gray-900`) is the primary text and the primary button fill. **Cobalt** (`--cobalt-500`, lifted to `#5B7CFF` in dark) is the single accent — reserved for links, focus rings, selected/active states, and the one most-important CTA per view. Never flood a screen with accent. Status colors (green/amber/red) appear only in badges and feedback.
+- **Color.** Cool-leaning neutral ramp (`--gray-0 … --gray-950`) carries 95% of every screen. **Ink** (`--gray-900`) is the primary text and the primary button fill. **Accent** (`--accent-500`, lifted to `#5B7CFF` in dark) is the single accent — reserved for links, focus rings, selected/active states, and the one most-important CTA per view. Never flood a screen with accent. Status colors (green/amber/red) appear only in badges and feedback.
 - **Themes.** Light is the base on `:root`; dark overrides semantic tokens under `[data-theme="dark"]`. Components read semantic tokens (`--text-primary`, `--surface-card`, `--border`, `--accent`) so they flip automatically — no per-component dark CSS.
 - **Type.** Pretendard for everything (display → data) — one family covering Korean + English; numerics use tabular figures. Tight tracking on display/headings (`--ls-tight`/`--ls-tighter`), neutral on body. Weights: 400/500/600/700. Hierarchy comes from size + weight, not color.
 - **Spacing & layout.** Strict **4px base grid** (`--space-*`: 4·8·12·16·20·24·28·32·40·48·64·80·96). Radius is also on the 4px grid (`--radius-*`: 4·8·12·16·20·28). All component padding/gap/margin snap to the grid; the only deliberate off-grid values are hairline borders (1px), focus/centering offsets (2px), icon glyph sizing, and the 44px touch target. Generous whitespace; content max-widths around 1100–1240px on web. Use flex/grid with `gap` — never margin chains.
@@ -39,19 +39,19 @@ The look: **monochrome surfaces, ink text, one cobalt accent used sparingly.** Q
 - **Imagery.** Treat real photography/work as full-bleed within rounded cards (`--radius-xl`), cool/neutral grade preferred. Use placeholders (image slots) until real assets are supplied — never generate decorative imagery.
 - **Motion.** Quick and understated. `--dur-fast` (120ms) for hovers, `--dur-base` (200ms) for toggles/switches, `--ease-out` for most, `--ease-in-out` for two-way. No bounces or springy overshoot.
 - **Hover states:** subtle background fill (`--surface-sunken`) for ghost/secondary; one step darker for solid fills (`--action-primary-bg-hover`, `--accent-hover`); cards lift `translateY(-2px)` + deeper shadow.
-- **Press states:** slight `scale(.985–.94)` shrink. **Focus:** always a visible 2px cobalt ring (`--focus-ring`) with 2px offset — never removed.
-- **Transparency / blur:** used rarely — focus rings use a translucent cobalt halo (`color-mix`). No glassmorphism by default.
+- **Press states:** slight `scale(.985–.94)` shrink. **Focus:** always a visible 2px accent ring (`--focus-ring`) with 2px offset — never removed.
+- **Transparency / blur:** used rarely — focus rings use a translucent accent halo (`color-mix`). No glassmorphism by default.
 
 ---
 
 ## Theming & signature
 
-**One accent: Cobalt.** The system is monochrome with a single signature accent — Cobalt. There is no brand-swap layer; semantics reference the Cobalt ramp directly. The accent role is split for contrast: `--accent` (decorative — focus ring, signature mark, fills; the 500 step) vs `--accent-solid` (anything with text/icon on top; the 600 step in light, which keeps white text ≥ 4.5 AA; ink-on-accent in dark). Links, focus, selected states, the solid CTA and `chart-1` all derive from Cobalt, in **both light and dark**, staying WCAG AA.
+**One accent: Accent.** The system is monochrome with a single signature accent — Accent. There is no brand-swap layer; semantics reference the Accent ramp directly. The accent role is split for contrast: `--accent` (decorative — focus ring, signature mark, fills; the 500 step) vs `--accent-solid` (anything with text/icon on top; the 600 step in light, which keeps white text ≥ 4.5 AA; ink-on-accent in dark). Links, focus, selected states, the solid CTA and `chart-1` all derive from Accent, in **both light and dark**, staying WCAG AA.
 
-- **Light / dark** — set `data-theme="dark"` on `<html>`; the accent steps lift automatically (Cobalt 500/600 in light → 400/300 in dark) so contrast holds in both themes.
-- **Single source of truth** — `tokens/tokens.json` (W3C Design Tokens format) mirrors the color system: primitive ramps (gray / cobalt / status) → semantic light/dark.
+- **Light / dark** — set `data-theme="dark"` on `<html>`; the accent steps lift automatically (Accent 500/600 in light → 400/300 in dark) so contrast holds in both themes.
+- **Single source of truth** — `tokens/tokens.json` (W3C Design Tokens format) mirrors the color system: primitive ramps (gray / accent / status) → semantic light/dark.
 
-**The signature — "the point."** The one cobalt mark (a small rounded square) recurs as the system's spark: it leads `.ds-kicker` section labels, sits at the center of the empty state (a monochrome field with a single cobalt point), and lands last in the `<Dots>` loader. One memorable mark; everything else stays quiet. See `foundations/signature.html`.
+**The signature — "the point."** The one accent mark (a small rounded square) recurs as the system's spark: it leads `.ds-kicker` section labels, sits at the center of the empty state (a monochrome field with a single accent point), and lands last in the `<Dots>` loader. One memorable mark; everything else stays quiet. See `foundations/signature.html`.
 
 ---
 
@@ -87,7 +87,7 @@ npx serve .        # or:  python3 -m http.server
 
 Root files:
 - **`styles.css`** — the single entry point consumers link. `@import`s the token + component CSS below.
-- **`tokens/`** — `fonts.css` (Pretendard `@font-face`), `colors.css` (neutral + cobalt ramps, light/dark semantic), `typography.css` (families, scale, weights, leading, tracking), `spacing.css` (space grid, radius, shadow, motion), `layout.css` (breakpoints, container widths, gutters).
+- **`tokens/`** — `fonts.css` (Pretendard `@font-face`), `colors.css` (neutral + accent ramps, light/dark semantic), `typography.css` (families, scale, weights, leading, tracking), `spacing.css` (space grid, radius, shadow, motion), `layout.css` (breakpoints, container widths, gutters).
 - **`css/components.css`** — class-based, token-driven component styles (`.ds-*`), auto-adapting to dark. **`css/layout.css`** — container & responsive-grid utilities (`.ds-container`, `.ds-grid--*`).
 - **`package.json`** — package metadata + `exports` map (ships source; no build step). **`.gitignore`**.
 - **`README.md`** / **`README.ko.md`** — this guide (EN / KO). **`SKILL.md`** — Agent Skill manifest.
@@ -95,7 +95,7 @@ Root files:
 
 Foundations specimen cards — **`foundations/`** (also rendered in `gallery/foundations.html`):
 - Type: `type-scale`, `type-display`, `type-weights`, `type-mono`
-- Colors: `colors-neutral`, `colors-cobalt`, `colors-semantic-light`, `colors-dark`, `colors-status`, `chart-palette`
+- Colors: `colors-neutral`, `colors-accent`, `colors-semantic-light`, `colors-dark`, `colors-status`, `chart-palette`
 - Spacing: `spacing-scale`, `radius-scale`, `shadow-scale`
 - Motion: `motion` · Layout: `grid-layout`, `responsive`
 - Guidelines: `accessibility`, `do-dont`, `voice`
@@ -119,7 +119,7 @@ This system ships **source** — there is no compiler or runtime bundle. Link th
 
 ```jsx
 // 1) Styles — once, at your app root
-import "cobalt-mono-design-system/styles.css";
+import "accent-mono-design-system/styles.css";
 //   plain HTML alternative:  <link rel="stylesheet" href="styles.css">
 
 // 2) Components — from the barrel, or per-file
@@ -131,6 +131,6 @@ function Example() {
 }
 ```
 
-For dark mode, set `data-theme="dark"` on `<html>` (or any ancestor) — components flip automatically via semantic tokens. The accent is Cobalt in both themes (see **Theming & signature**).
+For dark mode, set `data-theme="dark"` on `<html>` (or any ancestor) — components flip automatically via semantic tokens. The accent is Accent in both themes (see **Theming & signature**).
 
 > **Migrating from the Claude Design export?** The old `_ds_bundle.js` / `window.DesignSystem_d67542` runtime is gone (Claude Design's compiler generated it). Use the direct imports above — the component source is standard React and unchanged.

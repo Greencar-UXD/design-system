@@ -1,4 +1,4 @@
-Dots — signature inline loader: three marks with the cobalt point landing last. Follows the active brand accent; respects reduced motion.
+Dots — signature inline loader: three marks with the accent point landing last. Follows the active brand accent; respects reduced motion.
 
 ```jsx
 import { Dots } from './components/atoms/Dots.jsx';

@@ -1,4 +1,4 @@
-BottomNav — mobile bottom tab bar (icon + label). Active item turns cobalt.
+BottomNav — mobile bottom tab bar (icon + label). Active item turns accent.
 
 ```jsx
 import { BottomNav } from './components/mobile/BottomNav';
