@@ -3,14 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Molecules · Cobalt — Mono Design System</title>
+<title>Molecules · Daniel's Design System</title>
 <link rel="stylesheet" href="../styles.css">
 <style>
   *{box-sizing:border-box;}
   body{margin:0;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-text);-webkit-font-smoothing:antialiased;}
   .gx-top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 24px;background:color-mix(in srgb,var(--surface-page) 84%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
   .gx-brand{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:var(--fw-bold);font-size:18px;letter-spacing:var(--ls-tight);color:var(--text-primary);text-decoration:none;}
-  .gx-brand .gx-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);}
   .gx-nav{display:flex;gap:2px;align-items:center;flex-wrap:wrap;}
   .gx-nav a{font:var(--text-label);color:var(--text-secondary);text-decoration:none;padding:8px 12px;border-radius:var(--radius-sm);}
   .gx-nav a:hover{background:var(--surface-sunken);color:var(--text-primary);}
@@ -34,16 +33,17 @@
 </head>
 <body>
 <header class="gx-top">
-  <a class="gx-brand" href="../index.html">Cobalt<span class="gx-dot"></span></a>
+  <a class="gx-brand" href="../index.html">Daniel</a>
   <nav class="gx-nav">
     <a href="../index.html">Overview</a>
     <a href="./foundations.html">Foundations</a>
-    <span class="gx-sep"></span>
     <a href="./atoms.html">Atoms</a>
     <a href="./molecules.html" aria-current="page">Molecules</a>
     <a href="./organisms.html">Organisms</a>
+    <a href="../guide.html">Guide</a>
     <span class="gx-sep"></span>
-    <button id="gxTheme" class="ds-btn ds-btn--secondary ds-btn--sm" type="button">Dark</button>
+    <a href="https://github.com/Greencar-UXD/design-system" target="_blank" rel="noopener">GitHub</a>
+    <button id="gxTheme" class="ds-iconbtn ds-iconbtn--md" type="button" aria-label="다크/라이트 모드 전환"></button>
   </nav>
 </header>
 <main class="gx-wrap">
@@ -541,7 +541,8 @@
 </main>
 <script>
   var root=document.documentElement,btn=document.getElementById('gxTheme');
-  function setT(t){root.setAttribute('data-theme',t);btn.textContent=t==='dark'?'Light':'Dark';try{localStorage.setItem('ds-theme',t);}catch(e){}}
+  var THEME_SUN='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>',THEME_MOON='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>';
+  function setT(t){root.setAttribute('data-theme',t);btn.innerHTML=t==='dark'?THEME_SUN:THEME_MOON;btn.setAttribute('aria-label',t==='dark'?'라이트 모드로 전환':'다크 모드로 전환');try{localStorage.setItem('ds-theme',t);}catch(e){}}
   var saved='light';try{saved=localStorage.getItem('ds-theme')||'light';}catch(e){}
   setT(saved);
   btn.addEventListener('click',function(){setT(root.getAttribute('data-theme')==='dark'?'light':'dark');});

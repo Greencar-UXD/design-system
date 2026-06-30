@@ -1,0 +1,50 @@
+/* ============================================================
+   Breakpoints, containers, touch & safe-area
+   Mobile-first. These tokens are the single source of truth for
+   the responsive ladder used across the system.
+
+   NOTE: CSS @media queries cannot read var() — media conditions
+   must use the literal px values below. Keep the @media rules in
+   css/responsive.css in sync with these tokens. The custom
+   properties exist for JS, container queries, and inline math
+   (calc/min/max/clamp), and as the documented contract.
+
+   Ladder (min-width, mobile-first):
+     xs  0      small phones        (base — no query needed)
+     sm  480    large phones
+     md  768    tablets (portrait)
+     lg  1024   tablets landscape / small laptop
+     xl  1280   desktop
+   ============================================================ */
+
+:root {
+  /* ---- Breakpoint stops ---- */
+  --bp-sm: 480px;   /* @kind dimension */
+  --bp-md: 768px;   /* @kind dimension */
+  --bp-lg: 1024px;  /* @kind dimension */
+  --bp-xl: 1280px;  /* @kind dimension */
+
+  /* ---- Content max-widths ---- */
+  --content-narrow: 720px;   /* reading column / single-form pages */
+  --content-max:    1120px;  /* default app/site content cap */
+  --content-wide:   1240px;  /* wide marketing / gallery layouts */
+
+  /* ---- Page gutters (side padding), step up with width ---- */
+  --gutter-sm: 16px;  /* phones  (= --space-4) */
+  --gutter-md: 24px;  /* tablets (= --space-6) */
+  --gutter-lg: 32px;  /* desktop (= --space-8) */
+  /* live gutter — remapped per breakpoint in css/responsive.css */
+  --gutter: var(--gutter-sm);
+
+  /* ---- Touch targets (mobile minimums) ---- */
+  --touch-min:         44px;  /* WCAG/Apple minimum tap area */
+  --touch-comfortable: 48px;  /* preferred for primary actions */
+
+  /* ---- Safe-area insets (notches / home indicator) ---- */
+  /* Fall back to 0 where env() is unsupported. Compose with
+     component padding via max()/calc() — see responsive.css. */
+  --safe-top:    env(safe-area-inset-top, 0px);    /* @kind dimension */
+  --safe-right:  env(safe-area-inset-right, 0px);  /* @kind dimension */
+  --safe-bottom: env(safe-area-inset-bottom, 0px); /* @kind dimension */
+  --safe-left:   env(safe-area-inset-left, 0px);   /* @kind dimension */
+}

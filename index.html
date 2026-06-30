@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cobalt — Mono Design System</title>
+<title>Daniel's Design System</title>
 <meta name="description" content="Monochrome surfaces with a single cobalt accent. Pretendard type (Korean + English), light & dark. 37 React components + token-driven CSS.">
 <link rel="stylesheet" href="./styles.css">
 <style>
@@ -13,10 +13,10 @@
   /* header */
   .gx-top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 24px;background:color-mix(in srgb,var(--surface-page) 84%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
   .gx-brand{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:var(--fw-bold);font-size:18px;letter-spacing:var(--ls-tight);color:var(--text-primary);text-decoration:none;}
-  .gx-brand .gx-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);}
   .gx-nav{display:flex;gap:2px;align-items:center;flex-wrap:wrap;}
   .gx-nav a{font:var(--text-label);color:var(--text-secondary);text-decoration:none;padding:8px 12px;border-radius:var(--radius-sm);}
   .gx-nav a:hover{background:var(--surface-sunken);color:var(--text-primary);}
+  .gx-nav a[aria-current]{color:var(--accent);background:var(--surface-accent-subtle);}
   .gx-nav .gx-sep{width:1px;height:20px;background:var(--border);margin:0 6px;}
   /* layout */
   .gx-wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
@@ -36,7 +36,7 @@
   /* stats */
   .gx-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-top:56px;}
   .gx-stat{background:var(--surface-card);padding:24px;}
-  .gx-stat__n{font-family:var(--font-mono);font-weight:var(--fw-semibold);font-size:32px;letter-spacing:var(--ls-tight);color:var(--text-primary);}
+  .gx-stat__n{font-family:var(--font-mono);font-variant-numeric:tabular-nums;font-weight:var(--fw-semibold);font-size:32px;letter-spacing:var(--ls-tight);color:var(--text-primary);}
   .gx-stat__l{font:var(--text-body-sm);color:var(--text-tertiary);margin-top:4px;}
   /* explore cards */
   .gx-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:32px;}
@@ -78,15 +78,17 @@
 </head>
 <body>
 <header class="gx-top">
-  <a class="gx-brand" href="./index.html">Cobalt<span class="gx-dot"></span></a>
+  <a class="gx-brand" href="./index.html">Daniel</a>
   <nav class="gx-nav">
+    <a href="./index.html" aria-current="page">Overview</a>
     <a href="./gallery/foundations.html">Foundations</a>
     <a href="./gallery/atoms.html">Atoms</a>
     <a href="./gallery/molecules.html">Molecules</a>
     <a href="./gallery/organisms.html">Organisms</a>
+    <a href="./guide.html">Guide</a>
     <span class="gx-sep"></span>
     <a href="https://github.com/Greencar-UXD/design-system" target="_blank" rel="noopener">GitHub</a>
-    <button id="gxTheme" class="ds-btn ds-btn--secondary ds-btn--sm" type="button">Dark</button>
+    <button id="gxTheme" class="ds-iconbtn ds-iconbtn--md" type="button" aria-label="다크/라이트 모드 전환"></button>
   </nav>
 </header>
 
@@ -103,7 +105,7 @@
 
     <div class="gx-stats">
       <div class="gx-stat"><div class="gx-stat__n">37</div><div class="gx-stat__l">Components</div></div>
-      <div class="gx-stat"><div class="gx-stat__n">158</div><div class="gx-stat__l">Design tokens</div></div>
+      <div class="gx-stat"><div class="gx-stat__n">149</div><div class="gx-stat__l">Design tokens</div></div>
       <div class="gx-stat"><div class="gx-stat__n">2</div><div class="gx-stat__l">Themes · light/dark</div></div>
       <div class="gx-stat"><div class="gx-stat__n">4px</div><div class="gx-stat__l">Base grid</div></div>
     </div>
@@ -116,8 +118,8 @@
     <p class="gx-sub">기반 토큰부터 원자·분자·유기체 컴포넌트까지, 아토믹 디자인 구조로 정리되어 있습니다.</p>
     <div class="gx-cards">
       <a class="gx-card" href="./gallery/foundations.html">
-        <div class="gx-card__top"><span class="gx-card__name">Foundations</span><span class="gx-card__count">19</span></div>
-        <span class="gx-card__desc">타입 · 컬러 · 스페이싱 · 모션 · 레이아웃 · 가이드</span>
+        <div class="gx-card__top"><span class="gx-card__name">Foundations</span><span class="gx-card__count">20</span></div>
+        <span class="gx-card__desc">타입 · 컬러 · 스페이싱 · 모션 · 레이아웃 · 반응형 · 가이드</span>
         <span class="gx-card__go">specimen 보기 →</span>
       </a>
       <a class="gx-card" href="./gallery/atoms.html">
@@ -182,7 +184,7 @@
       <div class="ln"><span class="tag">h2</span><span style="font:var(--text-h2);letter-spacing:var(--ls-tight)">섹션 제목 Heading</span></div>
       <div class="ln"><span class="tag">h4</span><span style="font:var(--text-h4)">카드 타이틀 Subhead</span></div>
       <div class="ln"><span class="tag">body</span><span style="font:var(--text-body)">본문 텍스트입니다. Pretendard는 한글과 영문을 한 패밀리로 자연스럽게 담아냅니다.</span></div>
-      <div class="ln"><span class="tag">mono</span><span style="font:var(--text-mono);color:var(--text-secondary)">123,456 · 98.6% · v0.1.0 — Geist Mono</span></div>
+      <div class="ln"><span class="tag">num</span><span style="font:var(--text-mono);color:var(--text-secondary);font-variant-numeric:tabular-nums">123,456 · 98.6% · v0.1.0 — Pretendard tabular</span></div>
     </div>
   </section>
 
@@ -218,9 +220,9 @@ document.documentElement
 
   <!-- FOOTER -->
   <footer class="gx-wrap gx-foot">
-    <strong>Cobalt — Mono Design System</strong> · v0.1.0 · 아토믹 구조(atoms / molecules / organisms) · 4px 그리드
+    <strong>Daniel's Design System</strong> · v0.1.0 · 아토믹 구조(atoms / molecules / organisms) · 4px 그리드
     <ul>
-      <li><strong>폰트</strong>: Pretendard + Geist Mono를 CDN으로 로드합니다. 오프라인/프로덕션에서는 파일을 받아 <code>tokens/fonts.css</code>의 <code>src</code>를 교체하세요.</li>
+      <li><strong>폰트</strong>: Pretendard 한 패밀리를 CDN으로 로드합니다(숫자는 tabular-nums). 오프라인/프로덕션에서는 파일을 받아 <code>tokens/fonts.css</code>의 <code>src</code>를 교체하세요.</li>
       <li><strong>아이콘</strong>: Lucide(monoline, stroke 2). 갤러리에는 인라인 SVG로 표기했습니다.</li>
       <li><strong>로고</strong>: 현재 워드마크는 플레이스홀더입니다 — 실제 로고로 교체 가능.</li>
       <li><strong>문서</strong>: <a href="./README.md">README.md</a> · <a href="./README.ko.md">README.ko.md</a> · <a href="./SKILL.md">SKILL.md</a></li>
@@ -230,7 +232,8 @@ document.documentElement
 
 <script>
   var root=document.documentElement,btn=document.getElementById('gxTheme');
-  function setT(t){root.setAttribute('data-theme',t);btn.textContent=t==='dark'?'Light':'Dark';try{localStorage.setItem('ds-theme',t);}catch(e){}}
+  var THEME_SUN='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>',THEME_MOON='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>';
+  function setT(t){root.setAttribute('data-theme',t);btn.innerHTML=t==='dark'?THEME_SUN:THEME_MOON;btn.setAttribute('aria-label',t==='dark'?'라이트 모드로 전환':'다크 모드로 전환');try{localStorage.setItem('ds-theme',t);}catch(e){}}
   var saved='light';try{saved=localStorage.getItem('ds-theme')||'light';}catch(e){}
   setT(saved);
   btn.addEventListener('click',function(){setT(root.getAttribute('data-theme')==='dark'?'light':'dark');});

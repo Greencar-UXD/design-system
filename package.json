@@ -1,7 +1,7 @@
 {
-  "name": "cobalt-mono-design-system",
+  "name": "daniels-design-system",
   "version": "0.1.0",
-  "description": "Cobalt — Mono Design System: monochrome surfaces with a single cobalt accent, Pretendard type (Korean + English), light & dark. 37 React components and a token-driven CSS layer.",
+  "description": "Daniel's Design System: monochrome surfaces with a single cobalt accent, Pretendard type (Korean + English), light & dark. 37 React components and a token-driven CSS layer.",
   "type": "module",
   "license": "MIT",
   "author": "Greencar-UXD",

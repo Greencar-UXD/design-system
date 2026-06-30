@@ -1,0 +1,57 @@
+<!-- @dsCard group="Layout" viewport="700x340" name="Breakpoints & Responsive" subtitle="Mobile-first · 480 · 768 · 1024 · 1280" -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html,body{margin:0;background:var(--surface-card);font-family:var(--font-text);-webkit-font-smoothing:antialiased;}
+  .wrap{padding:24px 28px;}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+  .bp{flex:1;min-width:96px;border:1px solid var(--border);border-radius:var(--radius-md);padding:10px 12px;background:var(--surface-page);}
+  .bp b{display:block;font-family:var(--font-mono);font-size:13px;color:var(--text-primary);}
+  .bp span{font:var(--text-caption);color:var(--text-tertiary);}
+  .bp em{font-family:var(--font-mono);font-style:normal;color:var(--accent);font-size:12px;}
+  .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+  .pill{font:var(--text-mono);font-size:11px;color:var(--text-secondary);background:var(--surface-sunken);border:1px solid var(--border);border-radius:var(--radius-pill);padding:6px 12px;}
+  .pill b{color:var(--text-primary);font-weight:600;}
+  .beh{font:var(--text-caption);color:var(--text-secondary);line-height:var(--lh-body);margin:0;}
+  .beh b{color:var(--text-primary);font-weight:600;}
+  .h{font:var(--text-label);color:var(--text-tertiary);text-transform:uppercase;letter-spacing:var(--ls-caps);font-size:10px;margin:0 0 8px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="h">Breakpoint ladder · mobile-first</p>
+  <div class="row" id="bps"></div>
+
+  <p class="h">Content & gutters</p>
+  <div class="meta">
+    <span class="pill">narrow · <b>720</b></span>
+    <span class="pill">max · <b>1120</b></span>
+    <span class="pill">wide · <b>1240</b></span>
+    <span class="pill">gutter · <b>16 → 24 → 32</b></span>
+    <span class="pill">touch · <b>44px</b></span>
+  </div>
+
+  <p class="h">Behaviors</p>
+  <p class="beh">
+    <b>Display type</b> steps down ≤ 640px (40→32, 36→30) · body stays 16px ·
+    <b>safe-area</b> insets pad fixed BottomNav / BottomSheet / Drawer ·
+    Dialog docks to bottom on phones · Table scrolls-x ·
+    grid collapses 12 → stacked.
+  </p>
+</div>
+<script>
+  const bps = [
+    ['xs','0+','phones'],
+    ['sm','480','large phones'],
+    ['md','768','tablet'],
+    ['lg','1024','laptop'],
+    ['xl','1280','desktop'],
+  ];
+  document.getElementById('bps').innerHTML = bps.map(([k,v,d])=>
+    `<div class="bp"><b>${k} <em>${v}</em></b><span>${d}</span></div>`).join('');
+</script>
+</body>
+</html>

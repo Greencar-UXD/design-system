@@ -1,13 +1,11 @@
 /* ============================================================
    Fonts — webfont declarations
-   Primary:  Pretendard  (Korean + Latin, variable weight)
-   Mono:     Geist Mono   (numerics, code, data)
+   Single family: Pretendard (Korean + Latin, variable weight).
+   Numeric/data uses Pretendard with tabular figures
+   (font-variant-numeric: tabular-nums) — no separate mono face.
    NOTE: currently loaded from CDN. To self-host, drop the
    .woff2 files into assets/fonts/ and repoint the src below.
    ============================================================ */
-
-/* @import must precede all other rules */
-@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap");
 
 /* Pretendard — variable, 100–900 */
 @font-face {
