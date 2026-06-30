@@ -1,4 +1,4 @@
-Switch — on/off toggle; active track fills with cobalt accent. Use for instant-apply settings.
+Switch — on/off toggle; active track fills with accent. Use for instant-apply settings.
 
 ```jsx
 import { Switch } from './components/forms/Switch';

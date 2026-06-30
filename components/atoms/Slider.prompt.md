@@ -1,4 +1,4 @@
-Slider — range input with a cobalt fill.
+Slider — range input with a accent fill.
 
 ```jsx
 import { Slider } from './components/forms/Slider';

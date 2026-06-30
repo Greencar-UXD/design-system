@@ -6,4 +6,4 @@ import { Stepper } from './components/navigation/Stepper';
 <Stepper current={1} steps={['배송지', '결제', '확인']} />
 ```
 
-Steps before `current` show a check; `current` is cobalt; later steps are muted.
+Steps before `current` show a check; `current` is accent; later steps are muted.

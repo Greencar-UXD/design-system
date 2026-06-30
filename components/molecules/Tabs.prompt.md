@@ -1,4 +1,4 @@
-Tabs — controlled underline tab bar; the active tab gets a cobalt underline.
+Tabs — controlled underline tab bar; the active tab gets a accent underline.
 
 ```jsx
 import { Tabs } from './components/navigation/Tabs';

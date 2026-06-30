@@ -1,6 +1,6 @@
 ---
-name: cobalt-mono-design
-description: Use this skill to generate well-branded interfaces and assets for the Daniel's Design System (monochrome surfaces + a single cobalt accent, Pretendard type, Korean+English, light & dark), either for production or throwaway prototypes/mocks/etc. Contains essential design guidelines, colors, type, fonts, assets, and UI kit components for prototyping.
+name: accent-mono-design
+description: Use this skill to generate well-branded interfaces and assets for the Daniel's Design System (monochrome surfaces + a single accent, Pretendard type, Korean+English, light & dark), either for production or throwaway prototypes/mocks/etc. Contains essential design guidelines, colors, type, fonts, assets, and UI kit components for prototyping.
 user-invocable: true
 ---
 
@@ -13,6 +13,6 @@ If the user invokes this skill without any other guidance, ask them what they wa
 - **Showcase:** open `index.html` (overview) and `gallery/{foundations,atoms,molecules,organisms}.html` — static, no build step.
 - **Components:** import from source — `import { Button, Card, Input } from "./components";` (or per-file `./components/atoms/Button.jsx`). Standard React; the consuming app's bundler handles JSX. No runtime bundle.
 - **Dark mode:** set `data-theme="dark"` on `<html>` or any ancestor; components flip automatically.
-- **Accent discipline:** ink (`--gray-900`) is primary; cobalt (`--accent`) is reserved for links, focus, selected states, and the single most important CTA per view.
+- **Accent discipline:** ink (`--gray-900`) is primary; accent (`--accent`) is reserved for links, focus, selected states, and the single most important CTA per view.
 - **Type:** Pretendard single family for everything (display → data); numbers use tabular figures. No emoji.
 - **Icons:** Lucide (monoline, stroke 2), inherit `currentColor`.
