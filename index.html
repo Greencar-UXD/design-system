@@ -17,6 +17,7 @@
   .gx-nav{display:flex;gap:2px;align-items:center;flex-wrap:wrap;}
   .gx-nav a{font:var(--text-label);color:var(--text-secondary);text-decoration:none;padding:8px 12px;border-radius:var(--radius-sm);}
   .gx-nav a:hover{background:var(--surface-sunken);color:var(--text-primary);}
+  .gx-nav a[aria-current]{color:var(--accent);background:var(--surface-accent-subtle);}
   .gx-nav .gx-sep{width:1px;height:20px;background:var(--border);margin:0 6px;}
   /* layout */
   .gx-wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
@@ -80,6 +81,7 @@
 <header class="gx-top">
   <a class="gx-brand" href="./index.html">Daniel<span class="gx-dot"></span></a>
   <nav class="gx-nav">
+    <a href="./index.html" aria-current="page">Overview</a>
     <a href="./gallery/foundations.html">Foundations</a>
     <a href="./gallery/atoms.html">Atoms</a>
     <a href="./gallery/molecules.html">Molecules</a>
